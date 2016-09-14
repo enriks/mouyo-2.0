@@ -258,20 +258,6 @@
                     <li>
                         <a href='../main/login.php'>Volver al login</a>
                     </li>
-                    <li class='dropdown'>
-                        <a href='#' class='dropdown-toggle' data-toggle='dropdown'><div class='chip'>
-                              <img src='data:image/*;base64,$_SESSION[img_admin]' alt='Person' width='40' height='40' class='img-circle'>
-                              $_SESSION[usuario_admin]
-                            </div> <b class='caret'></b></a>
-                        <ul class='dropdown-menu'>
-                            <li>
-                                <a href='../profile/'>Editar Perfil</a>
-                            </li>
-                            <li>
-                                <a href='../main/logout.php'>Salir</a>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
             </div>";
             }
@@ -305,10 +291,10 @@
 
         public static function footer()
         {
-            $footer="<script src="js/jquery.js"></script>
+            $footer="<script src='js/jquery.js'></script>
 
             <!-- Bootstrap Core JavaScript -->
-            <script src="js/bootstrap.min.js"></script>
+            <script src='js/bootstrap.min.js'></script>
 
             <!-- Script to Activate the Carousel -->
             <script>
