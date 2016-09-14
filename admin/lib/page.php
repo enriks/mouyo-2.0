@@ -2,7 +2,7 @@
    session_start();
     class page
     {
-        public static function header($title)
+        public static function header()
         {
             $sql="select id_admin,sesion from admin where id_admin=?";
             $params=array(isset($_SESSION['id_admin']));
@@ -30,13 +30,13 @@
                     <title>Modern Business - Start Bootstrap Template</title>
 
                     <!-- Bootstrap Core CSS -->
-                    <link href='css/bootstrap.min.css' rel='stylesheet'>
+                    <link href='../../css/bootstrap.min.css' rel='stylesheet'>
 
                     <!-- Custom CSS -->
-                    <link href='css/modern-business.css' rel='stylesheet'>
+                    <link href='../../css/modern-business.css' rel='stylesheet'>
 
                     <!-- Custom Fonts -->
-                    <link href='font-awesome/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+                    <link href='../../font-awesome/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
                     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
                     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -261,7 +261,7 @@
                 </ul>
             </div>";
             }
-            $header .= "
+            $header .= "</div></nav>
 	  				<div class='container center-align'>";
             print ($header);
             if($session)
@@ -269,7 +269,6 @@
                 if($filename != "login.php")
                 {
                     
-                    print("<h2>$title</h2>");
                 }
                 else
                 {
@@ -280,7 +279,7 @@
             {
                 if($filename != "login.php" && $filename != "register.php" && $filename != "activesesion.php" && $filename != "404.php"&& $filename != "denied.php")
                 {
-                    print("<div class='card-panel red'><a href='../main/login.php><h5>Debe iniciar sesion.</h5></a></div>");
+                    print("<div class='card-panel red'><a href='../main/login.php'><h5>Debe iniciar sesion.</h5></a></div>");
                 }
                 else
                 {
