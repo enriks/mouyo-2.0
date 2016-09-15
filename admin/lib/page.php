@@ -9,7 +9,7 @@
             $data=Database::getRow($sql,$params);
             if($data['sesion']==0 && isset($_SESSION['id_admin']))
             {
-                header("location: ../main/logout.php");
+                //header("location: ../main/logout.php");
             }
            
             #si se necesita la hora :v
@@ -59,7 +59,7 @@
                 $diff=time() - $_SESSION['tiempo'];
                 if($diff > 900)
                 {
-                    header("location: ../main/logout.php");
+                    //header("location: ../main/logout.php");
                 }
                 else
                 {
@@ -67,123 +67,131 @@
                 }
                 
                 $session=true;
-                if($_SESSION['permisos']==1)
+                if($_SESSION['permisos']==1 || $_SESSION['permisos']=4)
                 {
-                   $header.="
-                   <div class='navbar-header'>
-                            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>
-                                <span class='sr-only'>Toggle navigation</span>
-                                <span class='icon-bar'></span>
-                                <span class='icon-bar'></span>
-                                <span class='icon-bar'></span>
-                            </button>
-                            <a class='navbar-brand' href='index.html'>Start Bootstrap</a>
-                        </div>
+                    if($_SESSION['permisos']==1)
+                    {
+                       $header.="
+                       <div class='navbar-header'>
+                                <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>
+                                    <span class='sr-only'>Toggle navigation</span>
+                                    <span class='icon-bar'></span>
+                                    <span class='icon-bar'></span>
+                                    <span class='icon-bar'></span>
+                                </button>
+                                <a class='navbar-brand' href='index.html'>Start Bootstrap</a>
+                            </div>
                         <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
-                <ul class='nav navbar-nav navbar-right'>
-                    <li>
-                        <a href='../admin/'>Administradores</a>
-                    </li>
-                    <li>
-                        <a href='../users/'>Usuarios</a>
-                    </li>
-                    <li class='dropdown'>
-                        <a href='#' class='dropdown-toggle' data-toggle='dropdown'><div class='chip'>
-                              <img src='data:image/*;base64,$_SESSION[img_admin]' alt='Person' width='40' height='40' class='img-circle'>
-                              $_SESSION[usuario_admin]
-                            </div> <b class='caret'></b></a>
-                        <ul class='dropdown-menu'>
-                            <li>
-                                <a href='../profile/'>Editar Perfil</a>
-                            </li>
-                            <li>
-                                <a href='../main/logout.php'>Salir</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>"; 
+                            <ul class='nav navbar-nav navbar-right'>
+                                <li>
+                                    <a href='../admin/'>Administradores</a>
+                                </li>
+                                <li>
+                                    <a href='../users/'>Usuarios</a>
+                                </li>
+                                <li class='dropdown'>
+                                    <a href='#' class='dropdown-toggle' data-toggle='dropdown'><div class='chip'>
+                                        <img src='data:image/*;base64,$_SESSION[img_admin]' alt='Person' width='40' height='40' class='img-circle'>
+                                          $_SESSION[usuario_admin]
+                                        </div> <b class='caret'></b>
+                                    </a>
+                                    <ul class='dropdown-menu'>
+                                        <li>
+                                            <a href='../profile/'>Editar Perfil</a>
+                                        </li>
+                                        <li>
+                                            <a href='../main/logout.php'>Salir</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                             </ul>
+                         </div>";
+                    } 
                 }
                 else
                 {
                     header("location:../main/denied.php");
                 }
 
-                if($_SESSION['permisos']==2)
+                if($_SESSION['permisos']==2 || $_SESSION['permisos']==4)
                 {
-                    $header.="<div class='navbar-header'>
-                            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>
-                                <span class='sr-only'>Toggle navigation</span>
-                                <span class='icon-bar'></span>
-                                <span class='icon-bar'></span>
-                                <span class='icon-bar'></span>
-                            </button>
-                            <a class='navbar-brand' href='index.html'>Start Bootstrap</a>
-                        </div>
-                        <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
-                <ul class='nav navbar-nav navbar-right'>
-                    <li>
-                        <a href='../descuentos/'>Descuentos</a>
-                    </li>
-                    <li>
-                        <a href='../promociones/'>Promociones</a>
-                    </li>
-                    <li class='dropdown'>
-                        <a href='#' class='dropdown-toggle' data-toggle='dropdown'><div class='chip'>
-                              <img src='data:image/*;base64,$_SESSION[img_admin]' alt='Person' width='40' height='40' class='img-circle'>
-                              $_SESSION[usuario_admin]
-                            </div> <b class='caret'></b></a>
-                        <ul class='dropdown-menu'>
+                    if($_SESSION['permisos']==2)   
+                    {
+                        $header.="<div class='navbar-header'>
+                                    <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>
+                                        <span class='sr-only'>Toggle navigation</span>
+                                        <span class='icon-bar'></span>
+                                        <span class='icon-bar'></span>
+                                        <span class='icon-bar'></span>
+                                    </button>
+                                    <a class='navbar-brand' href='index.html'>Start Bootstrap</a>
+                                </div>
+                                <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+                        <ul class='nav navbar-nav navbar-right'>
                             <li>
-                                <a href='../profile/'>Editar Perfil</a>
+                                <a href='../descuentos/'>Descuentos</a>
                             </li>
                             <li>
-                                <a href='../main/logout.php'>Salir</a>
+                                <a href='../promociones/'>Promociones</a>
+                            </li>
+                            <li class='dropdown'>
+                                <a href='#' class='dropdown-toggle' data-toggle='dropdown'><div class='chip'>
+                                      <img src='data:image/*;base64,$_SESSION[img_admin]' alt='Person' width='40' height='40' class='img-circle'>
+                                      $_SESSION[usuario_admin]
+                                    </div> <b class='caret'></b></a>
+                                <ul class='dropdown-menu'>
+                                    <li>
+                                        <a href='../profile/'>Editar Perfil</a>
+                                    </li>
+                                    <li>
+                                        <a href='../main/logout.php'>Salir</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
-                    </li>
-                </ul>
-            </div>";
+                    </div>";
+                    }
                 }
                 else
                 {
                    header("location:../main/denied.php"); 
                 }
-                if($_SESSION['permisos']==3)
+                if($_SESSION['permisos']==3 || $_SESSION['permisos']==4)
                 {
-                    $header.="<div class='navbar-header'>
-                            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>
-                                <span class='sr-only'>Toggle navigation</span>
-                                <span class='icon-bar'></span>
-                                <span class='icon-bar'></span>
-                                <span class='icon-bar'></span>
-                            </button>
-                            <a class='navbar-brand' href='index.html'>Start Bootstrap</a>
-                        </div>
-                        <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
-                <ul class='nav navbar-nav navbar-right'>
-                    <li>
-                        <a href='../jugos/'>Jugos</a>
-                    </li>
-                    <li>
-                        <a href='../ingredientes/'>Ingredientes</a>
-                    </li>
-                    <li class='dropdown'>
-                        <a href='#' class='dropdown-toggle' data-toggle='dropdown'><div class='chip'>
-                              <img src='data:image/*;base64,$_SESSION[img_admin]' alt='Person' width='40' height='40' class='img-circle'>
-                              $_SESSION[usuario_admin]
-                            </div> <b class='caret'></b></a>
-                        <ul class='dropdown-menu'>
-                            <li>
-                                <a href='../profile/'>Editar Perfil</a>
-                            </li>
-                            <li>
-                                <a href='../main/logout.php'>Salir</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>";
+                    if($_SESSION['permisos']==3) 
+                    {$header.="<div class='navbar-header'>
+                                                <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>
+                                                    <span class='sr-only'>Toggle navigation</span>
+                                                    <span class='icon-bar'></span>
+                                                    <span class='icon-bar'></span>
+                                                    <span class='icon-bar'></span>
+                                                </button>
+                                                <a class='navbar-brand' href='index.html'>Start Bootstrap</a>
+                                            </div>
+                                            <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+                                    <ul class='nav navbar-nav navbar-right'>
+                                        <li>
+                                            <a href='../jugos/'>Jugos</a>
+                                        </li>
+                                        <li>
+                                            <a href='../ingredientes/'>Ingredientes</a>
+                                        </li>
+                                        <li class='dropdown'>
+                                            <a href='#' class='dropdown-toggle' data-toggle='dropdown'><div class='chip'>
+                                                  <img src='data:image/*;base64,$_SESSION[img_admin]' alt='Person' width='40' height='40' class='img-circle'>
+                                                  $_SESSION[usuario_admin]
+                                                </div> <b class='caret'></b></a>
+                                            <ul class='dropdown-menu'>
+                                                <li>
+                                                    <a href='../profile/'>Editar Perfil</a>
+                                                </li>
+                                                <li>
+                                                    <a href='../main/logout.php'>Salir</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>";}
                 }
                 else
                 {
@@ -204,7 +212,7 @@
                         <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
                 <ul class='nav navbar-nav navbar-right'>
                     <li>
-                        <a href='../jugos/'>Jugos</a>
+                        <a href='../jugo/'>Jugos</a>
                     </li>
                     <li>
                         <a href='../ingredientes/'>Ingredientes</a>
@@ -289,10 +297,10 @@
 
         public static function footer()
         {
-            $footer="<script src='js/jquery.js'></script>
+            $footer="<script src='../../js/jquery.js'></script>
 
             <!-- Bootstrap Core JavaScript -->
-            <script src='js/bootstrap.min.js'></script>
+            <script src='../../js/bootstrap.min.js'></script>
 
             <!-- Script to Activate the Carousel -->
             <script>

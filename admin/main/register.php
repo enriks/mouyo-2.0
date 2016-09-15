@@ -12,6 +12,7 @@ require("../lib/page.php");
 require("../../lib/validator.php");
 Page::header("Registrar usuario");
 
+$fecha=date('Y-m-d H:i:s');
 function validar_clave($clave,&$error_clave){
    if(strlen($clave) < 6){
       $error_clave = "La clave debe tener al menos 6 caracteres";
@@ -76,9 +77,6 @@ if(!empty($_POST))
                                 $sql = "INSERT INTO `admin` (`alias`, `clave`, `correo`,foto,permiso) VALUES(?, ?, ?,?,?)";
                                 $param = array($alias,$clave,$correo,$imagen,$permiso);
                                 Database::executeRow($sql, $param);
-                                 $sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
-                                $params2=array($fecha,"Se registro el administrador $alias",$_SESSION['id_admin']);
-                                Database::executeRow($sql2, $params2);
                                 @header("location: login.php");
                             }
                             else
@@ -181,7 +179,7 @@ else
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form autocomplete="off" action="" method="post" class="registration-form">
+			                    <form autocomplete="off" action="" method="post" enctype='multipart/form-data' class="registration-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-first-name">Alias</label>
 			                        	<input type="text" name="alias" placeholder="Alias..." class="form-first-name form-control" id="form-first-name">
@@ -198,7 +196,7 @@ else
 			                        	<label class="sr-only" for="correo">Correo Email</label>
 			                        	<input type="text" name="correo" placeholder="Correo..." class="form-email form-control" id="correo">
 			                        </div>
-                                	<div class="form-group">
+                                	<div class="form-group img-rounded" style="background-color:white;">
                                         <input type="file" name="archivo">
                                     </div>
                                     <div class="form-group">

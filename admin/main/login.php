@@ -134,7 +134,7 @@ if(!empty($_POST))
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="" method="post" name="nonono" class="login-form">
+			                    <form role="form" autocomplete="off" action="" method="post" name="nonono" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Alias</label>
 			                        	<input type="text" name="alias" placeholder="Alias..." class="form-username form-control" id="form-username">
