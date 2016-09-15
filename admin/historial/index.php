@@ -14,7 +14,7 @@ if($data != null)
 {
     $tabla="<div class='container'>
     <div class='row'>
-            <div class='col-lg-12'>
+            <div class='col-md-12'>
                 <h1 class='page-header'>Historial
                     <small>Mouyo</small>
                 </h1>
@@ -23,26 +23,48 @@ if($data != null)
                     </li>
                     <li class='active'>Historial</li>
                 </ol>
-            </div>
-    </div>";
+                <ul class='timeline'>";
+    
     foreach($data as $row)
 		{
-			$tabla.="<div class='row'>
-            <div class='col-md-2 text-center'>
-                <a href='save.php?id=".base64_encode($row['foto'])."'>
-                    <img class='img-responsive img-hover' src='data:image/*;base64,$row[foto]' alt=''>
-                </a>
+			$tabla.=
                 
-            </div>
-            <div class='col-md-10'>
-                <h2>$row[accion]</h2>
-                <p>Por $row[nombre_admin]<p>
-                <p>  En la fecha $row[fecha]</p>
-            </div>
-        </div><hr>";
+                            "<li class='timeline-item'>
+							<div class='timeline-badge'> <img class='img-responsive img-rounded' src='data:image/*;base64,$row[foto]' alt=''></div>
+							<div class='timeline-panel'>
+								<div class='timeline-heading'>
+									<h4 class='timeline-title'>$row[accion]</h4>
+									<p><small class='text-muted'><i class='glyphicon glyphicon-time'>$row[fecha]</i></small></p>
+								</div>
+								<div class='timeline-body'>
+									<p>Por $row[nombre_admin]</p>
+								</div>
+							</div>
+						</li>
+                
+    <hr>";
 		}
+    $tabla.="</ul>
+				</div>
+			</div>";
 		
 		print $tabla;
 }
 page::footer();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link href="../../css/estilo_timeline.css" rel="stylesheet">
+       <link rel="stylesheet" href="http://bootsnipp.com/dist/bootsnipp.min.css?ver=7d23ff901039aef6293954d33d23c066">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+</head>
+    <body>
+    <script src="../../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../js/bootstrap.min.js"></script>
+    </body>
+</html>
