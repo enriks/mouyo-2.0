@@ -310,7 +310,7 @@
         public static function setCombo($name, $value, $query)
         {
             $data =Database::getRows($query,null);
-            $combo="<select name='$name' requeried>";
+            $combo="<select name='$name' class='form-control' requeried>";
             if($value == null)
             {
                 $combo .= "<option value='' disabled selected>Selecione una opcion</option>";
