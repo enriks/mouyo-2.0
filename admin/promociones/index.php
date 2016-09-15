@@ -16,6 +16,7 @@ else
 	$sql = "SELECT * FROM promociones where estado=0 ORDER BY titulo";
 	$params = null;
 }
+$activo="";
 $data=Database::getRows($sql,$params);
 if($data != null)
 {
@@ -36,6 +37,14 @@ if($data != null)
         <div class='col-md-9'>";
     foreach($data as $row)
 		{
+            if($row['activo']==0)
+            {
+                $activo="Vigente (Activo)";
+            }
+            else
+            {
+                $activo="Inactivo";
+            }
 			$tabla.="<div class='row'>
             <div class='col-md-7'>
                 <a href='save.php?id=".base64_encode($row['id_promocion'])."'>
@@ -44,9 +53,9 @@ if($data != null)
             </div>
             <div class='col-md-5'>
                 <h3>$row[titulo]</h3>
-                <h4>$row[fecha_limite]</h3>
                 <p>$row[descripcion]</p>
-                <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_promocion'])."'>Editar</i></a>
+                <p><strong>Estado:</strong>$activo</p>";
+                $tabla.="<a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_promocion'])."'>Editar</i></a>
                 <a class='btn btn-primary' href='delete.php?id=".base64_encode($row['id_promocion'])."'>Eliminar</i></a>
             </div>
         </div><hr>";
@@ -54,10 +63,10 @@ if($data != null)
 		$tabla.="</div><div class='col-md-3'><div class='well'>
                     <h4>Busqueda</h4>
                     <div class='input-group'>
-                    	<form class='form-inline'>
+                    	<form class='form-inline' method='post'>
                     		<div class='form-group'>
 							    <label class='sr-only' for='search'>Busqueda</label>
-							    <input type='text' class='form-control' id='search' placeholder='Busqueda'>
+							    <input type='text' class='form-control' id='search' placeholder='Busqueda' name='buscar'>
 							</div>
                         <span class='input-group-btn'>
                             <button class='btn btn-default' type='sumbit'><i class='fa fa-search'></i></button>
@@ -70,7 +79,17 @@ if($data != null)
 }
 else
 {
-    print("<h3>No hay registros.</h3>");
+    print("<div class='col-lg-12'>
+                <h1 class='page-header'>Jugos
+                    <small>Mantenimiento de los jugos</small>
+                </h1>
+                <ol class='breadcrumb'>
+                    <li><a href='../main/index.php'>Home</a>
+                    </li>
+                    <li class='active'>Jugos</li>
+                </ol>
+            </div><h2>No se encuentra ninguna promocion con ese nombre <a href='index.php'>Volver</a>                    
+                </h2>");
 }
 Page::footer();
 ?>
