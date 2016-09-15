@@ -195,12 +195,18 @@ else
 			                        	<label class="sr-only" for="form-email">Email</label>
 			                        	<input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
 			                        </div>
-			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-about-yourself">About yourself</label>
-			                        	<textarea name="form-about-yourself" placeholder="About yourself..." 
-			                        				class="form-about-yourself form-control" id="form-about-yourself"></textarea>
-			                        </div>
-			                        <button type="submit" class="btn">Sign me up!</button>
+                                	<div class="form-group img-rounded" style="background-color:white;">
+                                        <label class="sr-only"for="archivo">Imagen de perfil</label>
+                                        <input type="file" name="archivo" id="archivo" >
+                                        <p class="help-block">Imagen tipo png,jpg,gif</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <?php
+                                            $sql = "SELECT id_permiso,nombre FROM permisos";
+                                            Page::setCombo("permiso", $permiso, $sql);
+                                        ?>
+                                    </div>
+			                        <button type="submit" class="btn">Registrarme</button>
 			                    </form>
 		                    </div>
                         </div>

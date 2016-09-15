@@ -310,7 +310,7 @@
         public static function setCombo($name, $value, $query)
         {
             $data =Database::getRows($query,null);
-            $combo="<select name='$name' class='form-control' requeried>";
+            $combo="<select name='$name' id='$name' class='form-control' requeried>";
             if($value == null)
             {
                 $combo .= "<option value='' disabled selected>Selecione una opcion</option>";
@@ -325,7 +325,7 @@
                 $combo .=">$row[1]</option>";
             }
             $combo.="</select>
-                    <label style='text-transform:capitalize;'>$name</label>";
+                    <label for='$name' class='sr-only' style='text-transform:capitalize;'>$name</label>";
             print($combo);
         }
     }
