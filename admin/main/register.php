@@ -36,15 +36,14 @@ function validar_clave($clave,&$error_clave){
    $error_clave = "";
    return true;
 }
-$fecha_nacimiento="";
 $permiso="";
 if(!empty($_POST))
 {
-    $_POST = Validator::validateForm($_POST);
+    //$_POST = Validator::validateForm($_POST);
     $alias = htmlentities($_POST['alias']);
     $correo = htmlentities($_POST['correo']);
     $permiso=$_POST['permiso'];
-    $archivo=$_FILES['imagen'];
+    $archivo=$_FILES['archivo'];
 
     try 
     {
@@ -182,23 +181,25 @@ else
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="" method="post" class="registration-form">
+			                    <form autocomplete="off" action="" method="post" class="registration-form">
 			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-first-name">First name</label>
-			                        	<input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+			                    		<label class="sr-only" for="form-first-name">Alias</label>
+			                        	<input type="text" name="alias" placeholder="Alias..." class="form-first-name form-control" id="form-first-name">
 			                        </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-password">Contraseña</label>
+                                        <input type="password" name="clave1" placeholder="Contraseña..." class="form-password form-control" id="form-password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-password">Confirme la contraseña</label>
+                                        <input type="password" name="clave2" placeholder="Confirmacion..." class="form-password form-control" id="form-password">
+                                    </div>
 			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-last-name">Last name</label>
-			                        	<input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+			                        	<label class="sr-only" for="correo">Correo Email</label>
+			                        	<input type="text" name="correo" placeholder="Correo..." class="form-email form-control" id="correo">
 			                        </div>
-			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-email">Email</label>
-			                        	<input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
-			                        </div>
-                                	<div class="form-group img-rounded" style="background-color:white;">
-                                        <label class="sr-only"for="archivo">Imagen de perfil</label>
-                                        <input type="file" name="archivo" id="archivo" >
-                                        <p class="help-block">Imagen tipo png,jpg,gif</p>
+                                	<div class="form-group">
+                                        <input type="file" name="archivo">
                                     </div>
                                     <div class="form-group">
                                         <?php
