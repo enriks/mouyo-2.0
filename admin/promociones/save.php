@@ -110,7 +110,7 @@ if(!empty($_POST))
         <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" method="post">
 
             <div class="form-title-row">
-                <h1>Ingresar Promociones</h1>
+                <h1>Promociones</h1>
             </div>
 
             <div class="form-row">
