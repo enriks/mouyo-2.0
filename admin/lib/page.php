@@ -256,7 +256,7 @@
                         <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
                 <ul class='nav navbar-nav navbar-right'>
                     <li>
-                        <a href='../main/login.php'>Volver al login</a>
+                        <a href='../main/login.php'>Iniciar sesion</a>
                     </li>
                 </ul>
             </div>";
@@ -283,7 +283,6 @@
                 }
                 else
                 {
-                    print("<h5>$title</h5>");
                 }
             }
         }

@@ -8,16 +8,14 @@ Page::header();
 if(!empty($_POST))
 {
     $search = trim($_POST['buscar']);
-    $sql = "SELECT jugos.id_jugo,jugos.nombre nombre_jugo,jugos.descripcion descripcion_jugo,jugos.imagen,jugos.precio, jugos.tamanio,tamanio.tamanio nombre_tamanio,tipo_jugo.nombre nombre_tipojugo FROM jugos,tipo_jugo,tamanio where jugos.id_tipojugo=tipo_jugo.id_tipojugo and jugos.tamanio=tamanio.id_tamanio AND jugos.nombre LIKE ? and jugos.estado=0 ORDER BY jugos.nombre";
-    $params = array("%$search%");
-    $ingre="SELECT ingrediente.nombre nombre_ingrediente from ingrediente,detalle_bebida,jugos WHERE jugos.id_jugo = detalle_bebida.id_jugo and ingrediente.id_ingrediente = detalle_bebida.id_ingrediente and ingrediente.estado=0";
-}
+    $sql = "SELECT jugos.id_jugo,jugos.nombre nombre_jugo,jugos.descripcion descripcion_jugo,jugos.imagen,jugos.precio,tipo_jugo.nombre nombre_tipojugo FROM jugos,tipo_jugo where jugos.id_tipojugo=tipo_jugo.id_tipojugo AND jugos.nombre LIKE ? and jugos.estado=0 ORDER BY jugos.nombre";
+    $params = array("%$search%");}
 else
 {
     $sql = "SELECT jugos.id_jugo,jugos.nombre nombre_jugo,jugos.descripcion descripcion_jugo,jugos.imagen,jugos.precio,tipo_jugo.nombre nombre_tipojugo FROM jugos,tipo_jugo where jugos.id_tipojugo=tipo_jugo.id_tipojugo and jugos.estado=0  ORDER BY jugos.nombre";
     $params = null;
 }
-
+$tabla="";
 $data = Database::getRows($sql, $params);
 if($data != null)
 {
@@ -54,20 +52,34 @@ if($data != null)
 		}
 		$tabla.="</div><div class='col-md-4'><div class='well'>
                     <h4>Busqueda</h4>
-                    <div class='input-group'>
-                    	<form class='form-inline'>
+                    	<form method='post' class='form-inline'>
                     		<div class='form-group'>
 							    <label class='sr-only' for='search'>Busqueda</label>
-							    <input type='text' class='form-control' id='search' placeholder='Busqueda'>
+							    <input type='text' class='form-control' id='search' name='buscar' placeholder='Busqueda'>
 							</div>
-                        <span class='input-group-btn'>
-                            <button class='btn btn-default' type='sumbit'><i class='fa fa-search'></i></button>
-                        </span>
-                    </div>
+	                        <span class='input-group-btn'>
+	                            <button class='btn btn-default' type='sumbit'><i class='fa fa-search'></i></button>
+	                        </span>
+                        </form>
                     <!-- /.input-group -->
                 </div>
 </div>";
-		print $tabla;
+		
 }
+else
+{
+	$tabla.="<div class='col-lg-12'>
+                <h1 class='page-header'>Jugos
+                    <small>Mantenimiento de los jugos</small>
+                </h1>
+                <ol class='breadcrumb'>
+                    <li><a href='../main/index.php'>Home</a>
+                    </li>
+                    <li class='active'>Jugos</li>
+                </ol>
+            </div><h2>No se encuentra ningun jugo con ese nombre <a href='index.php'>Volver</a>                    
+                </h2>";
+}
+print $tabla;
 page::footer();
 ?>
