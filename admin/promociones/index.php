@@ -91,6 +91,7 @@ else
             </div><h2>No se encuentra ninguna promocion con ese nombre <a href='index.php'>Volver</a>                    
                 </h2>");
 }
+
 Page::footer();
 ?>
  

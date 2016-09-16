@@ -130,34 +130,32 @@ if(!empty($_POST))
             <div class="form-row">
                 <label>
                     <span>Descripcion</span>
-                    <textarea name="descripcion" rows="5"><?php print($descripcion); ?></textarea>
+                    <textarea name="descripcion" cols="35" rows="6"><?php print($descripcion); ?></textarea>
                 </label>
             </div>
 
             <div class="form-row">
-                <label><span>Promocion</span></label>
-                <div class="form-radio-buttons">
-
-                    <div>
-                        <label>
-                            <input type="radio" name="activo" value="0" <?php print $actcheck;?>>
-                            <span>Activa</span>
-                        </label>
-                    </div>
-
-                    <div>
-                        <label>
-                            <input type="radio" name="activo" value="1" <?php print $inaccheck;?>>
-                            <span>Inactiva</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group form-row" style="background-color:white;">
-                <input type="file" name="imagen">
+                <label><span>Tipo de jugo</span></label>
+                <?php
+                    $sql = "SELECT id_tipojugo,nombre FROM tipo_jugo";
+                    Page::setCombo("Tipo", $tipo, $sql);
+                ?>
             </div>
             <div class="form-row">
-                <button type="button"><a href="index.php">Cancelar</a></button>
+               <label><span>Seleccione la imagen</span>
+                <input type="file" name="imagen">
+               </label>
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                  <div class="input-group-addon">$</div>
+                      <input type="number" max="999" min='0' class="form-control" id="exampleInputAmount" placeholder="Precio">
+                      <div class="input-group-addon">.00</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <button type="button"><a href="index.php" style="color:#fff;">Cancelar</a></button>
                 <button type="submit">Guardar</button>
             </div>
 

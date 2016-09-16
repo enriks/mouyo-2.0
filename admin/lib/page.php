@@ -363,6 +363,9 @@
             $('.carousel').carousel({
                 interval: 5000 //changes the speed
             })
+            $('#insert').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
             </script>
 
         </body>
