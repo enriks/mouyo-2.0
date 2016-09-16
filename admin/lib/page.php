@@ -39,6 +39,13 @@
 
                     <!-- Custom Fonts -->
                     <link href='../../font-awesome/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+                    
+                    <!-- Cosas de la linea del tiempo del historial -->
+                    <link rel='stylesheet' href='http://bootsnipp.com/dist/bootsnipp.min.css?ver=7d23ff901039aef6293954d33d23c066'>
+                    <link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
+                    <link rel='stylesheet' href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css'>
+                    
+                    
 
                     <!-- Forms things -->
                     <link rel='stylesheet' href='../../css/forms/demo.css'>
