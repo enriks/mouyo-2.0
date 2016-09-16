@@ -61,10 +61,9 @@ if($data != null)
                 </ol>
             </div>
         </div>
-        <div class='row'>
-        <div class='col-md-8'>";
+        <div class='row'>";
 			$tabla.="
-            <div class='col-md-8'>
+            <div class='col-md-6'>
                     <img class='img-responsive img-hover' src='data:image/*;base64,$data[imagen]' alt=''>
             </div>
             <div class='col-md-4'>
