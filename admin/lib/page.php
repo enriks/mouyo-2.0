@@ -343,7 +343,7 @@
             {
                 if($filename != "login.php" && $filename != "register.php" && $filename != "activesesion.php" && $filename != "404.php"&& $filename != "denied.php")
                 {
-                    print("<div class='card-panel red'><a href='../main/login.php'><h5>Debe iniciar sesion.</h5></a></div>");
+                    print("<br><br><div class='card-panel red'><a href='../main/login.php'><h5>Debe iniciar sesion.</h5></a></div>");
                 }
                 else
                 {
@@ -357,14 +357,20 @@
 
             <!-- Bootstrap Core JavaScript -->
             <script src='../../js/bootstrap.min.js'></script>
+            <script src='../../js/bootstrap-datepicker.js'></script>
 
             <!-- Script to Activate the Carousel -->
             <script>
+            $('.datepicker').datepicker()
             $('.carousel').carousel({
                 interval: 5000 //changes the speed
             })
             $('#insert').on('shown.bs.modal', function () {
   $('#myInput').focus()
+})
+$('.datepicker').datepicker({
+    format: 'mm/dd/yyyy',
+    startDate: '-3d'
 })
             </script>
 

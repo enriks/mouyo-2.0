@@ -8,7 +8,6 @@ page::header();
 $fecha=date('Y-m-d H:i:s');
 if(empty($_GET['id'])) 
 {
-    Page::header("Agregar Jugo");
     $id=null;
     $nombre=null;
     $tipo=null;
@@ -18,7 +17,6 @@ if(empty($_GET['id']))
 }
 else
 {
-    Page::header("Modificar Jugo");
     $id = base64_decode($_GET['id']);
     $sql = "SELECT * FROM jugos WHERE id_jugo = ?";
     $params = array($id);
@@ -106,10 +104,11 @@ if(!empty($_POST))
     }
     catch (Exception $error)
     {
-        print("<div class='card-panel red'><i class='material-icons left'>error</i>".$error->getMessage()."</div>");
+        print("<br><br><br> <div class='card-panel red'><i class='material-icons left'>error</i>".$error->getMessage()."</div>");
     }
 }
 ?>
+<br><br>
 <div class="main-content">
 
         <!-- You only need this form and the form-basic.css -->
@@ -138,7 +137,7 @@ if(!empty($_POST))
                 <label><span>Tipo de jugo</span></label>
                 <?php
                     $sql = "SELECT id_tipojugo,nombre FROM tipo_jugo";
-                    Page::setCombo("Tipo", $tipo, $sql);
+                    Page::setCombo("tipo", $tipo, $sql);
                 ?>
             </div>
             <div class="form-row">
@@ -150,7 +149,7 @@ if(!empty($_POST))
                 <div class="input-group">
                     <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
                   <div class="input-group-addon">$</div>
-                      <input type="number" max="999" min='0' class="form-control" id="exampleInputAmount" placeholder="Precio">
+                      <input type="number" name="precio" max="999" min='0' class="form-control" value="<?php print($precio);?>" placeholder="Precio">
                       <div class="input-group-addon">.00</div>
                 </div>
             </div>

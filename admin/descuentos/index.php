@@ -8,21 +8,21 @@ $tabla="";
 if(!empty($_POST))
 {
     $search = trim($_POST['buscar']);
-    $sql = "SELECT jugos.id_jugo,jugos.nombre nombre_jugo,jugos.descripcion descripcion_jugo,jugos.imagen,jugos.precio,tipo_jugo.nombre nombre_tipojugo FROM jugos,tipo_jugo where jugos.id_tipojugo=tipo_jugo.id_tipojugo AND jugos.nombre LIKE ? and jugos.estado=0 ORDER BY jugos.nombre";
+    $sql="select descuentos.id_jugo,descuentos.id_descuento,descuentos.fecha_inicio, descuentos.fecha_limite,jugos.imagen,jugos.nombre nombre_jugo,descuentos.nombre,jugos.precio, descuentos.descuento from jugos, descuentos where descuentos.id_jugo = jugos.id_jugo and descuentos.nombre LIKE ? and descuentos.estado=0";
     $params = array("%$search%");
     $tabla="<div class='container'>
     <div class='row'>
             <div class='col-lg-12'>
-                <h1 class='page-header'>Jugos
-                    <small>Mantenimiento de los jugos</small>
+                <h1 class='page-header'>Descuentos
+                    <small>Mantenimiento a los Descuentos</small>
                 </h1>
                 <ol class='breadcrumb'>
                     <li><a href='../main/index.php'>Home</a>
                     </li>
-                    <li class='active'>Jugos</li>
+                    <li><a href='index.php'>Descuentos</a></li>
                      <li class='active'>Busqueda de '$search'</li>
                      <li><button type='button' class='btn'>Agregar un nuevo 
-                     Jugo</button></li>
+                     Descuento</button></li>
                 </ol>
             </div>
         </div>
@@ -31,20 +31,20 @@ if(!empty($_POST))
 }
 else
 {
-    $sql = "SELECT jugos.id_jugo,jugos.nombre nombre_jugo,jugos.descripcion descripcion_jugo,jugos.imagen,jugos.precio,tipo_jugo.nombre nombre_tipojugo FROM jugos,tipo_jugo where jugos.id_tipojugo=tipo_jugo.id_tipojugo and jugos.estado=0  ORDER BY jugos.nombre";
+    $sql="select descuentos.id_jugo,descuentos.id_descuento,descuentos.fecha_inicio, descuentos.fecha_limite,jugos.imagen,jugos.nombre nombre_jugo,descuentos.nombre,jugos.precio, descuentos.descuento from jugos, descuentos where descuentos.id_jugo = jugos.id_jugo and descuentos.estado=0";
     $params = null;
     $tabla="<div class='container'>
     <div class='row'>
             <div class='col-lg-12'>
-                <h1 class='page-header'>Jugos
-                    <small>Mantenimiento de los jugos</small>
+                <h1 class='page-header'>Descuentos
+                    <small>Mantenimiento de Descuentos</small>
                 </h1>
                 <ol class='breadcrumb'>
                     <li><a href='../main/index.php'>Home</a>
                     </li>
-                    <li class='active'>Jugos</li>
+                    <li class='active'>Descuentos</li>
                      <li><button type='button' class='btn'>Agregar un nuevo 
-                     Jugo</button></li>
+                     Descuento</button></li>
                 </ol>
             </div>
         </div>
@@ -63,10 +63,15 @@ if($data != null)
                 </a>
             </div>
             <div class='col-md-8'>
-                <h3>$row[nombre_jugo]</h3>
-                <p>$row[descripcion_jugo]</p>
-                <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_jugo'])."'>Editar</i></a>
-                <a class='btn btn-primary' href='delete.php?id=".base64_encode($row['id_jugo'])."'>Eliminar</i></a>
+                <h3>$row[nombre]</h3>
+                <h4>Aplicado al jugo</h4>
+                <ul>
+                    <li>$row[nombre_jugo]</li>
+                </ul>
+                <p><strong>Fecha de Inicio:</strong> $row[fecha_inicio] <strong>Fecha limite:</strong> $row[fecha_limite]</p>
+                <p><strong>Descuento (%):</strong> $row[descuento]%</p>
+                <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_descuento'])."'>Editar</i></a>
+                <a class='btn btn-primary' href='delete.php?id=".base64_encode($row['id_descuento'])."'>Eliminar</i></a>
             </div>
         </div><hr>";
 		}
@@ -88,7 +93,7 @@ if($data != null)
 }
 else
 {
-	$tabla.="<h2>No se encuentra ningun jugo con ese nombre <a href='index.php'>Volver</a>                    
+	$tabla.="<h2>No se encuentra ningun descuento con ese nombre <a href='index.php'>Volver</a>                    
                 </h2>";
 }
 print $tabla;

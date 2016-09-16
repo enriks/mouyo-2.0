@@ -4,23 +4,35 @@ require("../lib/page.php");
 require("../../lib/database.php");
 require("../lib/verificador.php");
 Page::header();
-
+$tabla="";
 if(!empty($_POST))
 {
 	$search = trim($_POST['buscar']);
 	$sql = "SELECT * FROM promociones WHERE titulo LIKE ? ORDER BY titulo";
 	$params = array("%$search%");
+    $tabla.="<div class='container'>
+    <div class='row'>
+            <div class='col-lg-12'>
+                <h1 class='page-header'>Promociones
+                    <small>Mouyo</small>
+                </h1>
+                <ol class='breadcrumb'>
+                    <li><a href='../main/index.php'>Home</a>
+                    </li>
+                    <li><a href='index.php'>Promociones</a></li>
+                    <li class='active'>Busqueda de '$search'</li>
+                    <li><button type='button' class='btn'>Agregar Promocion</button></li>
+                </ol>
+            </div>
+        </div>
+        <div class='row'>
+        <div class='col-md-9'>";
 }
 else
 {
 	$sql = "SELECT * FROM promociones where estado=0 ORDER BY titulo";
 	$params = null;
-}
-$activo="";
-$data=Database::getRows($sql,$params);
-if($data != null)
-{
-     $tabla="<div class='container'>
+    $tabla="<div class='container'>
     <div class='row'>
             <div class='col-lg-12'>
                 <h1 class='page-header'>Promociones
@@ -30,11 +42,17 @@ if($data != null)
                     <li><a href='../main/index.php'>Home</a>
                     </li>
                     <li class='active'>Promociones</li>
+                    <li><button type='button' class='btn'>Agregar Promocion</button></li>
                 </ol>
             </div>
         </div>
         <div class='row'>
         <div class='col-md-9'>";
+}
+$activo="";
+$data=Database::getRows($sql,$params);
+if($data != null)
+{
     foreach($data as $row)
 		{
             if($row['activo']==0)
@@ -79,16 +97,23 @@ if($data != null)
 }
 else
 {
-    print("<div class='col-lg-12'>
-                <h1 class='page-header'>Jugos
-                    <small>Mantenimiento de los jugos</small>
+    print("<div class='container'>
+    <div class='row'>
+            <div class='col-lg-12'>
+                <h1 class='page-header'>Promociones
+                    <small>Mouyo</small>
                 </h1>
                 <ol class='breadcrumb'>
                     <li><a href='../main/index.php'>Home</a>
                     </li>
-                    <li class='active'>Jugos</li>
+                    <li><a href='index.php'>Promociones</a></li>
+                    <li class='active'>Busqueda de '$search'</li>
+                    <li><button type='button' class='btn'>Agregar Promocion</button></li>
                 </ol>
-            </div><h2>No se encuentra ninguna promocion con ese nombre <a href='index.php'>Volver</a>                    
+            </div>
+        </div>
+        <div class='row'>
+        <div class='col-md-9'><h2>No se encuentra ninguna promocion con ese nombre <a href='index.php'>Volver</a>                    
                 </h2>");
 }
 
