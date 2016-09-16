@@ -1,0 +1,122 @@
+*{
+	margin: 0px;
+	padding: 0px;
+
+}
+
+div#contenedorgeneral{
+	margin: auto;
+	margin-top: 60px;
+	margin-bottom: 60px;
+	width: 960px;
+	height: 800px;
+}
+div#contenedorcomocuando{
+	float: right;
+	width: 300px;
+	height: 620px;
+	background-color: rgba(238,56,52,0.4);
+}
+.comocuando{
+
+text-align: left;
+	font-family: cursive;
+	font-style: arial;
+	font-size: 25px;
+	color: black;
+}
+.cuando2{
+	padding-top: 15px;
+	padding-left: 5px;
+	text-align: center;
+	color: white;
+	font-family: cursive;
+}
+
+div#contenedortitulo{
+	width: 650px;
+	height: 60px;
+	background-color: rgba(11,56,112,0.4);
+}
+div#contenedorquienes{
+	margin-top: 10px;
+	width: 650px;
+	height: 270px;
+	background-color: #848484;
+}
+div#contenedordonde{
+	margin-top: 10px;
+	width: 650px;
+	height: 270px;
+	background-color: rgba(238,56,52,0.4);
+}
+div#contenedorquehacemos{
+	margin-top: 10px;	
+	width: 960px;
+	height: 170px;
+	background-color:#A4A4A4;
+}
+
+.titulomouyo{
+	text-align: center;
+	font-family: cursive;
+	font-style: arial;
+	font-size: 30px;
+	color: white;
+}
+.titulomouyo p{
+	padding-top: 10px;
+}
+
+.quienessomos{
+	
+	text-align: left;
+	font-family: cursive;
+	font-style: arial;
+	font-size: 25px;
+	color: black;
+
+}
+.quienes2{
+	padding-top: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: center;
+	color: white;
+	font-family: cursive;
+}
+
+.dondeestamos{
+	
+	text-align: left;
+	font-family: cursive;
+	font-style: arial;
+	font-size: 25px;
+	color: black;
+}
+
+.donde2{
+    padding-top: 15px;
+    padding-left: 5px;
+	padding-right: 5px;
+	text-align: center;
+	color: white;
+	font-family: cursive;
+}
+
+.quehacemos{
+	
+	text-align: left;
+	font-family: cursive;
+	font-style: arial;
+	font-size: 25px;
+	color: black;
+}
+.quehacemos2{
+	padding-top: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: center;
+	color: white;
+	font-family: cursive;
+}
