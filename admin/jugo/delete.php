@@ -74,7 +74,7 @@ if($data != null)
                 </ul>
                 <h3>Precio</h3>
                 <ul>
-                    <li>$$data[precio]</li>
+                    <li>$data[precio]</li>
                 </ul>
                 <p>&nbsp;&nbsp;&nbsp;<strong>Eliminar?</strong></p>
                 <form enctype='multipart/form-data' name='nada' method='post'>
