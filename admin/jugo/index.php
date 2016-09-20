@@ -21,8 +21,8 @@ if(!empty($_POST))
                     </li>
                     <li class='active'>Jugos</li>
                      <li class='active'>Busqueda de '$search'</li>
-                     <li><button type='button' class='btn'>Agregar un nuevo 
-                     Jugo</button></li>
+                     <li><a type='button' href='save.php' class='btn btn-default'>Agregar un nuevo 
+                     Jugo</a></li>
                 </ol>
             </div>
         </div>
@@ -43,8 +43,8 @@ else
                     <li><a href='../main/index.php'>Home</a>
                     </li>
                     <li class='active'>Jugos</li>
-                     <li><button type='button' class='btn'>Agregar un nuevo 
-                     Jugo</button></li>
+                     <li><a type='button' href='save.php' class='btn btn-default'>Agregar un nuevo 
+                     Jugo</a></li>
                 </ol>
             </div>
         </div>
