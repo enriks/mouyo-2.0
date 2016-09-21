@@ -1,6 +1,6 @@
 <?php
 	session_start();
-require("../../lib/database.php");
+	require("../../lib/database.php");
     $sql2="select sesion from usuario where id_usuario=?";
     $params2=array($_SESSION['id_usuario']);
     $dat=Database::getRow($sql2,$params2);

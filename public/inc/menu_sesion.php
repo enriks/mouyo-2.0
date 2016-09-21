@@ -61,7 +61,7 @@
 							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a class='waves-effect waves-light' href="jugos.php" >JUGOS</a>
 							</li>
 							<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a class='waves-effect waves-light' href="
-								ingredientes.php">INGREDIENTES</a>
+								#" id="lnkIngredientes">INGREDIENTES</a>
 							</li>
 							<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a class='waves-effect waves-light' href="#">SALUD</a>
 								<div class="sf-mega emerald-mega row category-featured-recent">
@@ -91,7 +91,15 @@
 							</li>
 							
 							<li class='emerald-submenu menu-item menu-item-type-post_type menu-item-object-page'><a class='waves-effect waves-light' href="#" id="lnkAcerca">ACERCA DE</a></li>
-							<li class='emerald-submenu buy menu-item menu-item-type-custom menu-item-object-custom'><a class='waves-effect waves-light modal-trigger' href="#modal1">INICIA SESION<i class="material-icons">perm_identity</i> </a></li>
+							<li class='emerald-submenu buy menu-item menu-item-type-custom menu-item-object-custom'>
+								<a class='waves-effect waves-light dropdown-button' href="#" data-activates='dropdown'><?php echo $_SESSION['nombre_apellido_usuario'] ?><i class="material-icons">perm_identity</i> </a>
+							</li>
+							<ul id='dropdown' class='dropdown-content'>
+								<li><a href='usuarios.php?id=<?php echo 
+					$_SESSION['id_usuario'] ?>'><i class='material-icons'>mode_edit</i>Editar perfil</a></li>
+								<li><a href='cotizacion.php'><i class='material-icons'>assignment</i>Cotizacion</a></li>
+								<li><a href='main/logout.php'><i class='material-icons'>close</i>Salir</a></li>
+							</ul>
 						</ul>
 					</div>
 				</div>
