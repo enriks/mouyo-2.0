@@ -1,13 +1,18 @@
 <?php
 require('../../fpdf/fpdf.php');
-require("../../lib/database.php");
-
-    $sql = "SELECT admin.id_admin, admin.alias, admin.correo, admin.permiso, admin.estado, permisos.id_permiso, permisos.nombre permisito FROM admin, permisos where admin.estado=0 AND admin.permiso = permisos.id_permiso ORDER BY id_admin";
-	$params = null;
-    $permiso='';
-    ini_set("date.timezone","America/El_Salvador");
-    $data = Database::getRows($sql, $params);
-
+require('../../lib/database.php');
+require('../lib/page.php');
+ini_set("date.timezone","America/El_Salvador");
+$usuario='admin';
+/*
+    $sql2 = "SELECT alias from admin where id_admin=?";
+    $params2=($_SESSION['usuario_admin']);
+    $data2=Database::getRows($sql2,$params2);
+    foreach($data2 as $row2)
+    {
+        $usuario=$row2['alias'];
+    }
+*/
 
 $pdf = new FPDF('P','mm','A4');
 $pdf->AddPage();
@@ -16,9 +21,9 @@ $pdf->SetAutoPageBreak(true,10);
 $pdf->SetFont('Arial', '', 10);
 $pdf->Image('../../img/mouyo.png' , 10 ,8, 25 , 20,'PNG');
 $pdf->Cell(23, 10, '', 0);
-$pdf->Cell(130, 16, 'Mouyo Bebidas y Jugos Naturales', 0);
+$pdf->Cell(105, 16, 'Mouyo Bebidas y Jugos Naturales', 0);
 $pdf->SetFont('Arial', '', 9);
-$pdf->Cell(50, 16, ''.date('d-m-Y g:i A ').'', 0);
+$pdf->Cell(50, 16, ''.date('d-m-Y g:i A ').'- Usuario: '.$usuario, 0);
 $pdf->Ln(25);
 $pdf->SetFont('Arial', 'B', 11);
 #$pdf->Cell(70, 8, '', 0);
@@ -32,6 +37,12 @@ $pdf->Cell(45, 8, ' Alias',1,0,'L',1);
 $pdf->Cell(70, 8, ' Correo',1,0,'L',1);
 $pdf->Cell(60, 8, ' Permisos',1,0,'L',1);
 $pdf->Ln(8);
+
+
+    $sql = "SELECT admin.id_admin, admin.alias, admin.correo, admin.permiso, admin.estado, permisos.id_permiso, permisos.nombre permisito FROM admin, permisos where admin.estado=0 AND admin.permiso = permisos.id_permiso ORDER BY id_admin";
+	$params = null;
+    $data = Database::getRows($sql, $params);
+
 foreach($data as $row)
     {
     $pdf->SetFont('Arial','',10);

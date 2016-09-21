@@ -1,12 +1,20 @@
 <?php
-
 require('../../fpdf/fpdf.php');
 require('../../lib/database.php');
 require('../lib/page.php');
-
+ini_set("date.timezone","America/El_Salvador");
+$usuario='admin';
+/*
+    $sql2 = "SELECT alias from admin where id_admin=?";
+    $params2=($_SESSION['usuario_admin']);
+    $data2=Database::getRows($sql2,$params2);
+    foreach($data2 as $row2)
+    {
+        $usuario=$row2['alias'];
+    }
+*/
     $sql = "SELECT * FROM tipo_jugo where estado=0 ORDER BY id_tipojugo";
 	$params = null;
-    ini_set("date.timezone","America/El_Salvador");
     $data = Database::getRows($sql, $params);
 
 
@@ -17,9 +25,9 @@ $pdf->SetAutoPageBreak(true,10);
 $pdf->SetFont('Arial', '', 10);
 $pdf->Image('../../img/mouyo.png' , 10 ,8, 25 , 20,'PNG');
 $pdf->Cell(23, 10, '', 0);
-$pdf->Cell(130, 16, 'Mouyo Bebidas y Jugos Naturales', 0);
+$pdf->Cell(105, 16, 'Mouyo Bebidas y Jugos Naturales', 0);
 $pdf->SetFont('Arial', '', 9);
-$pdf->Cell(50, 16, ''.date('d-m-Y g:i A ').'', 0);
+$pdf->Cell(50, 16, ''.date('d-m-Y g:i A ').'- Usuario: '.$usuario, 0);
 #$pdf->SetAuthor('El administrador',true);
 $pdf->Ln(25);
 $pdf->SetFont('Arial', 'B', 11);
