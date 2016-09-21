@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-	<html lang="es" >
-		<head>
-			<?php require 'inc/emeral_links.php'; ?>
-			<?php require 'inc/emeral_inc.php'; ?>
-			
-			
-		</head>
-		<body class="home page page-id-9 page-template-default wpb-js-composer js-comp-ver-4.6.2 vc_responsive">
-			<div class="material-emerald-loader-wrapper">
-				<div class="material-emerald-loader-nested-circles"></div>
-			</div>
-			<?php require 'inc/menu.php'; ?>
-			
-			
-			
-		
+<?php
+require("../lib/database.php");
+require("main/page2.php");
+Page2::header();
+?>
 		<!-- Contenido a cargar -->
 			
 			<div class="slider" id="divSlider">
@@ -48,10 +36,7 @@
 						</div>
 					</li>
 				</ul>
-			</div>
-		
-		
-			
+			</div><br>
 			
 			<div id='divJugos'>
 			</div>
@@ -103,16 +88,15 @@
 					 Hemos estado ofreciendo los productos desde febrero del año 2014, alcanzando una excelente cantidad de gente a la cual ha satisfecho nuestro productos.
 				 </div>
 			</div>
-		
-		<!--fin del contenido  -->
-		<?php require 'inc/imagenes.php'; ?>	
-		
-		<?php require 'inc/footer.php'; ?>
+
+
+		<div id="divPerfil">	 
 		</div>
 
-		<?php require 'inc/palette.php'; ?>
-		<?php require 'inc/script.php'; ?>
-		<script src="inc/main.js"></script>
+		<?php require 'inc/imagenes.php'; ?>
+		<?php require 'inc/footer.php'; ?>
+		
+		<!--fin del contenido  -->
 
-		</body>
-</html>
+ <?php Page2::footer();?>
+		
