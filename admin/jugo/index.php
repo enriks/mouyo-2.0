@@ -83,6 +83,7 @@ if($data != null)
                         </form>
                     <!-- /.input-group -->
                 </div>
+                <a class='btn btn-success' type='button' href='../highcharts/graficojugos.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver grafico de Jugos</i></a>
 </div>";
 		
 }

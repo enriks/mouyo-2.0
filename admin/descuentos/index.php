@@ -88,6 +88,7 @@ if($data != null)
                         </form>
                     <!-- /.input-group -->
                 </div>
+                <a class='btn btn-success' type='button' href='../highcharts/graficodescuentos.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Descuentos</i></a>
 </div>";
 		
 }
