@@ -36,12 +36,6 @@ Page2::header();
 						</div>
 					</li>
 				</ul>
-			</div><br>
-			
-			<div id='divJugos'>
-			</div>
-			
-			<div id='divIngredientes'>
 			</div>
 			
 			<div class="container" id="divFaq">
@@ -89,9 +83,6 @@ Page2::header();
 				 </div>
 			</div>
 
-
-		<div id="divPerfil">	 
-		</div>
 
 		<?php require 'inc/imagenes.php'; ?>
 		<?php require 'inc/footer.php'; ?>
