@@ -332,7 +332,7 @@
             {
                 if($filename != "login.php")
                 {
-                    
+                    print 'pene';
                 }
                 else
                 {
