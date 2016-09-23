@@ -113,7 +113,7 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" method="post">
+        <form class="form-labels-on-top" autocomplete="off" enctype='multipart/form-data' onkeyup="calcLong('nombre','label',this,30)" name="nada" method="post">
 
             <div class="form-title-row">
                 <h1>Jugos</h1>
@@ -161,4 +161,54 @@ if(!empty($_POST))
         </form>
 
     </div>
+    <script type="text/javascript">
+
+        function comprueba_extension(formulario, archivo) { 
+   extensiones_permitidas = new Array(".gif", ".jpg", ".doc", ".pdf"); 
+   mierror = ""; 
+   if (!archivo) { 
+      //Si no tengo archivo, es que no se ha seleccionado un archivo en el formulario 
+      	mierror = "No has seleccionado ningún archivo"; 
+   }else{ 
+      //recupero la extensión de este nombre de archivo 
+      extension = (archivo.substring(archivo.lastIndexOf("."))).toLowerCase(); 
+      //alert (extension); 
+      //compruebo si la extensión está entre las permitidas 
+      permitida = false; 
+      for (var i = 0; i < extensiones_permitidas.length; i++) { 
+         if (extensiones_permitidas[i] == extension) { 
+         permitida = true; 
+         break; 
+         } 
+      } 
+      if (!permitida) { 
+         mierror = "Comprueba la extensión de los archivos a subir. \nSólo se pueden subir archivos con extensiones: " + extensiones_permitidas.join(); 
+      	}else{ 
+         	//submito! 
+         alert ("Todo correcto. Voy a submitir el formulario."); 
+         formulario.submit(); 
+         return 1; 
+      	} 
+   } 
+   //si estoy aqui es que no se ha podido submitir 
+   alert (mierror); 
+   return 0; 
+}
+      function calcLong(txt, dst, formul, maximo)
+
+      {
+
+      var largo
+
+      largo = formul[txt].value.length
+
+      if (largo > maximo)
+
+      formul[txt].value = formul[txt].value.substring(0,maximo)
+
+      formul[dst].value = formul[txt].value.length
+
+      }
+
+      </script>
     <?php page::footer();?>

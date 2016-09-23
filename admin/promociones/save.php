@@ -3,7 +3,6 @@ ob_start();
 require("../../lib/database.php");
 require("../../lib/validator.php");
 require("../lib/page.php");
-
 page::header();
 $fecha=date('Y-m-d H:i:s');
 if(empty($_GET['id'])) 
@@ -64,9 +63,9 @@ if(!empty($_POST))
 
         if($id==null)
         {
-           /* $sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
+            $sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
         $params2=array($fecha,"Inserto la promocion $titulo",$_SESSION['id_admin']);
-        Database::executeRow($sql2, $params2);*/
+        Database::executeRow($sql2, $params2);
             $sql = "INSERT INTO promociones(titulo,descripcion,imagen,activo) VALUES(?,?,?,?,?)";
             $params = array($titulo, $descripcion,$imagen,$activo);
             Database::executeRow($sql, $params);
@@ -76,9 +75,9 @@ if(!empty($_POST))
         {
         	if($archivo['name']!=null)
             {
-            	//$sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
-                    //$params2=array($fecha,"Modifico la promocion $titulo",$_SESSION['id_admin']);
-                   // Database::executeRow($sql2, $params2);
+            	$sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
+                    $params2=array($fecha,"Modifico la promocion $titulo",$_SESSION['id_admin']);
+                    Database::executeRow($sql2, $params2);
                         $sql = "update promociones set titulo=?, descripcion=?,imagen=?,activo=? where id_promocion=?";
                         $params = array($titulo, $descripcion,$imagen,$activo,$id);
                         Database::executeRow($sql, $params);
@@ -86,9 +85,9 @@ if(!empty($_POST))
             }
             else
             {
-            	//$sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
-                  //  $params2=array($fecha,"Modifico la promocion $titulo",$_SESSION['id_admin']);
-                   // Database::executeRow($sql2, $params2);
+            	$sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
+                   $params2=array($fecha,"Modifico la promocion $titulo",$_SESSION['id_admin']);
+                  Database::executeRow($sql2, $params2);
                         $sql = "update promociones set titulo=?, descripcion=?,activo=? where id_promocion=?";
                         $params = array($titulo, $descripcion,$activo,$id);
                         Database::executeRow($sql, $params);
@@ -103,11 +102,11 @@ if(!empty($_POST))
     }
 }
 ?>
-<div class="main-content">
+<br><br><div class="main-content">
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" method="post">
+        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" onkeyup="calcLong('titulo','label',this,30); calcLong('descripcion','label',this,10)" method="post">
 
             <div class="form-title-row">
                 <h1>Promociones</h1>
@@ -147,7 +146,7 @@ if(!empty($_POST))
                 </div>
             </div>
             <div class="form-group form-row" style="background-color:white;">
-                <input type="file" name="imagen">
+                <input type="file" name="imagen" onclick="comprueba_extension(this.form, this.form.imagen.value)">
             </div>
             <div class="form-row">
                 <button type="submit">Guardar</button>
@@ -157,4 +156,54 @@ if(!empty($_POST))
         </form>
 
     </div>
+    <script type="text/javascript">
+
+        function comprueba_extension(formulario, archivo) { 
+   extensiones_permitidas = new Array(".gif", ".jpg", ".doc", ".pdf"); 
+   mierror = ""; 
+   if (!archivo) { 
+      //Si no tengo archivo, es que no se ha seleccionado un archivo en el formulario 
+      	mierror = "No has seleccionado ningún archivo"; 
+   }else{ 
+      //recupero la extensión de este nombre de archivo 
+      extension = (archivo.substring(archivo.lastIndexOf("."))).toLowerCase(); 
+      //alert (extension); 
+      //compruebo si la extensión está entre las permitidas 
+      permitida = false; 
+      for (var i = 0; i < extensiones_permitidas.length; i++) { 
+         if (extensiones_permitidas[i] == extension) { 
+         permitida = true; 
+         break; 
+         } 
+      } 
+      if (!permitida) { 
+         mierror = "Comprueba la extensión de los archivos a subir. \nSólo se pueden subir archivos con extensiones: " + extensiones_permitidas.join(); 
+      	}else{ 
+         	//submito! 
+         alert ("Todo correcto. Voy a submitir el formulario."); 
+         formulario.submit(); 
+         return 1; 
+      	} 
+   } 
+   //si estoy aqui es que no se ha podido submitir 
+   alert (mierror); 
+   return 0; 
+}
+      function calcLong(txt, dst, formul, maximo)
+
+      {
+
+      var largo
+
+      largo = formul[txt].value.length
+
+      if (largo > maximo)
+
+      formul[txt].value = formul[txt].value.substring(0,maximo)
+
+      formul[dst].value = formul[txt].value.length
+
+      }
+
+      </script>
     <?php page::footer();?>
