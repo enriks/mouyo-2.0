@@ -75,7 +75,7 @@ if(!empty($_POST))
         <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" method="post">
 
             <div class="form-title-row">
-                <h1>Jugos</h1>
+                <h1>Tipos de Jugos</h1>
             </div>
 
             <div class="form-row">
@@ -92,8 +92,8 @@ if(!empty($_POST))
                 </label>
             </div>
             <div class="form-row">
-                <button type="button"><a href="index.php" style="color:#fff;">Cancelar</a></button>
                 <button type="submit">Guardar</button>
+                <button type="button"><a href="index.php" style="color:#fff;">Cancelar</a></button>
             </div>
 
         </form>

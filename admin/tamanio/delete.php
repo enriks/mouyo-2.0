@@ -48,7 +48,7 @@ if($data != null)
                     <small>Tamaño</small>
                 </h1>
                 <ol class='breadcrumb'>
-                    <li><a href='../../main/index.php'>Home</a>
+                    <li><a href='../../main/index.php'>Página Principal</a>
                     </li>
                      <li><a href='index.php'>Tamaños</a>
                     </li>
@@ -68,8 +68,8 @@ if($data != null)
                 <p>&nbsp;&nbsp;&nbsp;<strong>Eliminar?</strong></p>
                 <form enctype='multipart/form-data' name='nada' method='post'>
                 <input type='hidden' name='id' value='<?php print($id); ?>'/>
-                <button type='sumbit' class='btn btn-primary'>Si</i></button>
-                <a href='index.php' class='btn btn-primary'>No</i></a>
+                <button type='sumbit' class='btn btn-danger'>Si</i></button>
+                <a href='index.php' class='btn btn-danger'>No</i></a>
                 </form>
             </div>
         <hr>

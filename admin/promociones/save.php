@@ -150,8 +150,8 @@ if(!empty($_POST))
                 <input type="file" name="imagen">
             </div>
             <div class="form-row">
-                <button type="button"><a href="index.php">Cancelar</a></button>
                 <button type="submit">Guardar</button>
+                <button type="button"><a href="index.php" style="color:#fff;">Cancelar</a></button>
             </div>
 
         </form>

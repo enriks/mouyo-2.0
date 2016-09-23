@@ -12,7 +12,7 @@ class Database
     {
         $server='localhost';
         $database='mouyo';
-        $username='neto';
+        $username='coto';
         $password='123456';
         $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf8");
         self::$connection=null;

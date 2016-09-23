@@ -40,16 +40,14 @@ $tabla="";
     $tabla="<div class='container'>
     <div class='row'>
             <div class='col-lg-12'>
-                <h1 class='page-header'>Jugos
-                    <small>Mantenimiento de los jugos</small>
+                <h1 class='page-header'>Eliminar
+                    <small>Descuentos</small>
                 </h1>
                 <ol class='breadcrumb'>
-                    <li><a href='../main/index.php'>Home</a>
+                    <li><a href='../main/index.php'>Página Principal</a>
                     </li>
                     <li><a href='index.php'>Descuentos</a></li>
                     <li class='active'>Eliminar</li>
-                     <li><button type='button' class='btn'>Agregar un nuevo 
-                     Descuento</button></li>
                 </ol>
             </div>
         </div>
@@ -73,8 +71,8 @@ if($data != null)
         <p>&nbsp;&nbsp;&nbsp;<strong>Eliminar?</strong></p>
         <form enctype='multipart/form-data' name='nada' method='post'>
         <input type='hidden' name='id' value='<?php print($id); ?>'/>
-        <button type='sumbit' class='btn btn-primary'>Si</i></button>
-        <a href='index.php' class='btn btn-primary'>No</i></a>
+        <button type='sumbit' class='btn btn-danger'>Si</i></button>
+        <a href='index.php' class='btn btn-danger'>No</i></a>
     </div>
 </div><hr>";
 		}

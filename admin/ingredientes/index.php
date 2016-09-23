@@ -42,11 +42,10 @@ else
                     <small>Mantenimiento de los Ingredientes</small>
                 </h1>
                 <ol class='breadcrumb'>
-                    <li><a href='../main/index.php'>Home</a>
+                    <li><a href='../main/index.php'>Página Principal</a>
                     </li>
                     <li class='active'>Ingredientes</li>
-                     <li><a href='' type='button' class='btn btn-default'>Agregar un nuevo 
-                     Ingrediente</a></li>
+                     <li><a type='button' href='save.php' class='btn btn-info'>Agregar Ingredientes</a></li>
                 </ol>
             </div>
         </div>
@@ -85,6 +84,7 @@ if($data != null)
                         </form>
                     <!-- /.input-group -->
                 </div>
+                <a class='btn btn-success' type='button' href='../highcharts/graficojugos.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Ingredientes</i></a>
 </div>";
 		
 }
