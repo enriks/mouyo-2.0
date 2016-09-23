@@ -39,10 +39,10 @@ else
                     <small>Mouyo</small>
                 </h1>
                 <ol class='breadcrumb'>
-                    <li><a href='../main/index.php'>Home</a>
+                    <li><a href='../main/index.php'>Página Principal</a>
                     </li>
                     <li class='active'>Promociones</li>
-                    <li><button type='button' class='btn'>Agregar Promocion</button></li>
+                    <li><a type='button' href='save.php' class='btn btn-info'>Agregar Promociones</a></li>
                 </ol>
             </div>
         </div>
@@ -91,8 +91,9 @@ if($data != null)
                         </span>
                     </div>
                     <!-- /.input-group -->
-                    <a class='btn btn-success' type='button' href='../highcharts/grafpromociones.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Promociones</i></a>
+                    
                 </div>
+                <a class='btn btn-success' type='button' href='../highcharts/grafpromociones.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Promociones</i></a>
 </div>";
     print($tabla);
 }

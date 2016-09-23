@@ -39,10 +39,10 @@ else
                     <small>Mouyo</small>
                 </h1>
                 <ol class='breadcrumb'>
-                    <li><a href='../main/index.php'>Home</a>
+                    <li><a href='../main/index.php'>Página Principal</a>
                     </li>
                     <li class='active'>Tamaños</li>
-                    <li><button type='button' class='btn'>Agregar Tamaños</button></li>
+                    <li><a type='button' href='save.php' class='btn btn-info'>Agregar Tamaños</a></li>
                 </ol>
             </div>
         </div>

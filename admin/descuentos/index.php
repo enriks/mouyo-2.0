@@ -21,8 +21,7 @@ if(!empty($_POST))
                     </li>
                     <li><a href='index.php'>Descuentos</a></li>
                      <li class='active'>Busqueda de '$search'</li>
-                     <li><button type='button' class='btn'>Agregar un nuevo 
-                     Descuento</button></li>
+                     <li><a type='button' href='save.php' class='btn btn-default'>Agregar nuevo Descuento</a></li>
                 </ol>
             </div>
         </div>
@@ -40,11 +39,10 @@ else
                     <small>Mantenimiento de Descuentos</small>
                 </h1>
                 <ol class='breadcrumb'>
-                    <li><a href='../main/index.php'>Home</a>
+                    <li><a href='../main/index.php'>Página Principal</a>
                     </li>
                     <li class='active'>Descuentos</li>
-                     <li><button type='button' class='btn'>Agregar un nuevo 
-                     Descuento</button></li>
+                     <li><a type='button' href='save.php' class='btn btn-info'>Agregar Descuentos</a></li>
                 </ol>
             </div>
         </div>

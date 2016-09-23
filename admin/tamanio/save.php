@@ -90,8 +90,8 @@ if(!empty($_POST))
                 </div>
             </div>
             <div class="form-row">
-                <button type="button"><a href="index.php" style="color:#fff;">Cancelar</a></button>
                 <button type="submit">Guardar</button>
+                <button type="button"><a href="index.php" style="color:#fff;">Cancelar</a></button>
             </div>
 
         </form>

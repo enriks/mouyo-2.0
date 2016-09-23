@@ -17,12 +17,11 @@ if(!empty($_POST))
                     <small>Mantenimiento de los jugos</small>
                 </h1>
                 <ol class='breadcrumb'>
-                    <li><a href='../main/index.php'>Home</a>
+                    <li><a href='../main/index.php'>Página Principal</a>
                     </li>
                     <li class='active'>Jugos</li>
                      <li class='active'>Busqueda de '$search'</li>
-                     <li><a type='button' href='save.php' class='btn btn-default'>Agregar un nuevo 
-                     Jugo</a></li>
+                     <li><a type='button' href='save.php' class='btn btn-default'>Agregar Jugos</a></li>
                 </ol>
             </div>
         </div>
@@ -40,11 +39,10 @@ else
                     <small>Mantenimiento de los jugos</small>
                 </h1>
                 <ol class='breadcrumb'>
-                    <li><a href='../main/index.php'>Home</a>
+                    <li><a href='../main/index.php'>Página Principal</a>
                     </li>
                     <li class='active'>Jugos</li>
-                     <li><a type='button' href='save.php' class='btn btn-default'>Agregar un nuevo 
-                     Jugo</a></li>
+                     <li><a type='button' href='save.php' class='btn btn-info'>Agregar Jugos</a></li>
                 </ol>
             </div>
         </div>
