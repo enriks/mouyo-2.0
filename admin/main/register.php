@@ -179,7 +179,7 @@ else
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form autocomplete="off" action="" method="post" enctype='multipart/form-data' class="registration-form">
+			                    <form autocomplete="off" action="" method="post" enctype='multipart/form-data' class="registration-form" onsubmit="return Valida(this);">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-first-name">Alias</label>
 			                        	<input type="text" name="alias" placeholder="Alias..." class="form-first-name form-control" id="form-first-name">
@@ -228,5 +228,26 @@ else
         <![endif]-->
 
     </body>
+    <script type="text/javascript">
+
+    function Valida(formulario) {
+                /* Validación de campos NO VACÍOS */
+                if ((formulario.alias.value.length == 0) || (formulario.clave1.value.length ==0) || (formulario.clave2.value.length ==0) || (formulario.correo.value.length ==0)) {
+                    alert('Debe completar todos los campos y Cajones.');
+                    return false;
+                }   
+                if (isNaN(parseInt(formulario.precio.value))) {
+                    alert('El campo de precio debe ser Numerico.');
+                    return false;
+                }  
+                /* validación del e-mail */
+                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
+                if (!(ercorreo.test(formulario.email.value))) {  
+                    alert('El correo electronico no es Valido.');
+                    return false; }
+                /* si no hemos detectado fallo devolvemos TRUE */
+                return true;
+            }
+      </script>
 
 </html>

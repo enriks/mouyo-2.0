@@ -69,7 +69,7 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" onkeyup="calcLongtitulo('tamaño','label',this,30)" onkeydown="calcLongprec('precio', 'label', this,2)" method="post">
+        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" onkeyup="calcLongtitulo('tamaño','label',this,30)" onkeydown="calcLongprec('precio', 'label', this,2)" method="post" onsubmit="return Valida(this);">
 
             <div class="form-title-row">
                 <h1>Tamaños</h1>
@@ -98,6 +98,26 @@ if(!empty($_POST))
 
     </div>
     <script type="text/javascript">
+
+    function Valida(formulario) {
+                /* Validación de campos NO VACÍOS */
+                if ((formulario.tamaño.value.length == 0) || (formulario.precio.value.length ==0)) {
+                    alert('Debe completar todos los campos.');
+                    return false;
+                }   
+                if (isNaN(parseInt(formulario.descuento.value))) {
+                    alert('El campo de precio debe ser Numerico.');
+                    return false;
+                }  
+                /* validación del e-mail */
+                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
+                if (!(ercorreo.test(formulario.email.value))) {  
+                    alert('Contenido del email no es CORREO ELECTR&Oacute;NICO v&aacute;lido.');
+                    return false; }
+                /* si no hemos detectado fallo devolvemos TRUE */
+                return true;
+            }
+
 
       function calcLongtitulo(txt, dst, formul, maximo)
 

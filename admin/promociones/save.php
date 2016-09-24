@@ -11,8 +11,6 @@ if(empty($_GET['id']))
     $titulo=null;
     $descripcion=null;
     $archivo=null;
-    $actcheck="";
-    	$inaccheck='';
 }
 else
 {
@@ -108,7 +106,7 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" onkeyup="calcLongtitulo('titulo','label',this,30);" onkeydown="calcLongdesc('descripcion','label',this,40)" method="post">
+        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" onkeyup="calcLongtitulo('titulo','label',this,30);" onkeydown="calcLongdesc('descripcion','label',this,40)" method="post" onsubmit="return Valida(this);">
 
             <div class="form-title-row">
                 <h1>Promociones</h1>
@@ -148,7 +146,7 @@ if(!empty($_POST))
                 </div>
             </div>
             <div class="form-group form-row" style="background-color:white;">
-                <input type="file" name="imagen" onclick="comprueba_extension(this.form, this.form.imagen.value)">
+                <input type="file" name="imagen" onchange="comprueba_extension(this.form, this.form.imagen.value)">
             </div>
             <div class="form-row">
                 <button type="submit">Guardar</button>
@@ -159,6 +157,21 @@ if(!empty($_POST))
 
     </div>
     <script type="text/javascript">
+
+    function Valida(formulario) {
+                /* Validación de campos NO VACÍOS */
+                if ((formulario.titulo.value.length == 0) || (formulario.descripcion.value.length ==0)) {
+                    alert('Debe completar todos los campos.');
+                    return false;
+                } 
+                /* validación del e-mail */
+                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
+                if (!(ercorreo.test(formulario.email.value))) {  
+                    alert('Contenido del email no es CORREO ELECTR&Oacute;NICO v&aacute;lido.');
+                    return false; }
+                /* si no hemos detectado fallo devolvemos TRUE */
+                return true;
+            }
 
         function comprueba_extension(formulario, archivo) { 
    extensiones_permitidas = new Array(".gif", ".jpg", ".doc", ".pdf"); 

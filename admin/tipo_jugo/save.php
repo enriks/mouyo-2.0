@@ -101,6 +101,21 @@ if(!empty($_POST))
     </div>
      <script type="text/javascript">
 
+     function Valida(formulario) {
+                /* Validación de campos NO VACÍOS */
+                if ((formulario.tamaño.nombre5.length == 0) || (formulario.descripcion.value.length ==0)) {
+                    alert('Debe completar todos los campos.');
+                    return false;
+                }    
+                /* validación del e-mail */
+                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
+                if (!(ercorreo.test(formulario.email.value))) {  
+                    alert('Contenido del email no es CORREO ELECTR&Oacute;NICO v&aacute;lido.');
+                    return false; }
+                /* si no hemos detectado fallo devolvemos TRUE */
+                return true;
+            }
+
       function calcLongtitulo(txt, dst, formul, maximo)
 
       {
