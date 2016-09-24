@@ -11,6 +11,8 @@ if(empty($_GET['id']))
     $titulo=null;
     $descripcion=null;
     $archivo=null;
+    $actcheck="";
+    	$inaccheck='';
 }
 else
 {
