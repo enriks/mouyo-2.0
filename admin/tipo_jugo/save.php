@@ -72,7 +72,7 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" method="post">
+        <form class="form-labels-on-top" enctype='multipart/form-data' onkeyup="calcLongtitulo('nombre5','label',this,30)" onkeydown="calcLongdesc('descripcion', 'label', this,40)" name="nada" method="post">
 
             <div class="form-title-row">
                 <h1>Tipos de Jugos</h1>
@@ -99,4 +99,53 @@ if(!empty($_POST))
         </form>
 
     </div>
+     <script type="text/javascript">
+
+     function Valida(formulario) {
+                /* Validación de campos NO VACÍOS */
+                if ((formulario.tamaño.nombre5.length == 0) || (formulario.descripcion.value.length ==0)) {
+                    alert('Debe completar todos los campos.');
+                    return false;
+                }    
+                /* validación del e-mail */
+                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
+                if (!(ercorreo.test(formulario.email.value))) {  
+                    alert('Contenido del email no es CORREO ELECTR&Oacute;NICO v&aacute;lido.');
+                    return false; }
+                /* si no hemos detectado fallo devolvemos TRUE */
+                return true;
+            }
+
+      function calcLongtitulo(txt, dst, formul, maximo)
+
+      {
+
+      var largo
+
+      largo = formul[txt].value.length
+
+      if (largo > maximo)
+
+      formul[txt].value = formul[txt].value.substring(0,maximo)
+
+      formul[dst].value = formul[txt].value.length
+
+      }
+
+      function calcLongdesc(txt, dst, formul, maximo)
+
+      {
+
+      var largo
+
+      largo = formul[txt].value.length
+
+      if (largo > maximo)
+
+      formul[txt].value = formul[txt].value.substring(0,maximo)
+
+      formul[dst].value = formul[txt].value.length
+
+      }
+      </script>
     <?php page::footer();?>

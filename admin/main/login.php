@@ -53,17 +53,17 @@ if(!empty($_POST))
                    }
                 else
                 {
-                    throw new Exception("Laclave ingresada es incorrecata wey.");
+                    throw new Exception("La clave ingresada es incorrecata.");
                 }
             }
             else
             {
-                throw new Exception("El alias ingresado no existe wey.");
+                throw new Exception("El alias ingresado no existe.");
             }
         }
         else
         {
-            throw new Exception("Debes ingresar un alias y una clave we");
+            throw new Exception("Debes ingresar un alias y una clave");
         }
         }
     }
@@ -134,7 +134,7 @@ if(!empty($_POST))
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" autocomplete="off" action="" method="post" name="nonono" class="login-form">
+			                    <form role="form" autocomplete="off" action="" method="post" onkeydown="calcLong('alias', 'label', this,20)" onkeyup="calcLong('clave', 'label', this,10)" name="nonono" class="login-form" onsubmit="return Valida(this);">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Alias</label>
 			                        	<input type="text" name="alias" placeholder="Alias..." class="form-username form-control" id="form-username">
@@ -165,5 +165,31 @@ if(!empty($_POST))
         <![endif]-->
 
     </body>
+<script type="text/javascript">
 
+    function Valida(formulario) {
+                /* Validación de campos NO VACÍOS */
+                if ((formulario.alias.value.length == 0) || (formulario.clave.value.length ==0)) {
+                    alert('Debe completar todos los campos.');
+                    return false;
+                }   
+            }
+
+ function calcLong(txt, dst, formul, maximo)
+
+      {
+
+      var largo
+
+      largo = formul[txt].value.length
+
+      if (largo > maximo)
+
+      formul[txt].value = formul[txt].value.substring(0,maximo)
+
+      formul[dst].value = formul[txt].value.length
+
+      }
+
+      </script>
 </html>

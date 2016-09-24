@@ -93,7 +93,7 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" method="post">
+        <form class="form-labels-on-top" autocomplete="off" enctype='multipart/form-data' onkeyup="calcLong('nombre','label',this,30)" onkeydown="calcLong('descuento','input',this,2)" name="nada" method="post" onsubmit="return Valida(this);">
 
             <div class="form-title-row">
                 <h1>Descuento</h1>
@@ -102,11 +102,11 @@ if(!empty($_POST))
             <div class="form-row">
                 <label>
                     <span>Titulo del descuento:</span>
-                    <input type="text" name="nombre" required value="<?php print($nombre);?>">
+                    <input type="text" name="nombre" minlength="10" required value="<?php print($nombre);?>">
                 </label>
             </div>
 
-            <div class="form-row">
+            <div class="form-row" name="combo" onchange="ValidarCombo(this.value);">
                 <label><span>Selecciona el jugo para descuento</span></label>
                 <?php
                     $sql = "SELECT id_jugo,nombre FROM jugos where estado=0";
@@ -117,14 +117,14 @@ if(!empty($_POST))
             <div class="form-row">
                 <label>
                     <span>Fecha incio</span>
-                    <input type="date" name="fecha_inicio" required value="<?php print($fecha_inicio);?>">
+                    <input type="date" name="fecha_inicio" id="fecha_i" required value="<?php print($fecha_inicio);?>">
                 </label>
             </div>
 
             <div class="form-row">
                 <label>
                     <span>Fecha limite</span>
-                    <input type="date" name="fecha_limite" required value="<?php print($fecha_limite);?>">
+                    <input type="date" name="fecha_limite" id="fecha_f" onchange="validarfecha(this.value);" required value="<?php print($fecha_limite);?>">
                 </label>
             </div>
 
@@ -132,7 +132,7 @@ if(!empty($_POST))
                 <div class="input-group">
                     <label class="sr-only" for="exampleInputAmount">Descuento (en porcentaje)</label>
                   <div class="input-group-addon">%</div>
-                      <input type="number" name="descuento" max="99" min='0' class="form-control" value="<?php print($descuento);?>" placeholder="Descuento">
+                      <input type="number" name="descuento" maxlength="5" min='0' onchange="ValidarSiNumero(this.value);" class="form-control" value="<?php print($descuento);?>" placeholder="Descuento">
                 </div>
             </div>
             <div class="form-row">
@@ -143,4 +143,60 @@ if(!empty($_POST))
         </form>
 
     </div>
+    <script type="text/javascript">
+
+    function Valida(formulario) {
+                /* Validación de campos NO VACÍOS */
+                if ((formulario.nombre.value.length == 0) || (formulario.combo.value.length ==0)) {
+                    alert('Debe completar todos los campos y Cajones.');
+                    return false;
+                }   
+                if (isNaN(parseInt(formulario.descuento.value))) {
+                    alert('El campo de precio debe ser Numerico.');
+                    return false;
+                }  
+                /* validación del e-mail */
+                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
+                if (!(ercorreo.test(formulario.email.value))) {  
+                    alert('Contenido del email no es CORREO ELECTR&Oacute;NICO v&aacute;lido.');
+                    return false; }
+                /* si no hemos detectado fallo devolvemos TRUE */
+                return true;
+            }
+
+    function comprueba_combo(indice){
+          error = "";
+          indice = document.getElementById("combo").selectedIndex;
+          if( indice == null || indice == 0 ) {
+            error = "Elija una opcion en el cajon de Opciones"
+          return false;
+            }
+        }
+
+      function calcLong(txt, dst, formul, maximo)
+
+      {
+
+      var largo
+
+      largo = formul[txt].value.length
+
+      if (largo > maximo)
+
+      formul[txt].value = formul[txt].value.substring(0,maximo)
+
+      formul[dst].value = formul[txt].value.length
+
+      }
+function validarfecha() {
+        var inicio = document.getElementById('fecha_i').value; 
+        var finalq  = document.getElementById('fecha_f').value;
+        inicio= new Date(inicio);
+        finalq= new Date(finalq);
+
+        if(inicio>finalq){
+        alert('La fecha de inicio puede ser mayor que la fecha fin');
+        }
+
+      </script>
     <?php page::footer();?>

@@ -25,7 +25,7 @@ else
     if($activo==0)
     {
     	$actcheck="checked";
-    	$inaccheck='';
+    	$inaccheck="";
     }
     else
     {
@@ -106,7 +106,7 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" onkeyup="calcLong('titulo','label',this,30); calcLong('descripcion','label',this,10)" method="post">
+        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" onkeyup="calcLongtitulo('titulo','label',this,30);" onkeydown="calcLongdesc('descripcion','label',this,40)" method="post" onsubmit="return Valida(this);">
 
             <div class="form-title-row">
                 <h1>Promociones</h1>
@@ -115,14 +115,14 @@ if(!empty($_POST))
             <div class="form-row">
                 <label>
                     <span>Titulo:</span>
-                    <input type="text" name="titulo" required value="<?php print($titulo);?>">
+                    <input  type="text" name="titulo" required value="<?php print($titulo);?>">
                 </label>
             </div>
 
             <div class="form-row">
                 <label>
                     <span>Descripcion</span>
-                    <textarea name="descripcion" rows="5"><?php print($descripcion); ?></textarea>
+                    <textarea  name="descripcion" cols="35" rows="6"><?php print($descripcion); ?></textarea>
                 </label>
             </div>
 
@@ -146,7 +146,7 @@ if(!empty($_POST))
                 </div>
             </div>
             <div class="form-group form-row" style="background-color:white;">
-                <input type="file" name="imagen" onclick="comprueba_extension(this.form, this.form.imagen.value)">
+                <input type="file" name="imagen" onchange="comprueba_extension(this.form, this.form.imagen.value)">
             </div>
             <div class="form-row">
                 <button type="submit">Guardar</button>
@@ -157,6 +157,21 @@ if(!empty($_POST))
 
     </div>
     <script type="text/javascript">
+
+    function Valida(formulario) {
+                /* Validación de campos NO VACÍOS */
+                if ((formulario.titulo.value.length == 0) || (formulario.descripcion.value.length ==0)) {
+                    alert('Debe completar todos los campos.');
+                    return false;
+                } 
+                /* validación del e-mail */
+                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
+                if (!(ercorreo.test(formulario.email.value))) {  
+                    alert('Contenido del email no es CORREO ELECTR&Oacute;NICO v&aacute;lido.');
+                    return false; }
+                /* si no hemos detectado fallo devolvemos TRUE */
+                return true;
+            }
 
         function comprueba_extension(formulario, archivo) { 
    extensiones_permitidas = new Array(".gif", ".jpg", ".doc", ".pdf"); 
@@ -189,7 +204,22 @@ if(!empty($_POST))
    alert (mierror); 
    return 0; 
 }
-      function calcLong(txt, dst, formul, maximo)
+      function calcLongtitulo(txt, dst, formul, maximo)
+
+      {
+
+      var largo
+
+      largo = formul[txt].value.length
+
+      if (largo > maximo)
+
+      formul[txt].value = formul[txt].value.substring(0,maximo)
+
+      formul[dst].value = formul[txt].value.length
+
+      }
+      function calcLongdesc(txt, dst, formul, maximo)
 
       {
 
