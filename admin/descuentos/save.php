@@ -93,7 +93,7 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" method="post">
+        <form class="form-labels-on-top" autocomplete="off" enctype='multipart/form-data' onkeyup="calcLong('nombre','label',this,30)" onkeydown="calcLong('descuento','input',this,2)" onkeyup="existeFecha('fecha_inicio', 'label'); existeFecha2('fecha_limite', 'label')" name="nada" method="post">
 
             <div class="form-title-row">
                 <h1>Descuento</h1>
@@ -102,11 +102,11 @@ if(!empty($_POST))
             <div class="form-row">
                 <label>
                     <span>Titulo del descuento:</span>
-                    <input type="text" name="nombre" required value="<?php print($nombre);?>">
+                    <input type="text" name="nombre" minlength="10" required value="<?php print($nombre);?>">
                 </label>
             </div>
 
-            <div class="form-row">
+            <div class="form-row" id="combo">
                 <label><span>Selecciona el jugo para descuento</span></label>
                 <?php
                     $sql = "SELECT id_jugo,nombre FROM jugos where estado=0";
@@ -132,7 +132,7 @@ if(!empty($_POST))
                 <div class="input-group">
                     <label class="sr-only" for="exampleInputAmount">Descuento (en porcentaje)</label>
                   <div class="input-group-addon">%</div>
-                      <input type="number" name="descuento" max="99" min='0' class="form-control" value="<?php print($descuento);?>" placeholder="Descuento">
+                      <input type="number" name="descuento" maxlength="5" min='0' class="form-control" value="<?php print($descuento);?>" placeholder="Descuento">
                 </div>
             </div>
             <div class="form-row">
@@ -143,4 +143,52 @@ if(!empty($_POST))
         </form>
 
     </div>
+    <script type="text/javascript">
+
+    function comprueba_combo(indice){
+          error = "";
+          indice = document.getElementById("combo").selectedIndex;
+          if( indice == null || indice == 0 ) {
+            error = "Elija una opcion en el cajon de Opciones"
+          return false;
+            }
+        }
+
+      function calcLong(txt, dst, formul, maximo)
+
+      {
+
+      var largo
+
+      largo = formul[txt].value.length
+
+      if (largo > maximo)
+
+      formul[txt].value = formul[txt].value.substring(0,maximo)
+
+      formul[dst].value = formul[txt].value.length
+
+      }
+
+      function existeFecha(fecha){
+      var fechaf = fecha.split("/");
+      var day = fechaf[0];
+      var month = fechaf[1];
+      var year = fechaf[2];
+      var date = new Date(year,month,'0');
+      if((day-0)>(date.getDate()-0)){
+            return false;
+      }
+      return true;
+}
+ 
+function existeFecha2 (fecha) {
+        var fechaf = fecha.split("/");
+        var d = fechaf[0];
+        var m = fechaf[1];
+        var y = fechaf[2];
+        return m > 0 && m < 13 && y > 0 && y < 32768 && d > 0 && d <= (new Date(y, m, 0)).getDate();
+}
+
+      </script>
     <?php page::footer();?>

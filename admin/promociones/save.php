@@ -27,7 +27,7 @@ else
     if($activo==0)
     {
     	$actcheck="checked";
-    	$inaccheck='';
+    	$inaccheck="";
     }
     else
     {
@@ -108,7 +108,7 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" onkeyup="calcLong('titulo','label',this,30); calcLong('descripcion','label',this,10)" method="post">
+        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" onkeyup="calcLongtitulo('titulo','label',this,30);" onkeydown="calcLongdesc('descripcion','label',this,40)" method="post">
 
             <div class="form-title-row">
                 <h1>Promociones</h1>
@@ -117,14 +117,14 @@ if(!empty($_POST))
             <div class="form-row">
                 <label>
                     <span>Titulo:</span>
-                    <input type="text" name="titulo" required value="<?php print($titulo);?>">
+                    <input  type="text" name="titulo" required value="<?php print($titulo);?>">
                 </label>
             </div>
 
             <div class="form-row">
                 <label>
                     <span>Descripcion</span>
-                    <textarea name="descripcion" rows="5"><?php print($descripcion); ?></textarea>
+                    <textarea  name="descripcion" cols="35" rows="6"><?php print($descripcion); ?></textarea>
                 </label>
             </div>
 
@@ -191,7 +191,22 @@ if(!empty($_POST))
    alert (mierror); 
    return 0; 
 }
-      function calcLong(txt, dst, formul, maximo)
+      function calcLongtitulo(txt, dst, formul, maximo)
+
+      {
+
+      var largo
+
+      largo = formul[txt].value.length
+
+      if (largo > maximo)
+
+      formul[txt].value = formul[txt].value.substring(0,maximo)
+
+      formul[dst].value = formul[txt].value.length
+
+      }
+      function calcLongdesc(txt, dst, formul, maximo)
 
       {
 

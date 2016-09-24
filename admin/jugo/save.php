@@ -113,7 +113,7 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-labels-on-top" autocomplete="off" enctype='multipart/form-data' onkeyup="calcLong('nombre','label',this,30)" name="nada" method="post">
+        <form class="form-labels-on-top" autocomplete="off" enctype='multipart/form-data' onkeyup="calcLong('nombre','label',this,30)" onkeydown="calcLongdesc('descripcion','label',this,40)" name="nada" method="post" onsubmit="return validacion()">
 
             <div class="form-title-row">
                 <h1>Jugos</h1>
@@ -133,7 +133,7 @@ if(!empty($_POST))
                 </label>
             </div>
 
-            <div class="form-row">
+            <div class="form-row" id="combo">
                 <label><span>Tipo de jugo</span></label>
                 <?php
                     $sql = "SELECT id_tipojugo,nombre FROM tipo_jugo";
@@ -162,6 +162,15 @@ if(!empty($_POST))
 
     </div>
     <script type="text/javascript">
+
+        function comprueba_combo(indice){
+          error = "";
+          indice = document.getElementById("combo").selectedIndex;
+          if( indice == null || indice == 0 ) {
+            error = "Elija una opcion en el cajon de Opciones"
+          return false;
+}
+        }
 
         function comprueba_extension(formulario, archivo) { 
    extensiones_permitidas = new Array(".gif", ".jpg", ".doc", ".pdf"); 
@@ -209,6 +218,22 @@ if(!empty($_POST))
       formul[dst].value = formul[txt].value.length
 
       }
+      function calcLongdesc(txt, dst, formul, maximo)
+
+      {
+
+      var largo
+
+      largo = formul[txt].value.length
+
+      if (largo > maximo)
+
+      formul[txt].value = formul[txt].value.substring(0,maximo)
+
+      formul[dst].value = formul[txt].value.length
+
+      }
+
 
       </script>
     <?php page::footer();?>
