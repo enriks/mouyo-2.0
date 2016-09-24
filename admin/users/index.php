@@ -8,7 +8,7 @@ $tabla="";
 if(!empty($_POST))
 {
 	$search = trim($_POST['buscar']);
-	$sql = "SELECT * FROM usuario WHERE estado=0 and alias like ? ORDER BY alias";
+	$sql = "SELECT * FROM usuario WHERE alias like ? ORDER BY alias";
 	$params = array("%$search%");
     $tabla.="<div class='container'>
     <div class='row'>
@@ -29,7 +29,7 @@ if(!empty($_POST))
 }
 else
 {
-	$sql = "SELECT * FROM usuario where estado=0 ORDER BY alias";
+	$sql = "SELECT * FROM usuario ORDER BY alias";
 	$params = null;
     $tabla="<div class='container'>
     <div class='row'>
@@ -63,14 +63,7 @@ if($data != null)
                             <small>$row[nombre] $row[apellido]</small>
                         </h3>
                         <p>$row[correo]</p>
-                        <ul class='list-inline'>
-                            <li><a href='#'><i class='fa fa-2x fa-facebook-square'></i></a>
-                            </li>
-                            <li><a href='#'><i class='fa fa-2x fa-linkedin-square'></i></a>
-                            </li>
-                            <li><a href='#'><i class='fa fa-2x fa-twitter-square'></i></a>
-                            </li>
-                        </ul>
+                        <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_usuario'])."'>Cambiar estado del usuario</i></a>
                     </div>
                 </div>
             </div>
