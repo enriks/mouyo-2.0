@@ -8,7 +8,6 @@ page::header();
 $fecha=date('Y-m-d H:i:s');
 if(empty($_GET['id'])) 
 {
-    Page::header("Agregar Descuento");
     $id=null;
     $nombre=null;
     $jugo=null;
@@ -20,7 +19,6 @@ if(empty($_GET['id']))
 }
 else
 {
-    Page::header("Modificar Descuento");
     $id = base64_decode($_GET['id']);
     $sql = "SELECT * FROM descuentos WHERE id_descuento = ?";
     $params = array($id);
@@ -93,11 +91,11 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
-<<<<<<< HEAD
+
         <form class="form-labels-on-top" autocomplete="off" enctype='multipart/form-data' onkeyup="calcLong('nombre','label',this,30)" onkeydown="calcLong('descuento','input',this,2)" name="nada" method="post" onsubmit="return Valida(this);">
-=======
+
         <form class="form-labels-on-top" autocomplete="off" enctype='multipart/form-data' onkeyup="calcLong('nombre','label',this,30)" onkeydown="calcLong('descuento','input',this,2)" onkeyup="existeFecha('fecha_inicio', 'label'); existeFecha2('fecha_limite', 'label')" name="nada" method="post">
->>>>>>> origin/master
+
 
             <div class="form-title-row">
                 <h1>Descuento</h1>
@@ -110,11 +108,11 @@ if(!empty($_POST))
                 </label>
             </div>
 
-<<<<<<< HEAD
+
             <div class="form-row" name="combo" onchange="ValidarCombo(this.value);">
-=======
+
             <div class="form-row" id="combo">
->>>>>>> origin/master
+
                 <label><span>Selecciona el jugo para descuento</span></label>
                 <?php
                     $sql = "SELECT id_jugo,nombre FROM jugos where estado=0";
@@ -140,11 +138,11 @@ if(!empty($_POST))
                 <div class="input-group">
                     <label class="sr-only" for="exampleInputAmount">Descuento (en porcentaje)</label>
                   <div class="input-group-addon">%</div>
-<<<<<<< HEAD
+
                       <input type="number" name="descuento" maxlength="5" min='0' onchange="ValidarSiNumero(this.value);" class="form-control" value="<?php print($descuento);?>" placeholder="Descuento">
-=======
+
                       <input type="number" name="descuento" maxlength="5" min='0' class="form-control" value="<?php print($descuento);?>" placeholder="Descuento">
->>>>>>> origin/master
+
                 </div>
             </div>
             <div class="form-row">

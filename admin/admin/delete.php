@@ -19,15 +19,25 @@ if(!empty($_POST))
 	$id = $_POST['id'];
 	try 
 	{
-        $data=Database::getRow("select alias from admin where id_admin=?",array($id));
+        $data=Database::getRow("select alias, count(*) conta from admin where id_admin=?",array($id));
         $alias=$data['alias'];
+        if($data['conta'] < 2){
+            throw new Exception("no se puede eliminar porque es el ultimo administrador");
+        }
+        else
+        {
+            
 		$sql = "update admin set estado=1 WHERE id_admin = ?";
-		$sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
+             $params = array($id);
+            Database::executeRow($sql, $params);
+            $sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
         $params2=array($fecha,"Elimino el administrador $alias",$_SESSION['id_admin']);
         Database::executeRow($sql2, $params2);
-	    $params = array($id);
-	    Database::executeRow($sql, $params);
 	    header("location: index.php");
+        }
+		
+	   
+	    
 	} 
 	catch (Exception $error) 
 	{
