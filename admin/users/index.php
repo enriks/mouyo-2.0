@@ -11,6 +11,7 @@ if(!empty($_POST))
 	$sql = "SELECT * FROM usuario WHERE estado=0 and alias like ? ORDER BY alias";
 	$params = array("%$search%");
     $tabla.="<div class='container'>
+    <hr>
     <div class='row'>
             <div class='col-lg-12'>
                 <h1 class='page-header'>Usuarios
@@ -32,6 +33,7 @@ else
 	$sql = "SELECT * FROM usuario where estado=0 ORDER BY alias";
 	$params = null;
     $tabla="<div class='container'>
+    <hr>
     <div class='row'>
             <div class='col-lg-12'>
                 <h1 class='page-header'>Usuarios
@@ -91,8 +93,9 @@ if($data != null)
                     </div>
                     <!-- /.input-group -->
                     </div>
+                    <a class='btn btn-success' type='button' href='../pdf/pdfadmins.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
                 </div>
-                <a class='btn btn-success' type='button' href='../highcharts/grafpromociones.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Promociones</i></a>
+                  
 </div>";
     print($tabla);
 }

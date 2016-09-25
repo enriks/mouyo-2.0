@@ -11,6 +11,7 @@ if(!empty($_POST))
 	$sql = "SELECT * FROM promociones WHERE titulo LIKE ? ORDER BY titulo";
 	$params = array("%$search%");
     $tabla.="<div class='container'>
+    <hr>
     <div class='row'>
             <div class='col-lg-12'>
                 <h1 class='page-header'>Promociones
@@ -33,6 +34,7 @@ else
 	$sql = "SELECT * FROM promociones where estado=0 ORDER BY titulo";
 	$params = null;
     $tabla="<div class='container'>
+    <hr>
     <div class='row'>
             <div class='col-lg-12'>
                 <h1 class='page-header'>Promociones
@@ -94,6 +96,9 @@ if($data != null)
                     
                 </div>
                 <a class='btn btn-success' type='button' href='../highcharts/grafpromociones.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Promociones</i></a>
+                <br>
+                <br>
+                <a class='btn btn-success' type='button' href='../pdf/pdfpromociones.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
 </div>";
     print($tabla);
 }

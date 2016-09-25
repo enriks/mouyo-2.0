@@ -11,6 +11,7 @@ if(!empty($_POST))
     $sql = "SELECT jugos.id_jugo,jugos.nombre nombre_jugo,jugos.descripcion descripcion_jugo,jugos.imagen,jugos.precio,tipo_jugo.nombre nombre_tipojugo FROM jugos,tipo_jugo where jugos.id_tipojugo=tipo_jugo.id_tipojugo AND jugos.nombre LIKE ? and jugos.estado=0 ORDER BY jugos.nombre";
     $params = array("%$search%");
     $tabla="<div class='container'>
+    <hr>
     <div class='row'>
             <div class='col-lg-12'>
                 <h1 class='page-header'>Jugos
@@ -33,6 +34,7 @@ else
     $sql = "SELECT jugos.id_jugo,jugos.nombre nombre_jugo,jugos.descripcion descripcion_jugo,jugos.imagen,jugos.precio,tipo_jugo.nombre nombre_tipojugo FROM jugos,tipo_jugo where jugos.id_tipojugo=tipo_jugo.id_tipojugo and jugos.estado=0  ORDER BY jugos.nombre";
     $params = null;
     $tabla="<div class='container'>
+    <hr>
     <div class='row'>
             <div class='col-lg-12'>
                 <h1 class='page-header'>Jugos
@@ -82,6 +84,7 @@ if($data != null)
                     <!-- /.input-group -->
                 </div>
                 <a class='btn btn-success' type='button' href='../graficos/grafico_jugos.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver grafico de Jugos</i></a>
+                <a class='btn btn-success' type='button' href='../pdf/pdfjugos.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
 </div>";
 		
 }
