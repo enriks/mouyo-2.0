@@ -35,8 +35,8 @@
 		<header class="navbar-fixed header-one">
 			<nav>
 				<div class="container-header main-header">
-					<a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-					<a class="theme-logo left" href="#">MOUYO</a>
+					<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+					<a class="theme-logo left" href="index.php">MOUYO</a>
 					<!--div class="nav-search right">
 						<a href="#" onclick="return false;"><i class="mdi-action-search"></i></a>
 						<div class="material-search-overlay material-search-overlay-hidden circle material-search-overlay-color-bg"></div>
@@ -57,7 +57,7 @@
 					</div-->
 					<div class="menu-emerald-container">
 						<ul id="menu-emerald" class="sf-menu right hide-on-med-and-down">
-							<li class='emerald-submenu menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-9 current_page_item'><a class='waves-effect waves-light' href="#" id="lnkHome">HOME</a></li>
+							<li class='emerald-submenu menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-9 current_page_item'><a class='waves-effect waves-light' href="#">HOME</a></li>
 							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a class='waves-effect waves-light' href="jugos.php" >JUGOS</a>
 							</li>
 							<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a class='waves-effect waves-light' href="

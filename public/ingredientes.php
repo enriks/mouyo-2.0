@@ -4,13 +4,8 @@ require("../lib/database.php");
     Page2::header("");
 ?>
 
-    
-    <div class="container">	
-		<pre>
-		
-		
-		
-		</pre>
+    <div class="container" id="divIngrediente">	
+    <br>
         <?php
        
             $jugo="<div class='row'>
@@ -41,8 +36,10 @@ require("../lib/database.php");
         
         ?>
     </div>
-    <br>
     <?php page2::footer();?>
     
-<?php require 'inc/footer.php'?>
+<?php require 'inc/faq.php'; ?> 
+<?php require 'inc/acercade.php'; ?>	 
+<?php require 'inc/imagenes.php'; ?>
+<?php require 'inc/footer.php'; ?>
     

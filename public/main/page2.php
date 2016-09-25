@@ -45,40 +45,40 @@ session_start();
 				
 			} ?>
 			
-			  <div id='modal1' class='modal center'>
-                    <div class='modal-content'>
+                    <div id='modal1' class='modal center'>
+                        <div class='modal-content'>
                     
-        <div class='card-header small-header-color-bg small-header-color center'>
-           <i class='material-icons medium white-text'>verified_user</i>
-        </div>
-        <div class='card-content'>
-          <form method='post' action='login.php' enctype='multipart/form-data'>
-            <div class='input-field col s12'>
-              <input name='alias' id='alias' autocomplete='off' type='text' class='validate'>
-              <label for='alias'>Nombre de Usuario</label>
-           </div>
-            <div class='input-field col s12'>
-              <input name='clave' id='clave' autocomplete='off' type='password' class='validate'>
-              <label for='clave'>Contraseña</label>
-            </div>
-            <br>
-              <button type='submit' name='enviar' class='btn blue'><i class='material-icons right'>verified_user</i>Iniciar Sesion</button>
-          </form> 
-        </div>
-        <div class='card-action clearfix'>
-          <div class='row'>
-			  <br>
-            <div class='col s12 center right-align text-p'>
-              <a href='register.php' class='orange-text tooltipped' data-position='top' data-delay='50' data-tooltip='Registrate ahora'>REGÍSTRATE AHORA</a>
-            </div>
-          </div>
-        </div>
+                            <div class='card-header small-header-color-bg small-header-color center'>
+                                <i class='material-icons medium white-text'>verified_user</i>
+                            </div>
+                            <div class='card-content'>
+                                <form method='post' action='login.php' enctype='multipart/form-data'>
+                                    <div class='input-field col s12'>
+                                        <input name='alias' id='alias' autocomplete='off' type='text' class='validate'>
+                                        <label for='alias'>Nombre de Usuario</label>
+                                    </div>
+                                    <div class='input-field col s12'>
+                                        <input name='clave' id='clave' autocomplete='off' type='password' class='validate'>
+                                        <label for='clave'>Contraseña</label>
+                                    </div>
+                                    <br>
+                                    <button type='submit' name='enviar' class='btn blue'><i class='material-icons right'>verified_user</i>Iniciar Sesion</button>
+                                </form> 
+                            </div>
+                            <div class='card-action clearfix'>
+                                <div class='row'>
+                                    <br>
+                                    <div class='col s12 center right-align text-p'>
+                                        <a href='register.php' class='orange-text tooltipped' data-position='top' data-delay='50' data-tooltip='Registrate ahora'>REGÍSTRATE AHORA</a>
+                                    </div>
+                                </div>
+                            </div>
      
+                        </div>
+                        <div class='modal-footer'>
+                            <a href='#!' class=' modal-action modal-close waves-effect waves-green btn-flat'>Cerrar</a>
+                        </div>
                     </div>
-                    <div class='modal-footer'>
-                      <a href='#!' class=' modal-action modal-close waves-effect waves-green btn-flat'>Cerrar</a>
-                    </div>
-					</div>
 			
 
 	  		
@@ -90,7 +90,7 @@ session_start();
          public static function setCombo($name, $value, $query)
         {
             $data =Database::getRows($query,null);
-            $combo="<select class='' name='$name' requeried>";
+            $combo="<select class='col l12 s12' name='$name' requeried>";
             if($value == null)
             {
                 $combo .= "<option value='' disabled selected>Selecione una opcion</option>";
@@ -112,7 +112,8 @@ session_start();
          public static function setCombo_texto($name, $value, $query)
         {
             $data =Database::getRows($query,null);
-            $combo="<select name='$name' requeried>";
+            $combo="<label style='text-transform:capitalize;'>$name</label>
+            <select class='col l12 s12' name='$name' requeried>";
             if($value == null)
             {
                 $combo .= "<option value='' disabled selected>Selecione una opcion</option>";
@@ -127,7 +128,7 @@ session_start();
                 $combo .=">$row[1]</option>";
             }
             $combo.="</select>
-                    <label style='text-transform:capitalize;'>$name</label>";
+                    ";
             return $combo;
         }
 
@@ -139,9 +140,9 @@ public static function footer()
 	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
     <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js'></script>
 	<script src='../js/materialize.min.js'></script-->
-	<script src='../bin/materialize.js'></script>
+	<!--script src='../bin/materialize.js'></script>
 	<!--script src='../jade/lunr.min.js'></script-->
-	<script src='../js/init.js'></script>
+	<!--script src='../js/init.js'></script>
 	<!--script src='../js/prism.js'></script-->
     <!--script src='../js/app.js'></script--> 
     <script>

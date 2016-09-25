@@ -1,12 +1,14 @@
-<?php
+<?php 
 ob_start();
 if(isset($_SESSION['id_usuario']))
 {
     header("location: index.php");
 }
+
 require("../lib/database.php");
 require("../lib/validator.php");
-require("main/page2.php"); 
+require("main/page2.php");
+Page2::header();
 
 /* Funcion de PHP para iniciar sesion*/
 
@@ -104,13 +106,13 @@ if(isset($_POST['enviar2']))
     }
 }
     
-    Page2::header("");
+    //Page2::header("");
 
 ?>
 
 <!-- Seccion para ingresar datos e iniciar sesion con un usario-->
 
-        <div class="center">
+        <div class="center" id="divLogin">
 			<br>
       <div class="card bordered z-depth-2" style="margin:0% auto; max-width:400px;">
         <div class="card-header small-header-color-bg small-header-color">
@@ -157,6 +159,12 @@ if(isset($_POST['enviar2']))
     </div>
     </div><br>
 
+<script src='../bin/materialize.js'></script>
+<script src='../js/init.js'></script>
+
+
     <?php page2::footer(); ?>
 
-<?php require 'inc/footer.php' ?>
+<?php require 'inc/faq.php'; ?> 
+<?php require 'inc/acercade.php'; ?>	 
+<?php require 'inc/footer.php'; ?>

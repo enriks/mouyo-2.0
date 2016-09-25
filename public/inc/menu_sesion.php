@@ -35,8 +35,8 @@
 		<header class="navbar-fixed header-one">
 			<nav>
 				<div class="container-header main-header">
-					<a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-					<a class="theme-logo left" href="#">MOUYO</a>
+					<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+					<a class="theme-logo left" href="index.php">MOUYO</a>
 					<!--div class="nav-search right">
 						<a href="#" onclick="return false;"><i class="mdi-action-search"></i></a>
 						<div class="material-search-overlay material-search-overlay-hidden circle material-search-overlay-color-bg"></div>

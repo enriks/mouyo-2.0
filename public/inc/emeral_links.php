@@ -20,4 +20,4 @@
 <link rel="alternate" type="application/json+oembed" href="//emerald.sekizgen.net/wp-json/oembed/1.0/embed?url=http%3A%2F%2Femerald.sekizgen.net%2F"/-->
 <link rel='stylesheet' href='../css/icons.css'>
 <!--link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"-->
-<link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<!--link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/-->

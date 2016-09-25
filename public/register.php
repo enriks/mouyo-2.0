@@ -40,7 +40,7 @@ if(!empty($_POST))
   	$apellidos = htmlentities ($_POST['apellidos']);
     $correo = htmlentities ($_POST['correo']);
     $alias = htmlentities ($_POST['alias']);
-    $fecha_nacimiento= htmlentities ($_POST['fecha_nacimiento']);
+    //$fecha_nacimiento= htmlentities ($_POST['fecha_nacimiento']);
     $archivo=$_FILES['imagen'];
 
     try 
@@ -53,8 +53,7 @@ if(!empty($_POST))
             $clave2 = htmlentities ($_POST['clave2']);
             if($alias != "" && $clave1 != "" && $clave2 != "")
             {
-                if($fecha_nacimiento !="")
-                {
+                
                     if($archivo['name'] != null)
                     {
                         $base64 = Validator::validateImage($archivo);
@@ -79,8 +78,8 @@ if(!empty($_POST))
                                 if($clave1 == $clave2)
                                 {
                                     $clave = password_hash($clave1, PASSWORD_DEFAULT);
-                                    $sql = "INSERT INTO usuario(nombre, apellido,alias,clave,correo,  fecha_nacimiento,foto_perfil) VALUES(?, ?, ?, ?, ?,?,?)";
-                                    $param = array($nombres, $apellidos, $alias,$clave,$correo,$fecha_nacimiento,$imagen);
+                                    $sql = "INSERT INTO usuario(nombre, apellido,alias,clave,correo,foto_perfil) VALUES(?, ?, ?, ?, ?,?)";
+                                    $param = array($nombres, $apellidos, $alias,$clave,$correo,$imagen);
                                     Database::executeRow($sql, $param);
                                     header("location: login.php");
                                 }
@@ -104,11 +103,7 @@ if(!empty($_POST))
                         }
 
                     }
-                }
-                else
-                {
-                    throw new Exception("Debe ingresar todos los datos de autenticación.");
-                }
+
             }
             else
             {
@@ -122,7 +117,7 @@ if(!empty($_POST))
         }
         else
         {
-            throw new Exception("haz el captcha robot basura");
+            throw new Exception("haz el captcha");
         }
     }
     catch (Exception $error)
@@ -141,7 +136,7 @@ else
 
 <!-- Se muestra el formulario con los campos que muestarn algun usuario seleccionado a modificar-->
 <br>
-<form method='post' class='container center-align' enctype='multipart/form-data'>
+<form method='post' class='container center-align' enctype='multipart/form-data' id="divRegister">
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>assignment_ind</i>
@@ -179,27 +174,32 @@ else
         </div>
     </div>
     <div class='row'>
-        <div class='input-field col s12 m6'>
+        <!--div class='input-field col s12 m6'>
             <i class='material-icons prefix'>date_range</i>
             <input id='fecha_nacimiento' type='date' name='fecha_nacimiento' class='validate datepicker' autocomplete="off" required/>
             <label for='fecha_nacimiento'>Fecha de nacimiento</label>
-        </div>
-        <div class='file-field input-field col s12 m6'>
+        </div-->
+        <div class='file-field input-field col s12 l6 offset-l3'>
           	<div class='btn '>
             		<span>Imagen</span>
             		<input type='file' name='imagen'>
       		  </div>
         		<div class='file-path-wrapper'>
-          		  <input class='file-path validate' type='text' placeholder='1200x1200px máx., 2MB máx., PNG/JPG/GIF'>
+          		  <input class='file-path validate center' type='text' placeholder='1200x1200px máx., 2MB máx., PNG/JPG/GIF'>
         		</div>
         </div>
     </div>
-    <div class="row" data-theme="dark">
-        <div data-theme="dark" required class="input-field col s8 offset-s4 g-recaptcha" data-sitekey="6LfQ-SUTAAAAAEijTh-xfye-Xj8Be5xPQ0POoMUF"></div>
+    <div class="row " data-theme="dark">
+        <div data-theme="dark" required class="input-field col l4 s12 offset-l4  g-recaptcha" data-sitekey="6LfQ-SUTAAAAAEijTh-xfye-Xj8Be5xPQ0POoMUF"></div>
     </div>
  	<button type='submit' class='btn blue'><i class='material-icons right'>save</i>Guardar</button>
 </form>
 
- <?php page2::footer();?>
+<script src='../bin/materialize.js'></script>
+<script src='../js/init.js'></script>
 
-<?php require 'inc/footer.php' ?>
+<?php page2::footer();?>
+
+<?php require 'inc/faq.php'; ?> 
+<?php require 'inc/acercade.php'; ?>	 
+<?php require 'inc/footer.php'; ?>

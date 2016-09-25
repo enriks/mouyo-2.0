@@ -1,15 +1,9 @@
 <?php
-
-/* Archivos que se mandan a llamar y  son rqueridos*/
-
-    require("../lib/database.php");
-	require("main/page2.php");
-	require("../lib/validator.php");
-    Page2::header();
-
-
-
 /* Funcion de PHP para el iniciar con un nuevo usuario si no hay uno ya registrado*/
+require("../lib/database.php");
+require("main/page2.php");
+require("../lib/validator.php");
+ Page2::header();
 
 if(isset($_SESSION['id_usuario']) == "")
 {
@@ -17,6 +11,8 @@ if(isset($_SESSION['id_usuario']) == "")
 }
 else
 {
+    /* Archivos que se mandan a llamar y  son rqueridos*/
+   
     $sql="select * from usuario where id_usuario=?";
     $params=array($_SESSION['id_usuario']);
     $dat=Database::getRow($sql,$params);
@@ -24,15 +20,15 @@ else
     if($dat != null)
     {
         $heder="<div class='container'>
-        <div class='col s12 m8 offset-m2 l6 offset-l3'>
-        <div class='card-panel blue lighten-4 z-depth-1'>
+        <div class='col s12 l12'>
+        <div class='card-panel z-depth-1  blue-grey lighten-5'>
           <div class='row valign-wrapper'>
-            <div class='col s2'>
+            <div class='col s2 l3 offset-l3'>
               <img src='data:image/*;base64,$dat[foto_perfil]' alt='' class='circle responsive-img'>
             </div>
             <div class='col s10'>
               <span class='grey-text text-darken-3'>
-                $dat[nombre] $dat[apellido], $dat[alias]
+                <h1 class='flow-text main-theme-color'>$dat[nombre] $dat[apellido] ($dat[alias]) </h1>
               </span>
             </div>
           </div>
@@ -54,7 +50,7 @@ else
         $apellidos = htmlentities($_POST['apellidos']);
         $correo = htmlentities($_POST['correo']);
         $alias = htmlentities($_POST['alias']);
-        $fecha_nacimiento= htmlentities($_POST['fecha_nacimiento']);
+        //$fecha_nacimiento= htmlentities($_POST['fecha_nacimiento']);
         $archivo= $_FILES['imagen'];
         $clave1 = htmlentities($_POST['clave1']);
         $clave2 = htmlentities($_POST['clave2']);
@@ -63,8 +59,8 @@ else
         {
             if($archivo['name'] == "" && $clave1 == "" && $clave2 == "")
             {
-                $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?, fecha_nacimiento = ? where id_usuario =?";
-                $params=array($nombres,$apellidos,$alias,$correo,$fecha_nacimiento,$_SESSION['id_usuario']);
+                $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?, where id_usuario =?";
+                $params=array($nombres,$apellidos,$alias,$correo,$_SESSION['id_usuario']);
             }
             elseif($archivo['name'] != "" && $clave1 == "" && $clave2 == "")
             {
@@ -77,8 +73,8 @@ else
                 {
                     throw new Exception("La imagen seleccionada no es valida.");
                 }
-                $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?, fecha_nacimiento = ?, foto_prefil = ? where id_usuario =?";
-                $params=array($nombres,$apellidos,$alias,$correo,$fecha_nacimiento,$imagen,$_SESSION['id_usuario']);
+                $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?, foto_prefil = ? where id_usuario =?";
+                $params=array($nombres,$apellidos,$alias,$correo,$imagen,$_SESSION['id_usuario']);
                 $_SESSION['img']=$imagen;
             }
             elseif($archivo['name'] == "" && $clave1 != "" && $clave2 != "")
@@ -86,8 +82,8 @@ else
                 if($clave1 == $clave2)
                 {
                     $clave = password_hash($clave1, PASSWORD_DEFAULT);
-                    $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?, fecha_nacimiento = ?, clave =? where id_usuario =?";
-                    $params=array($nombres,$apellidos,$alias,$correo,$fecha_nacimiento,$clave,$_SESSION['id_usuario']);
+                    $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?, clave =? where id_usuario =?";
+                    $params=array($nombres,$apellidos,$alias,$correo,$clave,$_SESSION['id_usuario']);
                 }
                 else
                 {
@@ -102,8 +98,8 @@ else
                 {
                     $imagen=$base64;
                     $clave = password_hash($clave1, PASSWORD_DEFAULT);
-                    $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?, fecha_nacimiento = ?, foto_prefil = ?, clave =? where id_usuario =?";
-                    $params=array($nombres,$apellidos,$alias,$correo,$fecha_nacimiento,$imagen,$clave,$_SESSION['id_usuario']);
+                    $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?,  foto_prefil = ?, clave =? where id_usuario =?";
+                    $params=array($nombres,$apellidos,$alias,$correo,$imagen,$clave,$_SESSION['id_usuario']);
                     $_SESSION['img']=$imagen;
                 }
                 else
@@ -124,7 +120,7 @@ else
 }?>
 <!-- Se muestran en el formularios los datos de un usuario a modificar-->
 
-<form method="post"  class="row" enctype="multipart/form-data">
+<form method="post"  class="row" enctype="multipart/form-data" id="divUsuario">
 <div class="container center-align">
     <div class="row">
       <form class="col s12">
@@ -171,30 +167,41 @@ else
           </div>
         </li>
         </ul>
-        <div class="row">
+        <!--div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">date_range</i>
-            <input id='fecha_nacimiento' name='fecha_nacimiento' autocomplete="off" class='validate datepicker'  value='<?php print $dat['fecha_nacimiento'];?>'>
+            <input id='fecha_nacimiento' name='fecha_nacimiento' autocomplete="off" class='validate datepicker'  value='<?php // print $dat['fecha_nacimiento'];?>'>
             <label for="fecha_nacimiento" >Fecha de Nacimiento</label>
           </div>
-        </div>
+        </div-->
       </form>
     </div>
-    <div class='input-field col s12'>
-          	<div class='btn'>
+    <div class='row'>
+        <!--div class='input-field col s12 m6'>
+            <i class='material-icons prefix'>date_range</i>
+            <input id='fecha_nacimiento' type='date' name='fecha_nacimiento' class='validate datepicker' autocomplete="off" required/>
+            <label for='fecha_nacimiento'>Fecha de nacimiento</label>
+        </div-->
+        <div class='file-field input-field col s12 l6 offset-l3'>
+          	<div class='btn left s12'>
             		<span>Foto de Perfil</span>
             		<input type='file' name='imagen'>
       		  </div>
-        		<div class='file-path-wrapper'>
-          		  <input class='file-path validate' type='text' placeholder='1200x1200px max., 2MB max., PNG/JPG/GIF'>
+        		<div class='file-path-wrapper right s12'>
+          		  <input disabled class='file-path validate' type='text' placeholder='1200x1200px máx., 2MB máx., PNG/JPG/GIF'>
         		</div>
-     </div>
+        </div>
+    </div>
+    
 <button type='submit' class='btn blue center-align'><i class='material-icons right'>save</i>Guardar</button>
 </div>
 </form>
 
+
+
 <?php
 
-Page2::footer();
-
-require'inc/footer.php'; ?>
+Page2::footer(); ?>
+<?php require 'inc/faq.php'; ?> 
+<?php require 'inc/acercade.php'; ?>	 
+<?php require 'inc/footer.php'; ?>

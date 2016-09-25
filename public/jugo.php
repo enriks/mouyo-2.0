@@ -74,6 +74,7 @@ if(empty($id))
 {
     $todo="no hay datos en id";
     print($todo);
+     @header("location: login.php");
      
 }
 else
@@ -98,23 +99,16 @@ else
         }
         else
         {
-            
-        
             $cotisasion="<a $disabled class='waves-effect waves-light btn blue modal-trigger tooltipped' data-position='right' data-delay='150' data-tooltip='$texto_tooltip' href='#modal3'><i class='material-icons right'>add_shopping_cart</i>Agregar a la cotizacion</a>";
         }
     foreach($data as $row)
 		{
             $tabla="<br>
     <div class='container'>
-	
-	<pre>
-	
-	
-	</pre>
         <div class='row card-panel'>
             <div class='col m8 center'>
-                <span><h5 class='teal-text'>$row[nombre_jugo]</h5></span><br>
-                <p class='flow-text'>$row[descripcion_jugo]</p><br>
+                <span><h5 class='teal-text'>$row[nombre_jugo]</h5></span>
+                <p class='flow-text'>$row[descripcion_jugo]</p>
                 <p>
                 <strong>Precio:</strong>$$row[precio] &nbsp;<strong> Tipo de jugo: </strong>$row[nombre_tipojugo]
                 </p><br>
@@ -126,12 +120,12 @@ else
      <form method='post' name='frmCotizacion' class='center-align'>
         <fieldset>
             <div class='row'>
-                <div class='input-field col s6 m6'>
+                <div class='input-field col s6 m6 l12'>
                     <i class='material-icons prefix'>format_list_numbered</i>
                     <input id='cantidad' type='text' name='cantidad' class='validate'/>
                     <label for='cantidad'>Cantidad</label>
                 </div>
-                <div class='input-field col s6 m6'>";
+                <div class='input-field col s6 m6 l12'>";
         $skl="SELECT id_tamanio, tamanio FROM tamanio";
         $skl2="SELECT id_cotizacion, nombre FROM cotizacion where id_usuario=$_SESSION[id_usuario]";
                     	$tabla.=page2::setCombo_texto("tamanio",$tamanio,$skl);
@@ -139,25 +133,24 @@ else
         $tabla.="
                 </div>
             </div>
-            <button $disabled type='submit' name='enviar1' class='btn grey left tooltipped' data-position='bottom' data-delay='50' data-tooltip='I am tooltip'><i class='material-icons right'>add</i></button> 
+            <button $disabled type='submit' name='enviar1' class='btn grey left tooltipped' data-position='bottom' data-delay='50' data-tooltip='I am tooltip'>Agregar a mi cotización<i class='material-icons right'>add</i></button> 
             </fieldset>
             </form>
     </div>
     <div class='modal-footer'>
       <a href='#!' class=' modal-action modal-close waves-effect waves-green btn-flat'>Cerrar</a>
     </div>
-  </div><br>
-                <ul class='collapsible' data-collapsible='accordion'>
-                    <li>
-                        <div class='collapsible-header'><i class='material-icons'></i>Ingredientes</div>
-                        <div class='collapsible-body'>";
+  </div>";
+                
         foreach($data2 as $row2)
 		      {
                 $tabla .="
+                <ul class='collapsible' data-collapsible='accordion'>
+                    <li>
+                        <div class='collapsible-header'><i class='material-icons'></i>Ingredientes</div>
+                        <div class='collapsible-body'>
                   <p>-$row2[nombre_ingrediente]</p>
-                ";
-            }
-                          $tabla.="</div>
+                  </div>
                     </li>
                 </ul>
             </div>
@@ -165,60 +158,73 @@ else
                 <img src='data:image/*;base64,$row[imagen]' class='responsive-img z-depth-2'>
             </div>
         </div>
-    </div>";  
+    </div>  
+                ";
+            }
+                          
         }
         
-        $tabla.="<pre>
-		
-		
-		</pre><div class='fixed-action-btn horizontal click-to-toggle' style='bottom: 45px; right: 24px;'>
+        $tabla.="<div class='fixed-action-btn horizontal click-to-toggle' style='bottom: 45px; right: 24px;'>
 <a class='btn-floating btn-large red modal-trigger tooltipped' data-position='left' data-delay='50' data-tooltip='$comentario_tooltip' href='#modal2'><i class='material-icons right'>chat</i></a>
 </div>
-<div id='modal2' class='modal bottom-sheet'>
+"; ?>
+<div class="" id="divJugo">
+    <div class="row">
+        <div class="">
+            <div id='modal2' class='modal'>
 <div class='modal-content'>
 <ul class='collection'>
-";
+<?php 
         $sqll="SELECT comentarios.id_usuario,usuario.nombre,usuario.foto_perfil,comentarios.comentario from usuario,comentarios where usuario.id_usuario = comentarios.id_usuario and comentarios.id_jugo = ? order by comentarios.id_comentario";
         $paramss=array($id);
         $dati=Database::getRows($sqll,$paramss);
         foreach($dati as $date)
-        {
-            $tabla.="<li class='collection-item avatar'>
-      <img src='data:image/*;base64,$date[foto_perfil]' alt='' class='circle'>
-      <span class='title'>$date[nombre]</span>
-      <p class='flow-text'>$date[comentario]</p>
-      </li>
-	  ";
+        { ?>
+            <li class='collection-item avatar'>
+            <img src='data:image/*;base64,<?php print $date['foto_perfil'] ?>' alt='' class='circle'>
+            <span class='title'><?php echo $date['nombre'] ?></span>
+                <p class=''><?php echo $date['comentario']?></p>
+            </li>
+	  <?php
         }
-$tabla.="</ul>
+        
+        ?>
+</ul>
 <form method='post' name='frmComentario' class='center-align'>
         <fieldset>
-            <div class='row'>
-                <div class='input-field col s10'>
+            <div class=''>
+                <div class='input-field'>
           <textarea name='comentario' id='comentario' class='materialize-textarea'></textarea>
           <label for='comentario'>Nuevo Comentario</label>
         </div>
-                <div class='input-field col s2'>
+                <div class='input-field'>
                     <button $disabled type='submit' name='enviar2' class='btn  left'><i class='material-icons right'>chat</i>Comentar</button> 	
+                </div>
+                <div class='modal-footer'>
+                    <a href='#!' class=' modal-action modal-close waves-effect waves-green btn-flat'>Cerrar</a>
                 </div>
             </div>
             </fieldset>
             </form>
 </div>
 </div>
-    ";
+        </div>
+    </div>
+</div>
+<?php 
         print($tabla);
-        Page2::footer();
+       
     }
 }
 ?>
 
-<ul id='menu' class='center'>
-	<div class='row'>
-		<?php require 'inc/nav.php'?>
-			<li data-menuanchor='firstPage' class='active'><a href='jugos.php'> Jugos </a></li>
-			<li data-menuanchor='SecondPage' class='active'><a href='#<?php print $row['nombre_jugo'] ?>'> Jugo <?php print $row['nombre_jugo'] ?></a></li>
-		</div>
-</ul>
+<script src='../bin/materialize.js'></script>
+<script src='../js/init.js'></script>
 
-<?php require 'inc/footer.php' ?>
+<?php require 'inc/faq.php'; ?> 
+<?php require 'inc/acercade.php'; ?>	 
+<?php require 'inc/footer.php'; ?>
+
+<?php Page2::footer();?>
+
+

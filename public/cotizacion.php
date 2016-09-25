@@ -1,7 +1,7 @@
 <?php
     require("main/page2.php");
 	require("../lib/database.php");
-   	Page2::header();
+Page2::header();
 $tamanio='';
 $cotizacion='';
     if(isset($_POST['enviar69']))
@@ -29,8 +29,9 @@ $cotizacion='';
 ?>
     <!--formulario de carrito -->
 <br>
+<div id="divCotizacion">
     <div class="row">
-        <div class="col s4 offset-s5">
+        <div class="col s12 col l4 offset-l4 center">
         <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Nueva cotizacion</a>
         <div id="modal2" class="modal modal-fixed-footer">
             <form method='post' name="nuevaCot" class='row center-align'>
@@ -42,13 +43,16 @@ $cotizacion='';
                     </div>
                 </div>
                 <button type='submit' name="enviar69" class='btn blue'><i class='material-icons right'>save</i>Guardar</button>
+                <a href='#!' class=' modal-action modal-close waves-effect waves-green btn-flat'>Cerrar</a>
             </form>
           </div>
         </div>
     </div>
 <!--cargamos las tabs -->
-         <?php
-            $tabs="<div class='col s12'>
+<div class="">
+    <div class="row">
+          <?php
+            $tabs="<div class='col s12 l12'>
       <ul class='tabs'>";
             $select="select * from cotizacion where id_usuario =?";
 $params=array($_SESSION['id_usuario']);
@@ -69,16 +73,16 @@ foreach($data as $datas)
     $totaal=0;
     $params=array($datas['id_cotizacion'],$_SESSION['id_usuario']);
     $dats=Database::getRows($elselect,$params);
-  $tabs.="<div id='test$datas[id_cotizacion]' class='col s12'><table style='width:100%' class='bordered'>
+  $tabs.="<div id='test$datas[id_cotizacion]' class='col s12'><table style='width:100%' class='bordered responsive-table'>
         <thead>
           <tr>
-              <th data-field='imagen'>Imagen</th>
-              <th data-field='nombre'>Nombre</th>
-              <th data-field='tamanio'>Tamaño</th>
-              <th data-field='precio'>Precio</th>
-              <th data-field='cantidad'>Cantidad</th>
-              <th data-field='total'>Total</th>
-              <th data-field='accion'>Accion</th>
+              <th data-field='imagen' class=' center main-theme-color'>Imagen</th>
+              <th data-field='nombre' class=' center main-theme-color'>Nombre</th>
+              <th data-field='tamanio' class=' center main-theme-color'>Tamaño</th>
+              <th data-field='precio' class=' center main-theme-color'>Precio</th>
+              <th data-field='cantidad' class=' center main-theme-color'>Cantidad</th>
+              <th data-field='total' class='center main-theme-color'>Total</th>
+              <th data-field='accion' class='center main-theme-color'>Accion</th>
           </tr>
         </thead><tbody>";
 
@@ -90,12 +94,12 @@ foreach($data as $datas)
         $contenido.="
           <tr>
             <td><img class='responsive-img' height='100' width='100' src='data:image/*;base64,$das[imagen_jugo]'></td>
-            <td>$das[nombre_jugo]</td>
-            <td>$das[nombre_tamanio]</td>
-            <td>$das[precio]</td>
-            <td>$das[cantidad]</td>
-            <td>$total</td>
-            <td><a class='waves-effect waves-light btn red modal-trigger' href='#modal$das[id_jugo]'>Eliminar</a>
+            <td class='center black-text'>$das[nombre_jugo]</td>
+            <td class='center black-text'>$das[nombre_tamanio]</td>
+            <td class='center black-text'>$das[precio]</td>
+            <td class='center black-text'>$das[cantidad]</td>
+            <td class='center black-text'>$total</td>
+            <td class='center black-text'><a class='waves-effect waves-light btn red modal-trigger' href='#modal$das[id_jugo]'>Eliminar</a>
             <a class='waves-effect waves-light btn blue modal-trigger tooltipped' data-position='right' data-delay='150' data-tooltip='nada' href='#modal3$das[id_jugo]'><i class='material-icons right'>add_shopping_cart</i>Modificar jugo</a></td>
           </tr>";
         $totaal=$total+$totaal;
@@ -125,12 +129,12 @@ foreach($data as $datas)
      <form method='post' name='frmCotizacion' class='center-align'>
         <fieldset>
             <div class='row'>
-                <div class='input-field col s6 m6'>
+                <div class='input-field col s6 m6 l12'>
                     <i class='material-icons prefix'>format_list_numbered</i>
                     <input id='cantidad' type='text' name='cantidad' class='validate' value='$das[cantidad]'/>
                     <label for='cantidad'>Cantidad</label>
                 </div>
-                <div class='input-field col s6 m6'>";
+                <div class='input-field col s6 m6 l12'>";
         $skl="SELECT id_tamanio, tamanio FROM tamanio";
         $skl2="SELECT id_cotizacion, nombre FROM cotizacion where id_usuario = $_SESSION[id_usuario]";
         $tamanio=$das['nombre_tamanio'];
@@ -151,9 +155,9 @@ foreach($data as $datas)
     }
    $tabs.="<div class='row'>
     <div class='col s12'>
-    <div class='card-panel teal '><p class='card-panel  light-blue accent-3'>Total: $$totaal</p>
-    <a class='waves-effect waves-light btn red' href='delete_cotizacion.php?id=".base64_encode($datas['id_cotizacion'])."&total=".base64_encode($totaal)."'>Eliminar</a></div>
-        
+    <div class='col l4 offset-l4'>
+    <p class='card-panel light-blue accent-3 center white-text '>Total: $$totaal  <br><br><a class='waves-effect waves-light btn red white-text  s6' href='delete_cotizacion.php?id=".base64_encode($datas['id_cotizacion'])."&total=".base64_encode($totaal)."'>Eliminar Cotización</a></p>
+    </div>    
     </div>
 </div></div>";
     
@@ -162,8 +166,18 @@ foreach($data as $datas)
 print $tabs;
 //print $contenido;
         ?>
- 
-<?php require 'inc/footer.php' ?>
+    </div>
+</div>
+</div>
+    
+ <script src='../bin/materialize.js'></script>
+<script src='../js/init.js'></script>
+
+<?php require 'inc/faq.php'; ?> 
+<?php require 'inc/acercade.php'; ?>	 
+<?php require 'inc/footer.php'; ?>
 
  <?php Page2::footer();?>
+
+
 
