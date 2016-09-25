@@ -51,6 +51,14 @@ $activo="";
 $data=Database::getRows($sql,$params);
 if($data != null)
 {
+    if($data['estado']==0)
+    {
+    	$act="Activo";
+    }
+    else
+    {
+    	$act="Inactivo";
+    }
     $tabla.="<div class='row'>";
     foreach($data as $row)
 		{
@@ -63,6 +71,7 @@ if($data != null)
                             <small>$row[nombre] $row[apellido]</small>
                         </h3>
                         <p>$row[correo]</p>
+                        <p><strong>Estado:</strong>$act</p>
                         <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_usuario'])."'>Cambiar estado del usuario</i></a>
                     </div>
                 </div>

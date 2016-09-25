@@ -153,7 +153,7 @@
                                     </a>
                                     <ul class='dropdown-menu'>
                                         <li>
-                                            <a href='../profile/'>Editar Perfil</a>
+                                            <a href='../admin/save.php?id=".base64_encode($_SESSION['id_admin'])."'>Editar Perfil</a>
                                         </li>
                                         <li>
                                             <a href='../main/logout.php'>Salir</a>
@@ -197,7 +197,7 @@
                                     </div> <b class='caret'></b></a>
                                 <ul class='dropdown-menu'>
                                     <li>
-                                        <a href='../profile/'>Editar Perfil</a>
+                                        <a href='../admin/save.php?id=".base64_encode($_SESSION['id_admin'])."'>Editar Perfil</a>
                                     </li>
                                     <li>
                                         <a href='../main/logout.php'>Salir</a>
@@ -239,7 +239,7 @@
                                                 </div> <b class='caret'></b></a>
                                             <ul class='dropdown-menu'>
                                                 <li>
-                                                    <a href='../profile/'>Editar Perfil</a>
+                                                    <a href='../admin/save.php?id=".base64_encode($_SESSION['id_admin'])."'>Editar Perfil</a>
                                                 </li>
                                                 <li>
                                                     <a href='../main/logout.php'>Salir</a>
@@ -295,7 +295,7 @@
                             </div> <b class='caret'></b></a>
                         <ul class='dropdown-menu'>
                             <li>
-                                <a href='../profile/'>Editar Perfil</a>
+                                <a href='../admin/save.php?id=".base64_encode($_SESSION['id_admin'])."'>Editar Perfil</a>
                             </li>
                             <li>
                                 <a href='../main/logout.php'>Salir</a>
