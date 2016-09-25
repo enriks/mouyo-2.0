@@ -41,11 +41,12 @@ else
                     <li><a href='../main/index.php'>Página Principal</a>
                     </li>
                     <li class='active'>Usuarios</li>
+                    <li><a type='button' href='save.php' class='btn btn-info'>Agregar un Usuario</a></li>
                 </ol>
             </div>
         </div>
         <div class='row'>
-        <div class='col-md-9'>";
+        <div class='col-md-8'>";
 }
 $activo="";
 $data=Database::getRows($sql,$params);
@@ -70,7 +71,10 @@ if($data != null)
                             </li>
                             <li><a href='#'><i class='fa fa-2x fa-twitter-square'></i></a>
                             </li>
+                            
                         </ul>
+                        <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_usuario'])."'>Editar</i></a>
+                    
                     </div>
                 </div>
             </div>
@@ -92,7 +96,7 @@ if($data != null)
                     <!-- /.input-group -->
                     </div>
                 </div>
-                <a class='btn btn-success' type='button' href='../highcharts/grafpromociones.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Promociones</i></a>
+                <a class='btn btn-success' type='button' href='../highcharts/grafpromociones.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Usuarios</i></a>
 </div>";
     print($tabla);
 }
@@ -113,7 +117,7 @@ else
             </div>
         </div>
         <div class='row'>
-        <div class='col-md-9'><h2>No se encuentra ningun usuario con ese nombre <a href='index.php'>Volver</a>                    
+        <div class='col-md-9'><h2>No se encuentra ningun usuario con ese nombre.<a href='index.php'>Volver</a>                    
                 </h2>");
 }
 

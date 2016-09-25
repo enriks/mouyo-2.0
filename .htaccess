@@ -1,0 +1,19 @@
+ErrorDocument 404 http://localhost/mouyo-2.0/admin/404/404.php
+ErrorDocument 500 http://localhost/mouyo/admin/500/
+# or map them to one error document:
+ #ErrorDocument 404 /stim/admin/404/404.php
+ #ErrorDocument 500 /pages/errors/error_redirect.php
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_URI} ^/404/$
+RewriteRule ^(.*)$ /pages/errors/404.php [L]
+
+RewriteCond %{REQUEST_URI} ^/500/$
+RewriteRule ^(.*)$ /pages/errors/500.php [L]
+
+# or map them to one error document:
+#RewriteCond %{REQUEST_URI} ^/404/$ [OR]
+#RewriteCond %{REQUEST_URI} ^/500/$
+#RewriteRule ^(.*)$ /pages/errors/error_redirect.php [L]
