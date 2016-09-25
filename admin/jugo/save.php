@@ -133,7 +133,7 @@ if(!empty($_POST))
                 </label>
             </div>
 
-            <div class="form-row" id="combo">
+            <div class="form-row" name="combo">
                 <label><span>Tipo de jugo</span></label>
                 <?php
                     $sql = "SELECT id_tipojugo,nombre FROM tipo_jugo";

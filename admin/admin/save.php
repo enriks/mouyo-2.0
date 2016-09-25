@@ -133,7 +133,7 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" onkeyup="calcLong('titulo','label',this,30); calcLong('descripcion','label',this,10)" method="post">
+        <form class="form-labels-on-top" enctype='multipart/form-data' name="nada" onkeyup="calcLong('alias','label',this,20)" onkeydown="calcLong('correo','label',this,30)" method="post" onsubmit="return Valida(this);">
 
             <div class="form-title-row">
                 <h1>Administrador</h1>
@@ -142,14 +142,14 @@ if(!empty($_POST))
             <div class="form-row">
                 <label>
                     <span>Alias:</span>
-                    <input type="text" name="alias" required value="<?php print($alias);?>">
+                    <input type="text" name="alias" autocomplete="off" required value="<?php print($alias);?>">
                 </label>
             </div>
 
             <div class="form-row">
                 <label>
                     <span>Correo</span>
-                    <input type="mail" name="correo" required value="<?php print($correo);?>">
+                    <input type="mail" name="correo" autocomplete="off" required value="<?php print($correo);?>">
                 </label>
             </div>
             
@@ -167,7 +167,7 @@ if(!empty($_POST))
                 </label>
             </div>
                         
-            <div class="form-row">
+            <div class="form-row" name="combo">
                 <label>
                     <span>Seleccione los permisos</span>
                     <?php
@@ -198,7 +198,7 @@ if(!empty($_POST))
             </div>                        
             
             <div class="form-group form-row" style="background-color:white;">
-                <input type="file" name="imagen" onclick="comprueba_extension(this.form, this.form.imagen.value)">
+                <input type="file" name="imagen" onchange="comprueba_extension(this.form, this.form.imagen.value)">
             </div>
             <div class="form-row">
                 <button type="submit">Guardar</button>
@@ -208,4 +208,74 @@ if(!empty($_POST))
         </form>
 
     </div>
+    <script type="text/javascript">
+
+    function Valida(formulario) {
+                /* Validación de campos NO VACÍOS */
+                if ((formulario.alias.value.length == 0) || (formulario.correo.value.length ==0) || (formulario.clave1.value.length ==0) || (formulario.clave2.value.length ==0) || (formulario.combo.value.length ==0) || (formulario.precio.value.length ==0)) {
+                    alert('Debe completar todos los campos y Cajones.');
+                    return false;
+                }   
+                if (isNaN(parseInt(formulario.precio.value))) {
+                    alert('El campo de precio debe ser Numerico.');
+                    return false;
+                }  
+                /* validación del e-mail */
+                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
+                if (!(ercorreo.test(formulario.correo.value))) {  
+                    alert('El correo Electronico no es valido.');
+                    return false; }
+                /* si no hemos detectado fallo devolvemos TRUE */
+                return true;
+            }
+
+    function comprueba_extension(formulario, archivo) { 
+   extensiones_permitidas = new Array(".gif", ".jpg", ".doc", ".pdf"); 
+   mierror = ""; 
+   if (!archivo) { 
+      //Si no tengo archivo, es que no se ha seleccionado un archivo en el formulario 
+        mierror = "No has seleccionado ningún archivo"; 
+   }else{ 
+      //recupero la extensión de este nombre de archivo 
+      extension = (archivo.substring(archivo.lastIndexOf("."))).toLowerCase(); 
+      //alert (extension); 
+      //compruebo si la extensión está entre las permitidas 
+      permitida = false; 
+      for (var i = 0; i < extensiones_permitidas.length; i++) { 
+         if (extensiones_permitidas[i] == extension) { 
+         permitida = true; 
+         break; 
+         } 
+      } 
+      if (!permitida) { 
+         mierror = "Comprueba la extensión de los archivos a subir. \nSólo se pueden subir archivos con extensiones: " + extensiones_permitidas.join(); 
+        }else{ 
+            //submito! 
+         alert ("Todo correcto. Voy a submitir el formulario."); 
+         formulario.submit(); 
+         return 1; 
+        } 
+   } 
+   //si estoy aqui es que no se ha podido submitir 
+   alert (mierror); 
+   return 0; 
+}
+
+function calcLong(txt, dst, formul, maximo)
+
+      {
+
+      var largo
+
+      largo = formul[txt].value.length
+
+      if (largo > maximo)
+
+      formul[txt].value = formul[txt].value.substring(0,maximo)
+
+      formul[dst].value = formul[txt].value.length
+
+      }
+
+      </script>
     <?php page::footer();?>

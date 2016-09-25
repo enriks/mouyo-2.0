@@ -89,7 +89,7 @@ if($data != null)
                     <!-- /.input-group -->
                     </div>
                 </div>
-                <a class='btn btn-success' type='button' href='../highcharts/grafpromociones.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Promociones</i></a>
+                <a class='btn btn-success' type='button' href='../highcharts/grafpromociones.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Administradores</i></a>
 </div>";
     print($tabla);
 }
