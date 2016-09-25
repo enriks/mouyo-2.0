@@ -76,7 +76,7 @@ if($data != null)
         </div><hr>";
 		}
 		$tabla.="</div><div class='col-md-4'><div class='well'>
-        <a class='btn btn-success' type='button' href='repjugos.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Tamaños</i></a>
+        <a class='btn btn-success' type='button' href='../graficos/grafico_tamanio.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Tamaños</i></a>
                     <h4>Busqueda</h4>
                     	<form method='post' class='form-inline'>
                     		<div class='form-group'>

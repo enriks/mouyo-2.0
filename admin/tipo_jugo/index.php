@@ -11,6 +11,7 @@ if(!empty($_POST))
 	$sql = "SELECT * FROM tamanio WHERE tamanio LIKE ? ORDER BY tamanio";
 	$params = array("%$search%");
 	$tabla.="<div class='container'>
+    <hr>
 	 <div class='row'>
             <div class='col-lg-12'>
                 <h1 class='page-header'>Tipo de Jugos
@@ -26,13 +27,15 @@ if(!empty($_POST))
             </div>
         </div>
         <div class='row'>
-        <div class='col-md-9'>";
+        <div class='col-md-8'>";
 }
 else
 {
+    
 	$sql = "SELECT * FROM tipo_jugo where estado=0 ORDER BY id_tipojugo";
 	$params = null;
     $tabla="<div class='container'>
+    <hr>
     <div class='row'>
             <div class='col-lg-12'>
                 <h1 class='page-header'>Tipo de Jugos
@@ -47,7 +50,7 @@ else
             </div>
         </div>
         <div class='row'>
-        <div class='col-md-9'>";
+        <div class='col-md-8'>";
 }
 $data = Database::getRows($sql, $params);
 if($data != null)
@@ -73,7 +76,6 @@ if($data != null)
         </div><hr>";
 		}
 		$tabla.="</div><div class='col-md-4'><div class='well'>
-        <a class='btn btn-success' type='button' href='../highcharts/graficotipojugos.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Tipos de Jugo</i></a>
                     <h4>Busqueda</h4>
                     	<form method='post' class='form-inline'>
                     		<div class='form-group'>
@@ -84,8 +86,10 @@ if($data != null)
 	                            <button class='btn btn-default' type='sumbit'><i class='fa fa-search'></i></button>
 	                        </span>
                         </form>
-                    <!-- /.input-group -->
-                </div>
+                    <!-- /.input-group -->  
+                 </div>
+        <a class='btn btn-success' type='button' href='../highcharts/graficotipojugos.php'><i class='fa fa-pie-chart' aria-hidden='true'> Ver gráfico de Tipos de Jugo</i></a>
+        <a class='btn btn-success' type='button' href='../pdf/pdftiposdejugos.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
 </div>";
 		
 }

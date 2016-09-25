@@ -85,6 +85,7 @@ if($data != null)
                     <!-- /.input-group -->
                 </div>
                 <a class='btn btn-success' type='button' href='../highcharts/graficojugos.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Ingredientes</i></a>
+                <a class='btn btn-success' type='button' href='../pdf/pdfingredientes.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
 </div>";
 		
 }

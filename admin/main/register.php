@@ -233,7 +233,7 @@ else
     function Valida(formulario) {
                 /* Validación de campos NO VACÍOS */
                 if ((formulario.alias.value.length == 0) || (formulario.clave1.value.length ==0) || (formulario.clave2.value.length ==0) || (formulario.correo.value.length ==0)) {
-                    alert('Debe completar todos los campos y Cajones.');
+                    alert('Debe completar todos los campos.');
                     return false;
                 }   
                 if (isNaN(parseInt(formulario.precio.value))) {
@@ -242,7 +242,7 @@ else
                 }  
                 /* validación del e-mail */
                 var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
-                if (!(ercorreo.test(formulario.email.value))) {  
+                if (!(ercorreo.test(formulario.correo.value))) {  
                     alert('El correo electronico no es Valido.');
                     return false; }
                 /* si no hemos detectado fallo devolvemos TRUE */

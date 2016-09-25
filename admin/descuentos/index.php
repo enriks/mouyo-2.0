@@ -11,6 +11,7 @@ if(!empty($_POST))
     $sql="select descuentos.id_jugo,descuentos.id_descuento,descuentos.fecha_inicio, descuentos.fecha_limite,jugos.imagen,jugos.nombre nombre_jugo,descuentos.nombre,jugos.precio, descuentos.descuento from jugos, descuentos where descuentos.id_jugo = jugos.id_jugo and descuentos.nombre LIKE ? and descuentos.estado=0";
     $params = array("%$search%");
     $tabla="<div class='container'>
+    <hr>
     <div class='row'>
             <div class='col-lg-12'>
                 <h1 class='page-header'>Descuentos
@@ -33,6 +34,7 @@ else
     $sql="select descuentos.id_jugo,descuentos.id_descuento,descuentos.fecha_inicio, descuentos.fecha_limite,jugos.imagen,jugos.nombre nombre_jugo,descuentos.nombre,jugos.precio, descuentos.descuento from jugos, descuentos where descuentos.id_jugo = jugos.id_jugo and descuentos.estado=0";
     $params = null;
     $tabla="<div class='container'>
+    <hr>
     <div class='row'>
             <div class='col-lg-12'>
                 <h1 class='page-header'>Descuentos
@@ -87,6 +89,7 @@ if($data != null)
                     <!-- /.input-group -->
                 </div>
                 <a class='btn btn-success' type='button' href='../highcharts/graficodescuentos.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Descuentos</i></a>
+                <a class='btn btn-success' type='button' href='../pdf/pdfdescuentos.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
 </div>";
 		
 }

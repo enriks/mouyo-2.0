@@ -53,7 +53,7 @@ if(!empty($_POST))
                    }
                 else
                 {
-                    throw new Exception("La clave ingresada es incorrecata.");
+                    throw new Exception("La clave ingresada es incorrecta.");
                 }
             }
             else

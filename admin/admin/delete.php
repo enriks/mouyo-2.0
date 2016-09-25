@@ -89,14 +89,14 @@ else
 {
     print("<div class='col-lg-12'>
                 <h1 class='page-header'>Jugos
-                    <small>Mantenimiento de los jugos</small>
+                    <small>Mantenimiento de Administradores</small>
                 </h1>
                 <ol class='breadcrumb'>
                     <li><a href='../main/index.php'>Home</a>
                     </li>
-                    <li class='active'>Jugos</li>
+                    <li class='active'>Administrador</li>
                 </ol>
-            </div><h2>No se encuentra ninguna promocion con ese nombre <a href='index.php'>Volver</a>                    
+            </div><h2>No se encuentra ningun Administrador con ese nombre <a href='index.php'>Volver</a>                    
                 </h2>");
 }
 

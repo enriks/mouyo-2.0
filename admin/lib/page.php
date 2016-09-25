@@ -180,7 +180,7 @@
                                         <span class='icon-bar'></span>
                                         <span class='icon-bar'></span>
                                     </button>
-                                    <a class='navbar-brand' href='index.html'>Mouyo</a>
+                                    <a class='navbar-brand' href='../main/index.php'>Mouyo</a>
                                 </div>
                                 <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
                         <ul class='nav navbar-nav navbar-right'>
@@ -222,12 +222,15 @@
                                                     <span class='icon-bar'></span>
                                                     <span class='icon-bar'></span>
                                                 </button>
-                                                <a class='navbar-brand' href='index.html'>MOUYO</a>
+                                                <a class='navbar-brand' href='../main/index.php'>MOUYO</a>
                                             </div>
                                             <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
                                     <ul class='nav navbar-nav navbar-right'>
                                         <li>
                                             <a href='../jugos/'>Jugos</a>
+                                        </li>
+                                        <li>
+                                            <a href='../tipo_jugo/'>Tipos de Jugo</a>
                                         </li>
                                         <li>
                                             <a href='../ingredientes/'>Ingredientes</a>
@@ -263,12 +266,16 @@
                                 <span class='icon-bar'></span>
                                 <span class='icon-bar'></span>
                             </button>
-                            <a class='navbar-brand' href='index.html'>MOUYO</a>
+                            <a class='navbar-brand' href='../main/index.php'>MOUYO</a>
                         </div>
                         <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
                 <ul class='nav navbar-nav navbar-right'>
+                   
                     <li>
                         <a href='../jugo/'>Jugos</a>
+                    </li>
+                     <li>
+                        <a href='../tipo_jugo/'>Tipos de Jugo</a>
                     </li>
                     <li>
                         <a href='../ingredientes/'>Ingredientes</a>

@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link href="../../css/estilo_timeline.css" rel="stylesheet">
+       <link rel="stylesheet" href="http://bootsnipp.com/dist/bootsnipp.min.css?ver=7d23ff901039aef6293954d33d23c066">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+</head>
+    <body>
+    <script src="../../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../js/bootstrap.min.js"></script>
 <?php
 ob_start();
 require("../../lib/database.php");
@@ -19,10 +33,11 @@ if($data != null)
                     <small>Mouyo</small>
                 </h1>
                 <ol class='breadcrumb'>
-                    <li><a href='../main/index.php'>Home</a>
+                    <li><a href='../main/index.php'>Página Principal</a>
                     </li>
                     <li class='active'>Historial</li>
                 </ol>
+                 <a class='btn btn-success' type='button' href='../pdf/pdfhistorial.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a> 
                 <ul class='timeline'>";
     
     foreach($data as $row)
@@ -41,30 +56,19 @@ if($data != null)
 								</div>
 							</div>
 						</li>
+                    
                 
     <hr>";
 		}
     $tabla.="</ul>
 				</div>
+                   
 			</div>";
 		
 		print $tabla;
 }
 page::footer();
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-<link href="../../css/estilo_timeline.css" rel="stylesheet">
-       <link rel="stylesheet" href="http://bootsnipp.com/dist/bootsnipp.min.css?ver=7d23ff901039aef6293954d33d23c066">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
-</head>
-    <body>
-    <script src="../../js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../../js/bootstrap.min.js"></script>
     </body>
 </html>

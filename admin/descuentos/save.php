@@ -91,11 +91,15 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
+<<<<<<< HEAD
+        <form class="form-labels-on-top" autocomplete="off" enctype='multipart/form-data' onkeyup="calcLong('nombre','label',this,30)" onkeydown="calcLong('descuento','input',this,2)" name="nada" method="post" onsubmit="return Valida(this);">
+=======
 
         <form class="form-labels-on-top" autocomplete="off" enctype='multipart/form-data' onkeyup="calcLong('nombre','label',this,30)" onkeydown="calcLong('descuento','input',this,2)" name="nada" method="post" onsubmit="return Valida(this);">
 
         <form class="form-labels-on-top" autocomplete="off" enctype='multipart/form-data' onkeyup="calcLong('nombre','label',this,30)" onkeydown="calcLong('descuento','input',this,2)" onkeyup="existeFecha('fecha_inicio', 'label'); existeFecha2('fecha_limite', 'label')" name="nada" method="post">
 
+>>>>>>> ee1203cb596fec3b9bad284e84568be2c4f0c99e
 
             <div class="form-title-row">
                 <h1>Descuento</h1>
@@ -108,11 +112,15 @@ if(!empty($_POST))
                 </label>
             </div>
 
+<<<<<<< HEAD
+            <div class="form-row" name="combo" onchange="ValidarCombo(this.value);">
+=======
 
             <div class="form-row" name="combo" onchange="ValidarCombo(this.value);">
 
             <div class="form-row" id="combo">
 
+>>>>>>> ee1203cb596fec3b9bad284e84568be2c4f0c99e
                 <label><span>Selecciona el jugo para descuento</span></label>
                 <?php
                     $sql = "SELECT id_jugo,nombre FROM jugos where estado=0";
@@ -138,11 +146,15 @@ if(!empty($_POST))
                 <div class="input-group">
                     <label class="sr-only" for="exampleInputAmount">Descuento (en porcentaje)</label>
                   <div class="input-group-addon">%</div>
+<<<<<<< HEAD
+                      <input type="number" name="descuento" maxlength="5" min='0' onchange="ValidarSiNumero(this.value);" class="form-control" value="<?php print($descuento);?>" placeholder="Descuento">
+=======
 
                       <input type="number" name="descuento" maxlength="5" min='0' onchange="ValidarSiNumero(this.value);" class="form-control" value="<?php print($descuento);?>" placeholder="Descuento">
 
                       <input type="number" name="descuento" maxlength="5" min='0' class="form-control" value="<?php print($descuento);?>" placeholder="Descuento">
 
+>>>>>>> ee1203cb596fec3b9bad284e84568be2c4f0c99e
                 </div>
             </div>
             <div class="form-row">
@@ -156,6 +168,9 @@ if(!empty($_POST))
     <script type="text/javascript">
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ee1203cb596fec3b9bad284e84568be2c4f0c99e
     function Valida(formulario) {
                 /* Validación de campos NO VACÍOS */
                 if ((formulario.nombre.value.length == 0) || (formulario.combo.value.length ==0)) {
@@ -175,8 +190,11 @@ if(!empty($_POST))
                 return true;
             }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> origin/master
+>>>>>>> ee1203cb596fec3b9bad284e84568be2c4f0c99e
     function comprueba_combo(indice){
           error = "";
           indice = document.getElementById("combo").selectedIndex;
@@ -202,6 +220,9 @@ if(!empty($_POST))
 
       }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ee1203cb596fec3b9bad284e84568be2c4f0c99e
 function validarfecha() {
         var inicio = document.getElementById('fecha_i').value; 
         var finalq  = document.getElementById('fecha_f').value;
@@ -211,6 +232,8 @@ function validarfecha() {
         if(inicio>finalq){
         alert('La fecha de inicio puede ser mayor que la fecha fin');
         }
+<<<<<<< HEAD
+=======
 =======
 
       function existeFecha(fecha){
@@ -233,6 +256,7 @@ function existeFecha2 (fecha) {
         return m > 0 && m < 13 && y > 0 && y < 32768 && d > 0 && d <= (new Date(y, m, 0)).getDate();
 }
 >>>>>>> origin/master
+>>>>>>> ee1203cb596fec3b9bad284e84568be2c4f0c99e
 
       </script>
     <?php page::footer();?>
