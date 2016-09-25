@@ -97,13 +97,9 @@ if($data != null)
                     </div>
                     <!-- /.input-group -->
                     </div>
-                    <a class='btn btn-success' type='button' href='../pdf/pdfadmins.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
+                    <a class='btn btn-success' type='button' href='../pdf/pdfusuarios.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
                 </div>
-<<<<<<< HEAD
-                  
-=======
-                <a class='btn btn-success' type='button' href='../highcharts/grafpromociones.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Usuarios</i></a>
->>>>>>> 8495e9a27923d9ee604a741afa173d04f87e6849
+                
 </div>";
     print($tabla);
 }
