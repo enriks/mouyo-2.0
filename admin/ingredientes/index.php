@@ -8,7 +8,7 @@ $tabla="";
 if(!empty($_POST))
 {
     $search = trim($_POST['buscar']);
-    $sql = "SELECT ingrediente.id_ingrediente,ingrediente.nombre nombre_ingrediente,ingrediente.imagen,ingrediente.descripcion,tipo_ingrediente.id_tipo,tipo_ingrediente.nombre nombre_tipo,tipo_ingrediente.precio from ingrediente,tipo_ingrediente where ingrediente.tipo=tipo_ingrediente.id_tipo  AND ingrediente.nombre LIKE ? and ingrediente.estado=0 ORDER BY ingrediente.nombre";
+    $sql = "SELECT * from ingrediente where estado=0 and nombre like ? order by nombre";
     $params = array("%$search%");
     $tabla="<div class='container'>
     <hr>
@@ -20,10 +20,10 @@ if(!empty($_POST))
                 <ol class='breadcrumb'>
                     <li><a href='../main/index.php'>Home</a>
                     </li>
-                    <li class='active'>Ingredientes</li>
+                    <li><a href='index.php'>Ingredientes</a></li>
                      <li class='active'>Busqueda de '$search'</li>
                      <li><a href='' type='button' class='btn btn-default'>Agregar un nuevo 
-                     Ingrediente</button></li>
+                     Ingrediente</a></li>
                 </ol>
             </div>
         </div>
@@ -32,7 +32,7 @@ if(!empty($_POST))
 }
 else
 {
-    $sql = "SELECT ingrediente.id_ingrediente,ingrediente.nombre nombre_ingrediente,ingrediente.imagen,ingrediente.descripcion,tipo_ingrediente.id_tipo,tipo_ingrediente.nombre nombre_tipo,tipo_ingrediente.precio from ingrediente,tipo_ingrediente where ingrediente.tipo=tipo_ingrediente.id_tipo and ingrediente.estado=0  ORDER BY ingrediente.nombre";
+    $sql = "SELECT * from ingrediente where estado=0  ORDER BY nombre";
     $params = null;
     $tabla="<div class='container'>
     <hr>
@@ -64,7 +64,7 @@ if($data != null)
                 </a>
             </div>
             <div class='col-md-8'>
-                <h3>$row[nombre_ingrediente]</h3>
+                <h3>$row[nombre]</h3>
                 <p>$row[descripcion]</p>
                 <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_ingrediente'])."'>Editar</i></a>
                 <a class='btn btn-primary' href='delete.php?id=".base64_encode($row['id_ingrediente'])."'>Eliminar</i></a>

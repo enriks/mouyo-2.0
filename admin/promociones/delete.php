@@ -71,7 +71,7 @@ if($data != null)
                 <p><strong>Estado:</strong>$activo</p>
                 <p>&nbsp;&nbsp;&nbsp;<strong>Eliminar?</strong></p>
                 <form enctype='multipart/form-data' name='nada' method='post'>
-                <input type='hidden' name='id' value='<?php print($id); ?>'/>
+                <input type='hidden' name='id' value='$id'/>
                 <button type='sumbit' class='btn btn-danger'>Si</i></button>
                 <a href='index.php' class='btn btn-danger'>No</i></a>
                 </form>

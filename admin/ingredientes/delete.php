@@ -3,7 +3,7 @@ ob_start();
 require("../lib/page.php");
 require("../../lib/database.php");
 require("../lib/verificador.php");
-Page::header("Eliminar tipo de jugo");
+Page::header();
 $fecha=date('Y-m-d H:i:s');
 if(!empty($_GET['id'])) 
 {
@@ -11,20 +11,19 @@ if(!empty($_GET['id']))
 }
 else
 {
-    header("location: index.php");
+    @header("location: index.php");
 }
-
 if(!empty($_POST))
 {
 	$id = $_POST['id'];
 	try 
 	{
-        $data=Database::getRow("select nombre from tipo_jugo where id_tipojugo=?",array($id));
+         $data=Database::getRow("select nombre from ingrediente where id_ingrediente=?",array($id));
         $alias=$data['nombre'];
 		$sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
-        $params2=array($fecha,"Elimino el tipo de jugo $alias",$_SESSION['id_admin']);
+        $params2=array($fecha,"Elimino el ingrediente $alias",$_SESSION['id_admin']);
         Database::executeRow($sql2, $params2);
-		$sql = "update tipo_jugo set estado=1 WHERE id_tipojugo = ?";
+		$sql = "update ingrediente set estado=1 WHERE id_ingrediente = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
 	    @header("location: index.php");
@@ -34,8 +33,7 @@ if(!empty($_POST))
 		print("<div class='card-panel red'><i class='material-icons left'>error</i>".$error->getMessage()."</div>");
 	}
 }
-$id=base64_decode($_GET['id']);
-	$sql = "SELECT * FROM tipo_jugo where estado=0 and id_tipojugo=? ORDER BY id_tipojugo";
+	$sql = "SELECT * FROM ingrediente where estado=0 and id_ingrediente=? ORDER BY nombre";
 	$params = array($id);
 
 $data=Database::getRow($sql,$params);
@@ -45,12 +43,12 @@ if($data != null)
     <div class='row'>
             <div class='col-lg-12'>
                 <h1 class='page-header'>Eliminar
-                    <small>Tipo de Jugo</small>
+                    <small>Ingredientes</small>
                 </h1>
                 <ol class='breadcrumb'>
                     <li><a href='../../main/index.php'>Página Principal</a>
                     </li>
-                     <li><a href='index.php'>Tipos de Jugo</a>
+                     <li><a href='index.php'>Ingredientes</a>
                     </li>
                     <li class='active'>Eliminar</li>
                 </ol>
@@ -58,10 +56,12 @@ if($data != null)
         </div>
         <div class='row'>";
 			$tabla.="
+            <div class='col-md-6'>
+                    <img class='img-responsive img-hover' src='data:image/*;base64,$data[imagen]' alt=''>
+            </div>
             <div class='col-md-4'>
                 <h2><strong>$data[nombre]</strong></h2>
-                	
-                <h3>Descripción</h3>
+                <h3>Descripcion</h3>
                 <ul>
                     <li>$data[descripcion]</li>
                 </ul>
@@ -81,14 +81,14 @@ else
 {
     print("<div class='col-lg-12'>
                 <h1 class='page-header'>Jugos
-                    <small>Mantenimiento de Tipos de Jugo</small>
+                    <small>Mantenimiento de los ingredientes</small>
                 </h1>
                 <ol class='breadcrumb'>
                     <li><a href='../main/index.php'>Home</a>
                     </li>
-                    <li class='active'>Tipos</li>
+                    <li class='active'>Ingredientes</li>
                 </ol>
-            </div><h2>No se encuentra ningun tipo de jugo con ese nombre <a href='index.php'>Volver</a>                    
+            </div><h2>No se encuentra ninguna promocion con ese nombre <a href='index.php'>Volver</a>                    
                 </h2>");
 }
 

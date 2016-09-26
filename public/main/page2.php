@@ -24,8 +24,7 @@ session_start();
 						<div class="material-emerald-loader-nested-circles"></div>
 					</div>
 					
-		
-            
+		            
             <!--Variable de sesion que consulta si hay un usuario activo para ver las siguentes páginas -->
             <?php 
             if(isset($_SESSION['nombre_apellido_usuario']))

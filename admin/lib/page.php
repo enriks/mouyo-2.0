@@ -390,7 +390,7 @@ $('.datepicker').datepicker({
         public static function setCombo($name, $value, $query)
         {
             $data =Database::getRows($query,null);
-            $combo="<select name='$name' id='$name' class='' requeried>";
+            $combo="<select name='$name' id='$name' class='' onchange='ValidarCombo(this.value);' requeried>";
             if($value == null)
             {
                 $combo .= "<option value='' disabled selected>Opciones</option>";

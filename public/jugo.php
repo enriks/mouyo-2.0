@@ -79,7 +79,7 @@ if(empty($id))
 }
 else
 {
-    $sql = "SELECT jugos.id_jugo,jugos.nombre nombre_jugo,jugos.descripcion descripcion_jugo,jugos.imagen,jugos.precio,tipo_jugo.nombre nombre_tipojugo FROM jugos,tipo_jugo where jugos.id_tipojugo=tipo_jugo.id_tipojugo and jugos.id_jugo = ?  ORDER BY jugos.nombre";
+    $sql = "SELECT jugos.id_jugo,jugos.nombre nombre_jugo,jugos.descripcion descripcion_jugo,jugos.imagen,jugos.precio,tipo_jugo.nombre nombre_tipojugo FROM jugos,tipo_jugo where jugos.id_tipojugo=tipo_jugo.id_tipojugo AND jugos.id_jugo= ? and jugos.estado=0 ORDER BY jugos.nombre";
 	$params = array($id);
     $ingre="SELECT ingrediente.nombre nombre_ingrediente from ingrediente,detalle_bebida,jugos WHERE jugos.id_jugo = detalle_bebida.id_jugo and jugos.id_jugo=? and ingrediente.id_ingrediente = detalle_bebida.id_ingrediente";
     $data = Database::getRows($sql, $params);
@@ -127,7 +127,7 @@ else
                 </div>
                 <div class='input-field col s6 m6 l12'>";
         $skl="SELECT id_tamanio, tamanio FROM tamanio";
-        $skl2="SELECT id_cotizacion, nombre FROM cotizacion where id_usuario=$_SESSION[id_usuario]";
+        $skl2="SELECT id_cotizacion, nombre FROM cotizacion where id_usuario=".isset($_SESSION['id_usuario'])."";
                     	$tabla.=page2::setCombo_texto("tamanio",$tamanio,$skl);
                     	$tabla.=page2::setCombo_texto("cotizacion",$cotizacion,$skl2);
         $tabla.="
@@ -167,28 +167,26 @@ else
         $tabla.="<div class='fixed-action-btn horizontal click-to-toggle' style='bottom: 45px; right: 24px;'>
 <a class='btn-floating btn-large red modal-trigger tooltipped' data-position='left' data-delay='50' data-tooltip='$comentario_tooltip' href='#modal2'><i class='material-icons right'>chat</i></a>
 </div>
-"; ?>
-<div class="" id="divJugo">
-    <div class="row">
-        <div class="">
+<div class='' id='divJugo'>
+    <div class='row'>
+        <div class=''>
             <div id='modal2' class='modal'>
 <div class='modal-content'>
-<ul class='collection'>
-<?php 
+<ul class='collection'>"; 
+
         $sqll="SELECT comentarios.id_usuario,usuario.nombre,usuario.foto_perfil,comentarios.comentario from usuario,comentarios where usuario.id_usuario = comentarios.id_usuario and comentarios.id_jugo = ? order by comentarios.id_comentario";
         $paramss=array($id);
         $dati=Database::getRows($sqll,$paramss);
         foreach($dati as $date)
-        { ?>
+        { $tabla.="
             <li class='collection-item avatar'>
-            <img src='data:image/*;base64,<?php print $date['foto_perfil'] ?>' alt='' class='circle'>
-            <span class='title'><?php echo $date['nombre'] ?></span>
-                <p class=''><?php echo $date['comentario']?></p>
-            </li>
-	  <?php
+            <img src='data:image/*;base64,$date[foto_perfil]' alt='' class='circle'>
+            <span class='title'>$date[nombre]</span>
+                <p class=''>$date[comentario]</p>
+            </li>";
         }
         
-        ?>
+        $tabla.="
 </ul>
 <form method='post' name='frmComentario' class='center-align'>
         <fieldset>
@@ -210,8 +208,7 @@ else
 </div>
         </div>
     </div>
-</div>
-<?php 
+</div>";
         print($tabla);
        
     }

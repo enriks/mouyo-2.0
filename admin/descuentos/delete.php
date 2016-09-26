@@ -35,8 +35,8 @@ if(!empty($_POST))
 }
 $tabla="";
 
-    $sql="select descuentos.id_jugo,descuentos.id_descuento,descuentos.fecha_inicio, descuentos.fecha_limite,jugos.imagen,jugos.nombre nombre_jugo,descuentos.nombre,jugos.precio, descuentos.descuento from jugos, descuentos where descuentos.id_jugo = jugos.id_jugo and descuentos.estado=0";
-    $params = null;
+    $sql="select descuentos.id_jugo,descuentos.id_descuento,descuentos.fecha_inicio, descuentos.fecha_limite,jugos.imagen,jugos.nombre nombre_jugo,descuentos.nombre,jugos.precio, descuentos.descuento from jugos, descuentos where descuentos.id_jugo = jugos.id_jugo and descuentos.estado=0 and descuentos.id_descuento=?";
+    $params = array($id);
     $tabla="<div class='container'>
     <div class='row'>
             <div class='col-lg-12'>
@@ -70,7 +70,7 @@ if($data != null)
         <p><strong>Descuento (%):</strong> $data[descuento]%</p>
         <p>&nbsp;&nbsp;&nbsp;<strong>Eliminar?</strong></p>
         <form enctype='multipart/form-data' name='nada' method='post'>
-        <input type='hidden' name='id' value='<?php print($id); ?>'/>
+        <input type='hidden' name='id' value='$id'/>
         <button type='sumbit' class='btn btn-danger'>Si</i></button>
         <a href='index.php' class='btn btn-danger'>No</i></a>
     </div>
