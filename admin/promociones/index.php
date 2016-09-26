@@ -95,9 +95,7 @@ if($data != null)
                     <!-- /.input-group -->
                     
                 </div>
-                <a class='btn btn-success' type='button' href='../highcharts/grafpromociones.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Promociones</i></a>
-                <br>
-                <br>
+            
                 <a class='btn btn-success' type='button' href='../pdf/pdfpromociones.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
 </div>";
     print($tabla);

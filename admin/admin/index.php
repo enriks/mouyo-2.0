@@ -90,7 +90,10 @@ if($data != null)
                     </div>
                     <!-- /.input-group -->
                     </div>
-                      <a class='btn btn-success' type='button' href='../pdf/pdfadmins.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
+                     <a class='btn btn-success' type='button' href='../graficos/grafico_admins.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver grafico de Administradores</i></a>
+                    <br>
+                    <br>
+                    <a class='btn btn-success' type='button' href='../pdf/pdfadmins.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
                 </div>
               
 </div>";

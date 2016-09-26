@@ -72,7 +72,7 @@ if(!empty($_POST))
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-labels-on-top" enctype='multipart/form-data' onkeyup="calcLongtitulo('nombre5','label',this,30)" onkeydown="calcLongdesc('descripcion', 'label', this,40)" name="nada" method="post">
+        <form class="form-labels-on-top" enctype='multipart/form-data' onkeyup="calcLongtitulo('nombre5','label',this,30)" onkeydown="calcLongdesc('descripcion', 'label', this,40)" name="nada" method="post" onsubmit="return Valida(this);">
 
             <div class="form-title-row">
                 <h1>Tipos de Jugos</h1>

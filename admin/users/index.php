@@ -74,10 +74,10 @@ if($data != null)
                             <small>$row[nombre] $row[apellido]</small>
                         </h3>
                         <p>$row[correo]</p>
-<<<<<<< HEAD
+
                         <p><strong>Estado:</strong>$act</p>
                         <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_usuario'])."'>Cambiar estado del usuario</i></a>
-=======
+
                         <ul class='list-inline'>
                             <li><a href='#'><i class='fa fa-2x fa-facebook-square'></i></a>
                             </li>
@@ -89,7 +89,7 @@ if($data != null)
                         </ul>
                         <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_usuario'])."'>Editar</i></a>
                     
->>>>>>> 0c95d8596d6e6724d37a8e78bcf141422ea5c3b6
+
                     </div>
                 </div>
             </div>
@@ -110,6 +110,9 @@ if($data != null)
                     </div>
                     <!-- /.input-group -->
                     </div>
+                    <a class='btn btn-success' type='button' href='../graficos/grafico_users.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver grafico de Usuarios</i></a>
+                    <br>
+                    <br>
                     <a class='btn btn-success' type='button' href='../pdf/pdfusuarios.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
                 </div>
                 

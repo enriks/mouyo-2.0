@@ -83,7 +83,9 @@ if($data != null)
                         </form>
                     <!-- /.input-group -->
                 </div>
-                <a class='btn btn-success' type='button' href='../graficos/grafico_jugos.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver grafico de Jugos</i></a>
+                <a class='btn btn-success' type='button' href='../graficos/grafico_jugitos.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver grafico de Jugos</i></a>
+                <br>
+                <br>
                 <a class='btn btn-success' type='button' href='../pdf/pdfjugos.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
 </div>";
 		
