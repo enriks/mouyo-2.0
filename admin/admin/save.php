@@ -15,7 +15,7 @@ if(empty($_GET['id']))
 $permiso="";
   $estado=null;
     $actcheck="";
-    	$inaccheck='';
+      $inaccheck='';
 }
 else
 {
@@ -31,13 +31,13 @@ $permiso=$data['permiso'];
     $estado=$data['estado'];
      if($estado==0)
     {
-    	$actcheck="checked";
-    	$inaccheck='';
+      $actcheck="checked";
+      $inaccheck='';
     }
     else
     {
-    	$inaccheck="checked";
-    	$actcheck="";
+      $inaccheck="checked";
+      $actcheck="";
     }
 }
 function validar_clave($clave,&$error_clave){
@@ -85,14 +85,14 @@ if(!empty($_POST))
         elseif( $archivo['name'] != null)
         {
             $base64 = Validator::validateImage($archivo);
-           	if($base64 != false)
-           	{
-           	    $imagen = $base64;
-           	}
-           	else
-           	{
-           	    throw new Exception("La imagen seleccionada no es valida.");
-           	}
+            if($base64 != false)
+            {
+                $imagen = $base64;
+            }
+            else
+            {
+                throw new Exception("La imagen seleccionada no es valida.");
+            }
         }
         elseif( $alias != $clave1 )
         {
@@ -195,9 +195,9 @@ if(!empty($_POST))
                 <label>
                     <span>Seleccione los permisos</span>
                     <?php
-    		    $sql = "SELECT id_permiso,nombre FROM permisos";
-    		    Page::setCombo("permiso", $permiso, $sql);
-    		    ?>
+            $sql = "SELECT id_permiso,nombre FROM permisos";
+            Page::setCombo("permiso", $permiso, $sql);
+            ?>
                 </label>
             </div>
             

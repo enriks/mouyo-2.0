@@ -88,7 +88,9 @@ if($data != null)
                         </form>
                     <!-- /.input-group -->
                 </div>
-                <a class='btn btn-success' type='button' href='../highcharts/graficodescuentos.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Descuentos</i></a>
+                <a class='btn btn-success' type='button' href='../graficos/grafico_descuentos.php'><i class='fa fa-pie-chart' aria-hidden='true'>Ver gráfico de Descuentos</i></a>
+                <br>
+                <br>
                 <a class='btn btn-success' type='button' href='../pdf/pdfdescuentos.php'><i class='fa fa-file-pdf-o' aria-hidden='true'> Ver lista en PDF</i></a>
 </div>";
 		
