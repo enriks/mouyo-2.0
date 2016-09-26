@@ -103,8 +103,9 @@ else
         }
     foreach($data as $row)
 		{
+        
             $tabla="<br>
-    <div class='container'>
+    <div class='container' id='divJugo'>
         <div class='row card-panel'>
             <div class='col m8 center'>
                 <span><h5 class='teal-text'>$row[nombre_jugo]</h5></span>
@@ -120,20 +121,23 @@ else
      <form method='post' name='frmCotizacion' class='center-align'>
         <fieldset>
             <div class='row'>
-                <div class='input-field col s6 m6 l12'>
+                <div class='input-field col s6 m6'>
                     <i class='material-icons prefix'>format_list_numbered</i>
                     <input id='cantidad' type='text' name='cantidad' class='validate'/>
                     <label for='cantidad'>Cantidad</label>
                 </div>
-                <div class='input-field col s6 m6 l12'>";
+                <div class='input-field col s6 m6'>";
+        if(isset($_SESSION['id_usuario']))
+        { 
         $skl="SELECT id_tamanio, tamanio FROM tamanio";
         $skl2="SELECT id_cotizacion, nombre FROM cotizacion where id_usuario=".isset($_SESSION['id_usuario'])."";
-                    	$tabla.=page2::setCombo_texto("tamanio",$tamanio,$skl);
-                    	$tabla.=page2::setCombo_texto("cotizacion",$cotizacion,$skl2);
+                    	$tabla.=page2::setcombo("tamanio",$tamanio,$skl);
+                    	$tabla.=page2::setcombo("cotizacion",$cotizacion,$skl2);
+        }
         $tabla.="
                 </div>
             </div>
-            <button $disabled type='submit' name='enviar1' class='btn grey left tooltipped' data-position='bottom' data-delay='50' data-tooltip='I am tooltip'>Agregar a mi cotización<i class='material-icons right'>add</i></button> 
+            <button $disabled type='submit' name='enviar1' class='btn grey left tooltipped' data-position='bottom' data-delay='50' data-tooltip='I am tooltip'><i class='material-icons right'>add</i></button> 
             </fieldset>
             </form>
     </div>
@@ -167,7 +171,7 @@ else
         $tabla.="<div class='fixed-action-btn horizontal click-to-toggle' style='bottom: 45px; right: 24px;'>
 <a class='btn-floating btn-large red modal-trigger tooltipped' data-position='left' data-delay='50' data-tooltip='$comentario_tooltip' href='#modal2'><i class='material-icons right'>chat</i></a>
 </div>
-<div class='' id='divJugo'>
+<div class=''>
     <div class='row'>
         <div class=''>
             <div id='modal2' class='modal'>
@@ -214,6 +218,12 @@ else
     }
 }
 ?>
+
+<script>
+     $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
+</script>
 
 <script src='../bin/materialize.js'></script>
 <script src='../js/init.js'></script>

@@ -7,7 +7,7 @@
 <!--Contenido principal de jugos-->
 <div>
     <br>
-    <div class="container">
+    <!--div class="container">
         <form method="post" name="JUGOS" enctype='multipart/form-data'>
        <div class="row ">
            
@@ -34,7 +34,7 @@
         </div>
        </div>
     </form>
-    </div>
+    </div-->
     <div class="container">
         
         <!-- Cargamos los datos de la pagina -->
@@ -99,6 +99,8 @@
         ?>
     </div>
 </div>
+
+
     <br>
 
 <script src='../bin/materialize.js'></script>

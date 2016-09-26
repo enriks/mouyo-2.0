@@ -6,7 +6,6 @@ Page2::header();
 		<!-- Contenido a cargar -->
         <div id="divSlider">
         </div>
-    
 
         <?php require 'inc/faq.php'; ?>
 		<?php require 'inc/acercade.php'; ?>	 

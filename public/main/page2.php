@@ -20,11 +20,12 @@ session_start();
 			
 				</head>
 				<body class="home page page-id-9 page-template-default wpb-js-composer js-comp-ver-4.6.2 vc_responsive">
-					<div class="material-emerald-loader-wrapper">
+					<!--div class="material-emerald-loader-wrapper">
 						<div class="material-emerald-loader-nested-circles"></div>
-					</div>
+					</div-->
 					
-		            
+		
+            
             <!--Variable de sesion que consulta si hay un usuario activo para ver las siguentes páginas -->
             <?php 
             if(isset($_SESSION['nombre_apellido_usuario']))
@@ -111,7 +112,7 @@ session_start();
          public static function setCombo_texto($name, $value, $query)
         {
             $data =Database::getRows($query,null);
-            $combo="<label style='text-transform:capitalize;'>$name</label>
+            $combo="
             <select class='col l12 s12' name='$name' requeried>";
             if($value == null)
             {
@@ -127,6 +128,7 @@ session_start();
                 $combo .=">$row[1]</option>";
             }
             $combo.="</select>
+            <label style='text-transform:capitalize;'>$name</label>
                     ";
             return $combo;
         }

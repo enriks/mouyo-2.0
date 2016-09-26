@@ -36,8 +36,8 @@ if(isset($_SESSION['nombre_apellido_usuario']))
                             <div class="collapsible-header right"><i class="material-icons">toc</i></div>
 							<div class="collapsible-body clearfix">
 								<ul>
-									<li class='clearfix menu-item menu-item-type-custom menu-item-object-custom'><a href="#" class='waves-effect waves-light' title="" rel="">BENEFICIO DE LOS JUGOS</a></li>
-									<li class='clearfix menu-item menu-item-type-custom menu-item-object-custom'><a href="#" class='waves-effect waves-light' title="" rel="">CONSEJOS Y TIPS</a>
+									<li class='clearfix menu-item menu-item-type-custom menu-item-object-custom'><a href="beneficios_jugos.php" class='waves-effect waves-light' title="" rel="">BENEFICIO DE LOS JUGOS</a></li>
+									<li class='clearfix menu-item menu-item-type-custom menu-item-object-custom'><a href="tips_jugos.php" class='waves-effect waves-light' title="" rel="">CONSEJOS Y TIPS</a>
 									</li>
 									<!--li class='clearfix menu-item menu-item-type-custom menu-item-object-custom'><a href="#" class='waves-effect waves-light' title="" rel="">PEACEFUL PLACES</a></li-->
 								</ul>
@@ -106,8 +106,8 @@ else
 						<li><a href="#" class='side-header waves-effect left waves-light' title="" rel="">SALUD</a><div class="collapsible-header right"><i class="material-icons">toc</i></div>
 							<div class="collapsible-body clearfix">
 								<ul>
-									<li class='clearfix menu-item menu-item-type-custom menu-item-object-custom'><a href="#" class='waves-effect waves-light' title="" rel="">BENEFICIO DE LOS JUGOS</a></li>
-									<li class='clearfix menu-item menu-item-type-custom menu-item-object-custom'><a href="#" class='waves-effect waves-light' title="" rel="">CONSEJOS Y TIPS</a>
+									<li class='clearfix menu-item menu-item-type-custom menu-item-object-custom'><a href="beneficios_jugos.php" class='waves-effect waves-light' title="" rel="">BENEFICIO DE LOS JUGOS</a></li>
+									<li class='clearfix menu-item menu-item-type-custom menu-item-object-custom'><a href="tips_jugos.php" class='waves-effect waves-light' title="" rel="">CONSEJOS Y TIPS</a>
 									</li>
 									<!--li class='clearfix menu-item menu-item-type-custom menu-item-object-custom'><a href="#" class='waves-effect waves-light' title="" rel="">PEACEFUL PLACES</a></li-->
 								</ul>

@@ -23,7 +23,7 @@
 							</ul>
 					</div>
 					<div class="card-social-share right hide-on-small-only">
-						<a href="#" class="mr15" target="_blank"><i class="material-icons">thumb_up</i></a>
+						<a href="https://www.facebook.com/Mouyo-528197000704980/?add_cover=1&notif_t=page_profile_completion&notif_id=1474002603864296" class="mr15" target="_blank"><i class="material-icons">thumb_up</i></a>
 						<a href="#" class="mr15" target="_blank"><i class="material-icons">email</i></a>
 						<a href="#" class="mr15" target="_blank"><i class="material-icons">contacts</i></a>
 						<a href="#" class="mr15" target="_blank"><i class="material-icons">location_on</i></a>
@@ -72,14 +72,14 @@
 									</div>
 								<div class="col s9">
 									<h4 class="main-theme-color">BELLEZA Y SALUD</h4>
-									<a href="#" class="popular-post-thumbnail col s3 mega-featured">
-										<div class="card-image related-post-large"><img width="640" height="427" src="img/jugolimon.jpg" /><h2 class="card-title center-align related-post-card-title">
+									<a href="beneficios_jugos.php" class="popular-post-thumbnail col s3 mega-featured">
+										<div class="card-image related-post-large"><img width="640" height="427" src="img/beneficios_jugos.jpg" /><h2 class="card-title center-align related-post-card-title">
 											<strong>BENEFICIO</strong> JUGOS
 											</h2>
 										</div>
 									</a>
-									<a href="#" class="popular-post-thumbnail col s3 mega-featured">
-										<div class="card-image related-post-large"><img width="640" height="427" src="img/fresas.jpg" class="attachment-large size-large wp-post-image"/><h2 class="card-title center-align related-post-card-title">
+									<a href="tips_jugos.php" class="popular-post-thumbnail col s3 mega-featured">
+										<div class="card-image related-post-large"><img width="640" height="427" src="img/consejos.jpg" class="attachment-large size-large wp-post-image"/><h2 class="card-title center-align related-post-card-title">
 											CONSEJOS Y TIPS
 											</h2>
 										</div>

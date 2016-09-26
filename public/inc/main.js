@@ -3,8 +3,8 @@ function init(){
     
     function home(){
         
-        $('#divIngrediente').hide();
-        $('#divJugos').hide();
+        //$('#divIngrediente').hide();
+        //$('#divJugos').hide();
         $('#divFaq').hide();
         $('#divAcerca').hide();
 
@@ -22,8 +22,8 @@ function init(){
     
  function jugos(){
         
-        $('#divSlider').hide();
-        $('#divIngrediente').hide();
+        //$('#divSlider').hide();
+        //$('#divIngrediente').hide();
         $('#divFaq').hide();
         $('#divAcerca').hide();
 
@@ -70,6 +70,8 @@ function init(){
             $('#divUsuario').hide();
             $('#divCotizacion').hide();
             $('#divJugo').hide();
+            $('#divBeneficio').hide();
+            $('#divTips').hide();
 			$('#divAcerca').show('slow', function(){});
 		});
 	
@@ -84,6 +86,8 @@ function init(){
             $('#divUsuario').hide();
             $('#divCotizacion').hide();
             $('#divJugo').hide();
+            $('#divBeneficio').hide();
+            $('#divTips').hide();
 			$('#divFaq').show('slow', function(){});
 		});
     
@@ -98,6 +102,8 @@ function init(){
             $('#divUsuario').hide();
             $('#divCotizacion').hide();
             $('#divJugo').hide();
+            $('#divBeneficio').hide();
+            $('#divTips').hide();
 			$('#divAcerca').show('slow', function(){});
 		});
 	
@@ -112,6 +118,8 @@ function init(){
             $('#divUsuario').hide();
             $('#divCotizacion').hide();
             $('#divJugo').hide();
+            $('#divBeneficio').hide();
+            $('#divTips').hide();
 			$('#divFaq').show('slow', function(){});
 		});
     
