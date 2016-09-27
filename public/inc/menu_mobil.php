@@ -51,7 +51,7 @@ if(isset($_SESSION['nombre_apellido_usuario']))
 				</li>
                 
                 <ul class="collapsible collapsible-accordion">
-						<li class='clearfix buy menu-item menu-item-type-custom menu-item-object-custom'><a href="#" class='side-header waves-effect left waves-light' title="" rel=""><?php echo $_SESSION['nombre_apellido_usuario'] ?><i class="material-icons">perm_identity</i></a>
+						<li class='clearfix buy menu-item menu-item-type-custom menu-item-object-custom'><a href="#" class='side-header waves-effect left waves-light' title="" rel=""><img class="circle" width="50" height="50" src="data:image/*;base64,<?php print $_SESSION['img'] ?>"/><?php echo $_SESSION['nombre_apellido_usuario'] ?></a>
                             <div class="collapsible-header right"><i class="material-icons">toc</i></div>
 							<div class="collapsible-body clearfix">
 								<ul>

@@ -136,7 +136,7 @@ else
 
 <!-- Se muestra el formulario con los campos que muestarn algun usuario seleccionado a modificar-->
 <br>
-<form method='post' class='container center-align' enctype='multipart/form-data' id="divRegister" onsubmit="return Valida(this);"">
+<form method='post' class='container center-align' enctype='multipart/form-data' id="divRegister">
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>assignment_ind</i>
@@ -185,7 +185,7 @@ else
             		<input type='file' name='imagen'>
       		  </div>
         		<div class='file-path-wrapper'>
-          		  <input class='file-path validate center' type='text' placeholder='1200x1200px máx., 2MB máx., PNG/JPG/GIF' onchange="comprueba_extension(this.form, this.form.imagen.value)">
+          		  <input disabled class='file-path validate center' type='text' placeholder='1200x1200px máx., 2MB máx., PNG/JPG/GIF'>
         		</div>
         </div>
     </div>
@@ -198,68 +198,8 @@ else
 <script src='../bin/materialize.js'></script>
 <script src='../js/init.js'></script>
 
-<script type="text/javascript">
-
-    function Valida(formulario) {
-                /* Validación de campos NO VACÍOS */
-                if ((formulario.nombres.value.length == 0) || (formulario.apellidos.value.length ==0) || (formulario.correo.value.length ==0) || (formulario.alias.value.length ==0) (formulario.correo.value.length ==0) || (formulario.clave1.value.length ==0) || (formulario.clave2.value.length ==0)) {
-                    alert('Debe completar todos los campos.');
-                    return false;
-                }    
-
-                var correo = /^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-                else if (correo.test(correo.value)) {
-                    alert('El correo Electronico no es valido.');
-                    return false;
-
-                }
-
-                var contraseña1 = document.getElementById("clave1").value;
-                var contraseña2 = document.getElementById("clave2").value;
-                else if (contraseña1 != contraseña2){
-                   alert('Las contraseñas no coinciden.')
-                   return false;
-                }
-
-                /* si no hemos detectado fallo devolvemos TRUE */
-                return true;
-            }
-
-            function comprueba_extension(formulario, archivo) { 
-   extensiones_permitidas = new Array(".gif", ".jpg", ".doc", ".pdf"); 
-   mierror = ""; 
-   if (!archivo) { 
-      //Si no tengo archivo, es que no se ha seleccionado un archivo en el formulario 
-        mierror = "No has seleccionado ningún archivo"; 
-   }else{ 
-      //recupero la extensión de este nombre de archivo 
-      extension = (archivo.substring(archivo.lastIndexOf("."))).toLowerCase(); 
-      //alert (extension); 
-      //compruebo si la extensión está entre las permitidas 
-      permitida = false; 
-      for (var i = 0; i < extensiones_permitidas.length; i++) { 
-         if (extensiones_permitidas[i] == extension) { 
-         permitida = true; 
-         break; 
-         } 
-      } 
-      if (!permitida) { 
-         mierror = "Comprueba la extensión de los archivos a subir. \nSólo se pueden subir archivos con extensiones: " + extensiones_permitidas.join(); 
-        }else{ 
-            //submito! 
-         alert ("Todo correcto. Voy a submitir el formulario."); 
-         formulario.submit(); 
-         return 1; 
-        } 
-   } 
-   //si estoy aqui es que no se ha podido submitir 
-   alert (mierror); 
-   return 0; 
-}
-
-      </script>
-
 <?php page2::footer();?>
+
 <?php require 'inc/faq.php'; ?> 
 <?php require 'inc/acercade.php'; ?>	 
 <?php require 'inc/footer.php'; ?>
