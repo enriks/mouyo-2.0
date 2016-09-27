@@ -20,7 +20,7 @@ if(!empty($_POST))
                 <ol class='breadcrumb'>
                     <li><a href='../main/index.php'>Página Principal</a>
                     </li>
-                    <li class='active'>Jugos</li>
+                    <li><a href='index.php'>Jugos</a></li>
                      <li class='active'>Busqueda de '$search'</li>
                      <li><a type='button' href='save.php' class='btn btn-default'>Agregar Jugos</a></li>
                 </ol>
