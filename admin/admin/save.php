@@ -173,21 +173,21 @@ if(!empty($_POST))
             <div class="form-row">
                 <label>
                     <span>Correo</span>
-                    <input type="mail" name="correo" autocomplete="off" required value="<?php print($correo);?>">
+                    <input type="text" id="correo" name="correo" autocomplete="off" required value="<?php print($correo);?>">
                 </label>
             </div>
             
             <div class="form-row">
                 <label>
                     <span>Contraseña</span>
-                    <input type="password" name="clave1" placeholder="Contraseña...">
+                    <input type="text" id="clave1" name="clave1" placeholder="Contraseña...">
                 </label>
             </div>
                         
             <div class="form-row">
                 <label>
                     <span>Confirme la contraseña</span>
-                    <input type="password" name="clave2" placeholder="Confirmacion..."  >
+                    <input type="text" id="clave2" name="clave2" placeholder="Confirmacion..."  >
                 </label>
             </div>
                         
@@ -239,16 +239,28 @@ if(!empty($_POST))
                 if ((formulario.alias.value.length == 0) || (formulario.correo.value.length ==0) || (formulario.clave1.value.length ==0) || (formulario.clave2.value.length ==0) || (formulario.combo.value.length ==0) || (formulario.precio.value.length ==0)) {
                     alert('Debe completar todos los campos y Cajones.');
                     return false;
-                }   
-                if (isNaN(parseInt(formulario.precio.value))) {
+                }  
+
+                else if (isNaN(parseInt(formulario.precio.value))) {
                     alert('El campo de precio debe ser Numerico.');
                     return false;
                 }  
-                /* validación del e-mail */
-                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
-                if (!(ercorreo.test(formulario.correo.value))) {  
+
+                var correo = /^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+                else if (correo.test(correo.value)) {
                     alert('El correo Electronico no es valido.');
-                    return false; }
+                    return false;
+
+                }
+
+                var contraseña1 = document.getElementById("clave1").value;
+                var contraseña2 = document.getElementById("clave2").value;
+                else if (contraseña1 != contraseña2){
+                   alert('Las contraseñas no coinciden.')
+                   return false;
+                }
+
+
                 /* si no hemos detectado fallo devolvemos TRUE */
                 return true;
             }
@@ -302,4 +314,6 @@ function calcLong(txt, dst, formul, maximo)
       }
 
       </script>
+
+
     <?php page::footer();?>

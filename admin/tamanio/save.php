@@ -104,16 +104,22 @@ if(!empty($_POST))
                 if ((formulario.tamaño.value.length == 0) || (formulario.precio.value.length ==0)) {
                     alert('Debe completar todos los campos.');
                     return false;
+                } 
+
+                else if ((formulario.tamaño.value.length <= 10)) {
+                    alert('El campo de Titulo debe contener al menos 10 Caracteres');
+                    return false;
                 }   
-                if (isNaN(parseInt(formulario.descuento.value))) {
+
+                else if (isNaN(parseInt(formulario.precio.value))) {
                     alert('El campo de precio debe ser Numerico.');
                     return false;
-                }  
-                /* validación del e-mail */
-                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
-                if (!(ercorreo.test(formulario.email.value))) {  
-                    alert('Contenido del email no es CORREO ELECTR&Oacute;NICO v&aacute;lido.');
-                    return false; }
+                }
+
+                else if(formulario.tamaño.value.match(/[a-zA-Z]/)){
+                    alert('Solo se permiten letras en el Titulo.');
+                    return false;
+                }       
                 /* si no hemos detectado fallo devolvemos TRUE */
                 return true;
             }

@@ -93,11 +93,7 @@ if(!empty($_POST))
 
 
         <form class="form-labels-on-top" autocomplete="off" enctype='multipart/form-data' onkeyup="calcLong('nombre','label',this,30)" onkeydown="calcLong('descuento','input',this,2)" name="nada" method="post" onsubmit="return Valida(this);">
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 09c22cc527c7012b5710046ba3acab0e30db3d9b
             <div class="form-title-row">
                 <h1>Descuento</h1>
             </div>
@@ -109,20 +105,14 @@ if(!empty($_POST))
                 </label>
             </div>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 09c22cc527c7012b5710046ba3acab0e30db3d9b
             <div class="form-row" name="combo" onchange="ValidarCombo(this.value);">
 
             
 
             <div class="form-row" id="combo">
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 09c22cc527c7012b5710046ba3acab0e30db3d9b
                 <label><span>Selecciona el jugo para descuento</span></label>
                 <?php
                     $sql = "SELECT id_jugo,nombre FROM jugos where estado=0";
@@ -148,10 +138,7 @@ if(!empty($_POST))
                 <div class="input-group">
                     <label class="sr-only" for="exampleInputAmount">Descuento (en porcentaje)</label>
                   <div class="input-group-addon">%</div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 09c22cc527c7012b5710046ba3acab0e30db3d9b
                       <input type="number" name="descuento" maxlength="5" min='0' onchange="ValidarSiNumero(this.value);" class="form-control" value="<?php print($descuento);?>" placeholder="Descuento">
 
 
@@ -167,33 +154,35 @@ if(!empty($_POST))
     </div>
     <script type="text/javascript">
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 09c22cc527c7012b5710046ba3acab0e30db3d9b
     function Valida(formulario) {
                 /* Validación de campos NO VACÍOS */
                 if ((formulario.nombre.value.length == 0) || (formulario.descuento.value.length ==0) || (formulario.combo.value.length ==0)) {
                     alert('Debe completar todos los campos y Cajones.');
                     return false;
-                }   
-                if (isNaN(parseInt(formulario.descuento.value))) {
+                } 
+
+                else if ((formulario.nombre.value.length <= 10)) {
+                    alert('El campo de Titulo debe contoner al menos 10 Caracteres');
+                    return false;
+                } 
+
+                else if (isNaN(parseInt(formulario.descuento.value))) {
                     alert('El campo de precio debe ser Numerico.');
                     return false;
                 }  
-                /* validación del e-mail */
-                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
-                if (!(ercorreo.test(formulario.email.value))) {  
-                    alert('Contenido del email no es CORREO ELECTR&Oacute;NICO v&aacute;lido.');
-                    return false; }
+
+                else if(formulario.nombre.value.match(/[a-zA-Z]/)){
+                    alert('Solo se permiten letras en el Titulo.');
+                    return false;
+                }
+
                 /* si no hemos detectado fallo devolvemos TRUE */
                 return true;
             }
 
-<<<<<<< HEAD
-=======
-e
->>>>>>> 09c22cc527c7012b5710046ba3acab0e30db3d9b
+
+
     function comprueba_combo(indice){
           error = "";
           indice = document.getElementById("combo").selectedIndex;
@@ -218,10 +207,7 @@ e
       formul[dst].value = formul[txt].value.length
 
       }
-<<<<<<< HEAD
-=======
 
->>>>>>> 09c22cc527c7012b5710046ba3acab0e30db3d9b
 function validarfecha() {
         var inicio = document.getElementById('fecha_i').value; 
         var finalq  = document.getElementById('fecha_f').value;
@@ -229,13 +215,9 @@ function validarfecha() {
         finalq= new Date(finalq);
 
         if(inicio>finalq){
-        alert('La fecha de inicio puede ser mayor que la fecha fin');
+        alert('La fecha de inicio no puede ser mayor que la fecha fin');
         }
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 09c22cc527c7012b5710046ba3acab0e30db3d9b
       function existeFecha(fecha){
       var fechaf = fecha.split("/");
       var day = fechaf[0];

@@ -76,7 +76,7 @@ if($data != null)
                         <p>$row[correo]</p>
 
                         <p><strong>Estado:</strong>$act</p>
-                        <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_usuario'])."'>Cambiar estado del usuario</i></a>
+                        
 
                         <ul class='list-inline'>
                             <li><a href='#'><i class='fa fa-2x fa-facebook-square'></i></a>
@@ -87,7 +87,7 @@ if($data != null)
                             </li>
                             
                         </ul>
-                        <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_usuario'])."'>Editar</i></a>
+                       <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_usuario'])."'>Cambiar estado del usuario</i></a>
                     
 
                     </div>

@@ -186,15 +186,15 @@ else
 			                        </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-password">Contraseña</label>
-                                        <input type="password" name="clave1" placeholder="Contraseña..." class="form-password form-control" id="form-password">
+                                        <input type="password" id="clave1" name="clave1" placeholder="Contraseña..." class="form-password form-control" id="form-password">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-password">Confirme la contraseña</label>
-                                        <input type="password" name="clave2" placeholder="Confirmacion..." class="form-password form-control" id="form-password">
+                                        <input type="password" id="clave2" name="clave2" placeholder="Confirmacion..." class="form-password form-control" id="form-password">
                                     </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="correo">Correo Email</label>
-			                        	<input type="text" name="correo" placeholder="Correo..." class="form-email form-control" id="correo">
+			                        	<input type="text" id="correo" name="correo" placeholder="Correo..." class="form-email form-control" id="correo">
 			                        </div>
                                 	<div class="form-group img-rounded" style="background-color:white;">
                                         <input type="file" name="archivo">
@@ -235,16 +235,22 @@ else
                 if ((formulario.alias.value.length == 0) || (formulario.clave1.value.length ==0) || (formulario.clave2.value.length ==0) || (formulario.correo.value.length ==0)) {
                     alert('Debe completar todos los campos.');
                     return false;
-                }   
-                if (isNaN(parseInt(formulario.precio.value))) {
-                    alert('El campo de precio debe ser Numerico.');
+                }    
+
+                var correo = /^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+                else if (correo.test(correo.value)) {
+                    alert('El correo Electronico no es valido.');
                     return false;
-                }  
-                /* validación del e-mail */
-                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
-                if (!(ercorreo.test(formulario.correo.value))) {  
-                    alert('El correo electronico no es Valido.');
-                    return false; }
+
+                }
+
+                var contraseña1 = document.getElementById("clave1").value;
+                var contraseña2 = document.getElementById("clave2").value;
+                else if (contraseña1 != contraseña2){
+                   alert('Las contraseñas no coinciden.')
+                   return false;
+                }
+
                 /* si no hemos detectado fallo devolvemos TRUE */
                 return true;
             }
