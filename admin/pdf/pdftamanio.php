@@ -5,6 +5,11 @@ require('../lib/page.php');
 ini_set("date.timezone","America/El_Salvador");
 $usuario=$_SESSION['usuario_admin'];
 
+    $sql = "SELECT * FROM tamanio WHERE estado=0 ORDER BY tamanio";
+	$params = null;
+    $data = Database::getRows($sql, $params);
+
+
 $pdf = new FPDF('P','mm','A4');
 $pdf->AddPage();
 $pdf->SetMargins(10, 10, 10);
@@ -19,37 +24,26 @@ $pdf->Ln(25);
 $pdf->SetFont('Arial', 'B', 11);
 #$pdf->Cell(70, 8, '', 0);
 $pdf->SetFillColor(255,255,153);
-$pdf->Cell(190, 8, 'LISTADO DE ADMINISTRADORES',1,0,'C',1);
+$pdf->Cell(190, 8, 'LISTADO DE PROMOCIONES',1,0,'C',1);
 $pdf->Ln(8);
 $pdf->SetFillColor(255,255,204);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(15, 8,' ID',1,0,'L',1);
-$pdf->Cell(45, 8, ' Alias',1,0,'L',1);
-$pdf->Cell(70, 8, ' Correo',1,0,'L',1);
-$pdf->Cell(60, 8, ' Permisos',1,0,'L',1);
+$pdf->Cell(90, 8, utf8_decode(' Tamaño'),1,0,'L',1);
+$pdf->Cell(85, 8, utf8_decode(' Precio'),1,0,'L',1);
 $pdf->Ln(8);
-
-
-    $sql = "SELECT admin.id_admin, admin.alias, admin.correo, admin.permiso, admin.estado, permisos.id_permiso, permisos.nombre permisito FROM admin, permisos where admin.estado=0 AND admin.permiso = permisos.id_permiso ORDER BY id_admin";
-	$params = null;
-    $data = Database::getRows($sql, $params);
-
 foreach($data as $row)
     {
     $pdf->SetFont('Arial','',10);
-    $pdf->Cell(15,8,$row['id_admin'],0);
-    $pdf->Cell(45,8,$row['alias'],0);
-    $pdf->Cell(70,8,$row['correo'],0);
-    $pdf->Cell(60,8,$row['permisito'],0);
-    
+    $pdf->Cell(15,8,$row['id_tamanio'],0);
+    $pdf->Cell(90,8,$row['tamanio'],0);
+    $pdf->Cell(85,8,$row['precio'],0);
     $pdf->Ln();
         
     }
 $pdf->SetY(-31);
 $pdf->SetFont('Arial', 'I', 8);
 $pdf->Cell(0,10,utf8_decode('Página ').$pdf->PageNo(),0,0,'C');
-/*$pdf->Output('reporte.pdf','D');
-Sigue el mismo método que utilizarías para una página HTML o algo similar. Añade: target=”_blank” a tu link o form.
-*/
+/*$pdf->Output('reporte.pdf','D');*/
 $pdf-> Output();
 ?>

@@ -3,17 +3,8 @@ require('../../fpdf/fpdf.php');
 require('../../lib/database.php');
 require('../lib/page.php');
 ini_set("date.timezone","America/El_Salvador");
-$usuario='admin';
-/*$usuario="";
+$usuario=$_SESSION['usuario_admin'];
 
-    $sql2 = "SELECT alias from admin where id_admin=?";
-    $params2=($_SESSION['usuario_admin']);
-    $data2=Database::getRows($sql2,$params2);
-    foreach($data2 as $row2)
-    {
-        $usuario=$row2['alias'];
-    }
-*/
      $sql = "SELECT ingrediente.id_ingrediente,ingrediente.nombre nombre_ingrediente,ingrediente.imagen,ingrediente.descripcion,tipo_ingrediente.id_tipo,tipo_ingrediente.nombre nombre_tipo,tipo_ingrediente.precio from ingrediente,tipo_ingrediente where ingrediente.tipo=tipo_ingrediente.id_tipo and ingrediente.estado=0  ORDER BY ingrediente.nombre";
 	$params = null;
     $data = Database::getRows($sql, $params);
@@ -46,7 +37,7 @@ foreach($data as $row)
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(15,8,$row['id_ingrediente'],0);
     $pdf->Cell(75,8,$row['nombre_ingrediente'],0);
-    $pdf->Cell(100,8,$row['descripcion'],0);
+    $pdf->MultiCell(100,8,utf8_decode($row['descripcion']),0);
     
     $pdf->Ln();
         

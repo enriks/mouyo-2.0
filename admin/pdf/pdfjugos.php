@@ -3,16 +3,8 @@ require('../../fpdf/fpdf.php');
 require('../../lib/database.php');
 require('../lib/page.php');
 ini_set("date.timezone","America/El_Salvador");
-$usuario='admin';
-/*
-    $sql2 = "SELECT alias from admin where id_admin=?";
-    $params2=($_SESSION['usuario_admin']);
-    $data2=Database::getRows($sql2,$params2);
-    foreach($data2 as $row2)
-    {
-        $usuario=$row2['alias'];
-    }
-*/
+$usuario=$_SESSION['usuario_admin'];
+
     $sql = "SELECT jugos.id_jugo,jugos.nombre nombre_jugo,jugos.descripcion descripcion_jugo,jugos.imagen,jugos.precio,tipo_jugo.nombre nombre_tipojugo FROM jugos,tipo_jugo where jugos.id_tipojugo=tipo_jugo.id_tipojugo and jugos.estado=0  ORDER BY jugos.id_jugo";
 	$params = null;
     $data = Database::getRows($sql, $params);
@@ -37,15 +29,17 @@ $pdf->Ln(8);
 $pdf->SetFillColor(255,255,204);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(15, 8,' ID',1,0,'L',1);
-$pdf->Cell(75, 8, ' Nombre',1,0,'L',1);
-$pdf->Cell(100, 8, ' Tipo de Jugo',1,0,'L',1);
+$pdf->Cell(55, 8, ' Nombre',1,0,'L',1);
+$pdf->Cell(35, 8, ' Tipo de Jugo',1,0,'L',1);
+$pdf->Cell(85, 8, utf8_decode(' Descripción'),1,0,'L',1);
 $pdf->Ln(8);
 foreach($data as $row)
     {
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(15,8,$row['id_jugo'],0);
-    $pdf->Cell(75,8,$row['nombre_jugo'],0);
-    $pdf->Cell(100,8,$row['nombre_tipojugo'],0);
+    $pdf->Cell(55,8,$row['nombre_jugo'],0);
+    $pdf->Cell(35,8,$row['nombre_tipojugo'],0);
+    $pdf->MultiCell(85,8,utf8_decode($row['descripcion_jugo']),0);
     
     $pdf->Ln();
         
