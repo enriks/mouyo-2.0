@@ -24,7 +24,7 @@ $pdf->Ln(25);
 $pdf->SetFont('Arial', 'B', 11);
 #$pdf->Cell(70, 8, '', 0);
 $pdf->SetFillColor(255,255,153);
-$pdf->Cell(190, 8, $row['nombre_cotizacion'],1,0,'C',1);
+$pdf->Cell(190, 8, $data['nombre_cotizacion'],1,0,'C',1);
 $pdf->Ln(8);
 $pdf->SetFillColor(255,255,204);
 $pdf->SetFont('Arial', 'B', 12);
