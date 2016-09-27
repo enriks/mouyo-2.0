@@ -3,16 +3,8 @@ require('../../fpdf/fpdf.php');
 require('../../lib/database.php');
 require('../lib/page.php');
 ini_set("date.timezone","America/El_Salvador");
-$usuario='admin';
-/*
-    $sql2 = "SELECT alias from admin where id_admin=?";
-    $params2=($_SESSION['usuario_admin']);
-    $data2=Database::getRows($sql2,$params2);
-    foreach($data2 as $row2)
-    {
-        $usuario=$row2['alias'];
-    }
-*/
+$usuario=$_SESSION['usuario_admin'];
+
     $sql = "SELECT * FROM tipo_jugo where estado=0 ORDER BY id_tipojugo";
 	$params = null;
     $data = Database::getRows($sql, $params);
@@ -46,7 +38,7 @@ foreach($data as $row)
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(25,8,$row['id_tipojugo'],0);
     $pdf->Cell(45,8,$row['nombre'],0);
-    $pdf->Cell(120,8,$row['descripcion'],0);
+    $pdf->MultiCell(120,8,utf8_decode($row['descripcion']),0);
     $pdf->Ln();
         
     }

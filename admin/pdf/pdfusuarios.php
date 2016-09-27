@@ -3,17 +3,8 @@ require('../../fpdf/fpdf.php');
 require('../../lib/database.php');
 require('../lib/page.php');
 ini_set("date.timezone","America/El_Salvador");
-$usuario='admin';
-/*$usuario="";
+$usuario=$_SESSION['usuario_admin'];
 
-    $sql2 = "SELECT alias from admin where id_admin=?";
-    $params2=($_SESSION['usuario_admin']);
-    $data2=Database::getRows($sql2,$params2);
-    foreach($data2 as $row2)
-    {
-        $usuario=$row2['alias'];
-    }
-*/
      $sql = "SELECT * FROM usuario where estado=0 ORDER BY alias";
 	$params = null;
     $data = Database::getRows($sql, $params);
