@@ -1,6 +1,6 @@
 <?php
-    require("main/page2.php");
-	require("../lib/database.php");
+require("main/page2.php");
+require("../lib/database.php");
 Page2::header();
 $tamanio='';
 $cotizacion='';
@@ -29,7 +29,7 @@ $cotizacion='';
 ?>
     <!--formulario de carrito -->
 <br>
-<div id="divCotizacion">
+<div>
     <div class="row">
         <div class="col s12 col l4 offset-l4 center">
         <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Nueva cotizacion</a>
@@ -100,9 +100,10 @@ foreach($data as $datas)
             <td class='center black-text'>$das[cantidad]</td>
             <td class='center black-text'>$total</td>
             <td class='center black-text'><a class='waves-effect waves-light btn red modal-trigger' href='#modal$das[id_jugo]'>Eliminar</a>
-            <a class='waves-effect waves-light btn blue modal-trigger tooltipped' data-position='right' data-delay='150' data-tooltip='nada' href='#modal3$das[id_jugo]'><i class='material-icons right'>add_shopping_cart</i>Modificar jugo</a></td>
+            <a class='waves-effect waves-light btn blue modal-trigger tooltipped' data-position='right' data-delay='150' data-tooltip='Edita tu corización' href='modificar_cotizacion.php?id=".base64_encode($datas['id_cotizacion'])."'><i class='material-icons right'>add_shopping_cart</i>Modificar jugo</a></td>
           </tr>";
         $totaal=$total+$totaal;
+        
         
     }
     $tabs.=$contenido;
@@ -157,8 +158,13 @@ foreach($data as $datas)
     <div class='col s12'>
     <div class='col l4 offset-l4'>
     <p class='card-panel light-blue accent-3 center white-text '>Total: $$totaal  <br><br><a class='waves-effect waves-light btn red white-text  s6' href='delete_cotizacion.php?id=".base64_encode($datas['id_cotizacion'])."&total=".base64_encode($totaal)."'>Eliminar Cotización</a></p>
-    </div>    
     </div>
+    
+    <div>
+    <a href='enviar_cotizacion.php?id=".base64_encode($datas['id_cotizacion'])."' class='waves-effect waves-light btn teal'>Enviar Administrador</a>
+    </div>
+    </div>
+    
 </div></div>";
     
 }
@@ -170,6 +176,8 @@ print $tabs;
 </div>
 </div>
     
+
+<?php Page2::footer();?>
  <script src='../bin/materialize.js'></script>
 <script src='../js/init.js'></script>
 
@@ -177,7 +185,7 @@ print $tabs;
 <?php require 'inc/acercade.php'; ?>	 
 <?php require 'inc/footer.php'; ?>
 
- <?php Page2::footer();?>
+ 
 
 
 
