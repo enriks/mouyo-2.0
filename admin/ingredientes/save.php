@@ -39,7 +39,8 @@ if(!empty($_POST))
         {
             throw new Exception("Datos incompletos");
         }
-        elseif( $archivo['name'] != null)
+        
+        if( $archivo['name'] != null)
         {
             $base64 = Validator::validateImage($archivo);
            	if($base64 != false)
@@ -63,7 +64,7 @@ if(!empty($_POST))
         }
         else
         {
-            if(isset($imagen))
+            if(isset($imagen)==null)
             {
                 
             $sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";

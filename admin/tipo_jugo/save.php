@@ -4,18 +4,17 @@ require("../lib/page.php");
 require("../../lib/database.php");
 require("../../lib/validator.php");
 $fecha=date('Y-m-d H:i:s');
+page::header();
 /*Condiciones para relizar operaciones en jugos.php*/
 if(empty($_GET['id'])) 
 {
-    Page::header("Agregar Tipo de Jugo");
     $id = null;
     $nombre = null;
     $descripcion = null;
 }
 else
 {
-    Page::header("Modificar Tipo de Jugo");
-    $id = $_GET['id'];
+    $id = base64_decode($_GET['id']);
     $sql = "SELECT * FROM tipo_jugo WHERE id_tipojugo = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
@@ -81,7 +80,7 @@ if(!empty($_POST))
             <div class="form-row">
                 <label>
                     <span>Nombre del tipo de Jugo:</span>
-                    <input type="text" name="nombre5" required value="<?php print($nombre);?>">
+                    <input type="text" name="nombre" required value="<?php print($nombre);?>">
                 </label>
             </div>
 

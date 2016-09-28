@@ -165,15 +165,6 @@ if(!empty($_POST))
                     return false;
                 } 
 
-                else if ((formulario.titulo.value.length <= 10) || (formulario.descripcion.value.length <= 10)) {
-                    alert('Los campos de Titulo y Descripcion deben contoner al menos 10 Caracteres');
-                    return false;
-                } 
-
-                else if(formulario.titulo.value.match(/[a-zA-Z]/)){
-                    alert('Solo se permiten letras en el Titulo.');
-                    return false;
-                }
 
                 /* si no hemos detectado fallo devolvemos TRUE */
                 return true;

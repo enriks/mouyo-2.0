@@ -18,7 +18,7 @@ require("../../lib/database.php");
 require("../lib/verificador.php");
 require("../lib/page.php");
 Page::header();
-
+ini_set('memory_limit','1024M');
 
     $sql = "SELECT admin.alias nombre_admin, admin.foto foto, historial.accion,historial.fecha FROM historial,admin WHERE historial.id_admin=admin.id_admin order by historial.fecha";
 	$params = null;

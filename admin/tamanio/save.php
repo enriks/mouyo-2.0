@@ -30,7 +30,7 @@ if(!empty($_POST))
     
     try
     {
-        if($precio == null || $tamanio == null)
+        if( $tamanio == null)
         {
             throw new Exception("Datos incompletos");
         }
@@ -39,7 +39,7 @@ if(!empty($_POST))
             $sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
         $params2=array($fecha,"Inserto el tamaño de $tamanio",$_SESSION['id_admin']);
         Database::executeRow($sql2, $params2);
-            $sql = "INSERT INTO tamanio(tamanio) VALUES(?,?)";
+            $sql = "INSERT INTO tamanio(tamanio) VALUES(?)";
             $params = array( $tamanio);
              Database::executeRow($sql, $params);
         @header("location: index.php");
@@ -76,7 +76,7 @@ if(!empty($_POST))
             <div class="form-row">
                 <label>
                     <span>Titulo del Tamaño:</span>
-                    <input type="text" name="tamaño" required value="<?php print($tamanio);?>">
+                    <input type="text" name="tamanio" required value="<?php print($tamanio);?>">
                 </label>
             </div>
             <div class="form-row">
