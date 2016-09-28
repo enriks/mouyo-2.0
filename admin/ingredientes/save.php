@@ -139,21 +139,21 @@ if(!empty($_POST))
 
     function Valida(formulario) {
                 /* Validación de campos NO VACÍOS */
-                if ((formulario.nombre.value.length == 0) || (formulario.descripcion.value.length ==0)) {
+                if ((formulario.nombre.value.length == 0) || (formulario.descripcion.value.length == 0)) {
                     alert('Debe completar todos los campos.');
                     return false;
                 } 
 
-                else if ((formulario.nombre.value.length <= 10) || (formulario.descripcion.value.length <= 10)) {
-                    alert('Los campos de Titulo y Descripcion deben contener al menos 10 Caracteres');
+                else if ((formulario.nombre.value.length <= 3)) {
+                    alert('El campo de Titulo debe contener al menos 3 Caracteres');
                     return false;
                 } 
 
-              else if (isNaN(parseInt(formulario.descuento.value))) {
-                    alert('El campo de precio debe ser Numerico.');
+                else if ((formulario.descripcion.value.length <= 3)) {
+                    alert('El campo de Titulo debe contener al menos 3 Caracteres');
                     return false;
-                }  
-                /* validación del e-mail */
+                } 
+ 
 
                else if(formulario.nombre.value.match(/[a-zA-Z]/)){
                     alert('Solo se permiten letras en el Titulo.');
@@ -186,7 +186,7 @@ if(!empty($_POST))
          mierror = "Comprueba la extensión de los archivos a subir. \nSólo se pueden subir archivos con extensiones: " + extensiones_permitidas.join(); 
         }else{ 
             //submito! 
-         alert ("Todo correcto. Voy a submitir el formulario."); 
+         alert ("La extension de la imagen es correcta"); 
          formulario.submit(); 
          return 1; 
         } 

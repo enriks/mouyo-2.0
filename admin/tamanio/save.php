@@ -96,16 +96,6 @@ if(!empty($_POST))
                     return false;
                 } 
 
-                else if ((formulario.tamaño.value.length <= 10)) {
-                    alert('El campo de Titulo debe contener al menos 10 Caracteres');
-                    return false;
-                }   
-
-                else if (isNaN(parseInt(formulario.precio.value))) {
-                    alert('El campo de precio debe ser Numerico.');
-                    return false;
-                }
-
                 else if(formulario.tamaño.value.match(/[a-zA-Z]/)){
                     alert('Solo se permiten letras en el Titulo.');
                     return false;
