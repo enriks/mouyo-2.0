@@ -47,7 +47,11 @@ if(isset($_POST['enviar'])||!empty($_POST))
                             $_SESSION['nombre_apellido_usuario'] = $data['nombre']." ".$data['apellido'];
                             $sql="update usuario set sesion=1 where id_usuario=?";
                             ///////////////////////////////
+<<<<<<< HEAD
                             $params=array($data['id_usuario']);
+=======
+                            $params=array($data['id_admin']);
+>>>>>>> aaad191bb8612044eebd1ec0898a5af9768b6d69
                             Database::executeRow($sql,$params);
                             @header("location: index.php");
                                

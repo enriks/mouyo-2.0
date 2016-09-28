@@ -13,7 +13,7 @@ else
 {
     /* Archivos que se mandan a llamar y  son rqueridos*/
    
-    $sql="select * from usuario where id_usuario=?";
+    $sql="select * from usuario where id_usuario= ? ";
     $params=array($_SESSION['id_usuario']);
     $dat=Database::getRow($sql,$params);
     $heder="";
@@ -59,8 +59,12 @@ else
         {
             if($archivo['name'] == "" && $clave1 == "" && $clave2 == "")
             {
-                $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?, where id_usuario =?";
+                $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ? where id_usuario = ?";
                 $params=array($nombres,$apellidos,$alias,$correo,$_SESSION['id_usuario']);
+                Database::executeRow($sql,$params);
+                
+                $_SESSION['usuario']="".$nombres." ".$apellidos;
+                header("location: usuarios.php");
             }
             elseif($archivo['name'] != "" && $clave1 == "" && $clave2 == "")
             {
@@ -73,17 +77,26 @@ else
                 {
                     throw new Exception("La imagen seleccionada no es valida.");
                 }
-                $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?, foto_prefil = ? where id_usuario =?";
+                $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?, foto_prefil = ? where id_usuario = ?";
                 $params=array($nombres,$apellidos,$alias,$correo,$imagen,$_SESSION['id_usuario']);
                 $_SESSION['img']=$imagen;
+                Database::executeRow($sql,$params);
+                
+                $_SESSION['usuario']="".$nombres." ".$apellidos;
+                header("location: usuarios.php");
+                
             }
             elseif($archivo['name'] == "" && $clave1 != "" && $clave2 != "")
             {
                 if($clave1 == $clave2)
                 {
                     $clave = password_hash($clave1, PASSWORD_DEFAULT);
-                    $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?, clave =? where id_usuario =?";
+                    $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?, clave = ? where id_usuario = ?";
                     $params=array($nombres,$apellidos,$alias,$correo,$clave,$_SESSION['id_usuario']);
+                    
+                    Database::executeRow($sql,$params);
+                    $_SESSION['usuario']="".$nombres." ".$apellidos;
+                    header("location: usuarios.php");
                 }
                 else
                 {
@@ -98,9 +111,13 @@ else
                 {
                     $imagen=$base64;
                     $clave = password_hash($clave1, PASSWORD_DEFAULT);
-                    $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?,  foto_prefil = ?, clave =? where id_usuario =?";
+                    $sql="update usuario set nombre = ?, apellido = ?, alias = ?, correo = ?,  foto_prefil = ?, clave =? where id_usuario = ?";
                     $params=array($nombres,$apellidos,$alias,$correo,$imagen,$clave,$_SESSION['id_usuario']);
                     $_SESSION['img']=$imagen;
+                    
+                    Database::executeRow($sql,$params);
+                    $_SESSION['usuario']="".$nombres." ".$apellidos;
+                    header("location: usuarios.php");
                 }
                 else
                 {
@@ -108,9 +125,7 @@ else
                 }
             }
             
-            Database::executeRow($sql,$params);
-            $_SESSION['usuario']="".$nombres." ".$apellidos;
-            header("location: usuarios.php");
+            
         }
         catch (Exception $error)
     {

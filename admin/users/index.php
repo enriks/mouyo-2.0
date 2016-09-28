@@ -43,7 +43,6 @@ else
                     <li><a href='../main/index.php'>Página Principal</a>
                     </li>
                     <li class='active'>Usuarios</li>
-                    <li><a type='button' href='save.php' class='btn btn-info'>Agregar un Usuario</a></li>
                 </ol>
             </div>
         </div>
@@ -54,17 +53,18 @@ $activo="";
 $data=Database::getRows($sql,$params);
 if($data != null)
 {
-    if($data['estado']==0)
-    {
-    	$act="Activo";
-    }
-    else
-    {
-    	$act="Inactivo";
-    }
+    
     $tabla.="<div class='row'>";
     foreach($data as $row)
 		{
+            if($row['estado']==0)
+    {
+        $act="Activo";
+    }
+    else
+    {
+        $act="Inactivo";
+    }
 			$tabla.="
             <div class='col-md-4 text-center'>
                 <div class='thumbnail'>
@@ -76,7 +76,8 @@ if($data != null)
                         <p>$row[correo]</p>
 
                         <p><strong>Estado:</strong>$act</p>
-                        <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_usuario'])."'>Cambiar estado del usuario</i></a>
+<<<<<<< HEAD
+                        
 
                         <ul class='list-inline'>
                             <li><a href='#'><i class='fa fa-2x fa-facebook-square'></i></a>
@@ -87,7 +88,10 @@ if($data != null)
                             </li>
                             
                         </ul>
-                        <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_usuario'])."'>Editar</i></a>
+                       <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_usuario'])."'>Cambiar estado del usuario</i></a>
+=======
+                        <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_usuario'])."'>Cambiar estado del usuario</i></a>
+>>>>>>> 28a1001fef40db8af84a533c6cff0f9975c3e48a
                     
 
                     </div>

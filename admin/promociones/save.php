@@ -164,11 +164,17 @@ if(!empty($_POST))
                     alert('Debe completar todos los campos.');
                     return false;
                 } 
-                /* validación del e-mail */
-                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
-                if (!(ercorreo.test(formulario.email.value))) {  
-                    alert('Contenido del email no es CORREO ELECTR&Oacute;NICO v&aacute;lido.');
-                    return false; }
+
+                else if ((formulario.titulo.value.length <= 10) || (formulario.descripcion.value.length <= 10)) {
+                    alert('Los campos de Titulo y Descripcion deben contoner al menos 10 Caracteres');
+                    return false;
+                } 
+
+                else if(formulario.titulo.value.match(/[a-zA-Z]/)){
+                    alert('Solo se permiten letras en el Titulo.');
+                    return false;
+                }
+
                 /* si no hemos detectado fallo devolvemos TRUE */
                 return true;
             }

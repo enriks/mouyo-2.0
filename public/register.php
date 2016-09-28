@@ -185,7 +185,7 @@ else
             		<input type='file' name='imagen'>
       		  </div>
         		<div class='file-path-wrapper'>
-          		  <input class='file-path validate center' type='text' placeholder='1200x1200px máx., 2MB máx., PNG/JPG/GIF'>
+          		  <input disabled class='file-path validate center' type='text' placeholder='1200x1200px máx., 2MB máx., PNG/JPG/GIF'>
         		</div>
         </div>
     </div>

@@ -103,15 +103,15 @@ if(!empty($_POST))
 
      function Valida(formulario) {
                 /* Validación de campos NO VACÍOS */
-                if ((formulario.tamaño.nombre5.length == 0) || (formulario.descripcion.value.length ==0)) {
+                if ((formulario.nombre5.value.length == 0) || (formulario.descripcion.value.length == 0)) {
                     alert('Debe completar todos los campos.');
                     return false;
                 }    
-                /* validación del e-mail */
-                var ercorreo=/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;          
-                if (!(ercorreo.test(formulario.email.value))) {  
-                    alert('Contenido del email no es CORREO ELECTR&Oacute;NICO v&aacute;lido.');
-                    return false; }
+
+                else if ((formulario.nombre5.value.length <= 10) || (formulario.descripcion.value.length <= 10)) {
+                    alert('El campo de Titulo debe contener al menos 10 Caracteres');
+                    return false;
+                }   
                 /* si no hemos detectado fallo devolvemos TRUE */
                 return true;
             }

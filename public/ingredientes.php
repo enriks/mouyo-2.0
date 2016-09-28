@@ -40,6 +40,5 @@ require("../lib/database.php");
     
 <?php require 'inc/faq.php'; ?> 
 <?php require 'inc/acercade.php'; ?>	 
-<?php require 'inc/imagenes.php'; ?>
 <?php require 'inc/footer.php'; ?>
     
