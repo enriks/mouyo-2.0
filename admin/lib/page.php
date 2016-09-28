@@ -235,6 +235,9 @@
                                         <li>
                                             <a href='../ingredientes/'>Ingredientes</a>
                                         </li>
+                                        <li>
+                                            <a href='../tamanio/'>Tamaño</a>
+                                        </li>
                                         <li class='dropdown'>
                                             <a href='#' class='dropdown-toggle' data-toggle='dropdown'><div class='chip'>
                                                   <img src='data:image/*;base64,$_SESSION[img_admin]' alt='Person' width='40' height='40' class='img-circle'>
@@ -280,6 +283,9 @@
                     <li>
                         <a href='../ingredientes/'>Ingredientes</a>
                     </li>
+                    <li>
+                                            <a href='../tamanio/'>Tamaño</a>
+                                        </li>
                     <li>
                         <a href='../descuentos/'>Descuentos</a>
                     </li>

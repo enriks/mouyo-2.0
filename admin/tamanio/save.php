@@ -20,14 +20,12 @@ else
     $sql = "SELECT * FROM tamanio WHERE id_tamanio = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
-    $precio = htmlentities($data['precio']);
     $tamanio= htmlentities($data['tamanio']);
 }
 
 if(!empty($_POST))
 {
      $_POST = Validator::validateForm($_POST);
-     $precio=htmlentities($_POST['precio']);
      $tamanio=htmlentities($_POST['tamanio']);
     
     try
@@ -41,8 +39,8 @@ if(!empty($_POST))
             $sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
         $params2=array($fecha,"Inserto el tamaño de $tamanio",$_SESSION['id_admin']);
         Database::executeRow($sql2, $params2);
-            $sql = "INSERT INTO tamanio(precio,tamanio) VALUES(?,?)";
-            $params = array($precio, $tamanio);
+            $sql = "INSERT INTO tamanio(tamanio) VALUES(?,?)";
+            $params = array( $tamanio);
              Database::executeRow($sql, $params);
         @header("location: index.php");
         }
@@ -51,8 +49,8 @@ if(!empty($_POST))
             $sql2 = "INSERT INTO `historial` (`fecha`, `accion`, `id_admin`) VALUES(?, ?,?)";
         $params2=array($fecha,"Modifico el tamaño de $tamanio",$_SESSION['id_admin']);
         Database::executeRow($sql2, $params2);
-            $sql = "update tamanio set precio=?, tamanio=? where id_tamanio=?";
-            $params = array($precio, $tamanio, $id);
+            $sql = "update tamanio set  tamanio=? where id_tamanio=?";
+            $params = array( $tamanio, $id);
              Database::executeRow($sql, $params);
         @header("location: index.php");
         }
@@ -80,14 +78,6 @@ if(!empty($_POST))
                     <span>Titulo del Tamaño:</span>
                     <input type="text" name="tamaño" required value="<?php print($tamanio);?>">
                 </label>
-            </div>
-            <div class="form-row">
-                <div class="input-group">
-                    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                  <div class="input-group-addon">$</div>
-                      <input type="number" name="precio" max="999" min='0' class="form-control" value="<?php print($precio);?>" placeholder="Precio">
-                      <div class="input-group-addon">.00</div>
-                </div>
             </div>
             <div class="form-row">
                 <button type="submit">Guardar</button>

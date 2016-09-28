@@ -66,10 +66,6 @@ if($data != null)
                 <ul>
                     <li>$row[tamanio]</li>
                 </ul>
-                <h4>Precio del Vaso</h4>
-                <ul>
-                    <li>$row[precio]</li>
-                </ul>
                 <a class='btn btn-primary' href='save.php?id=".base64_encode($row['id_tamanio'])."'>Editar</i></a>
                 <a class='btn btn-primary' href='delete.php?id=".base64_encode($row['id_tamanio'])."'>Eliminar</i></a>
             </div>
