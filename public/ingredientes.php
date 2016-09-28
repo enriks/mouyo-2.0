@@ -16,7 +16,7 @@ require("../lib/database.php");
             $data2=Database::getRows($sql,null);
             foreach($data2 as $row)
             {
-                $jugo.="<div class='col s4'><div class='card large'>
+                $jugo.="<div class='col s12 l4'><div class='card large'>
                 <div class='card-image waves-effect waves-block waves-light'>
                   <img class='activator hovereffect responsive-img' src='data:image/*;base64,$row[imagen]'>
                 </div>
