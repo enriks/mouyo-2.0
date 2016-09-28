@@ -1,7 +1,7 @@
 <?php
 ob_start();
 require("main/page2.php");
-    require("../lib/database.php");
+require("../lib/database.php");
 Page2::header();
 
 if(!empty($_GET['id'])) 
@@ -18,10 +18,12 @@ if(!empty($_POST))
 	$id = $_POST['id'];
 	try 
 	{
-		$sql = "DELETE FROM detalle_cotizacion WHERE id_jugo = ?";
-	    $params = array($id);
+        
+        $estado = 1;
+		$sql = "update comentarios set estado = ? WHERE id_comentario= ? and id_usuario = ?";
+	    $params = array($estado,$id, $_SESSION['id_usuario']);
 	    Database::executeRow($sql, $params);
-	    @header("location: cotizacion.php");
+	    @header("location: jugos.php");
 	} 
 	catch (Exception $error) 
 	{
@@ -31,9 +33,9 @@ if(!empty($_POST))
 ?>
 <form method='post' class='row center-align'>
 	<input type='hidden' name='id' value='<?php print($id); ?>'/>
-	<h4>Eliminar la cotizacion</h4>
+	<h4>Esta seguro de eliminar comentario?</h4>
 	<button type='submit' class='btn red'><i class='material-icons right'>done</i>Si</button>
-	<a href='index.php' class='btn grey'><i class='material-icons right'>cancel</i>No</a>
+	<a href='jugos.php' class='btn grey'><i class='material-icons right'>cancel</i>No</a>
 </form>
 <?php
 Page2::footer();

@@ -55,9 +55,9 @@
 <div class="fade-in-element page-featured-posts-grid-container transparent-overlay col s12 m12 l12">
 				<article class="post-435 post type-post status-publish format-standard has-post-thumbnail hentry category-travel">
 					<img  src="img/salud.jpg" /> <header>
-					<a  class="page-featured-posts-grid-link-wrapper waves-effect">
+					<a href="beneficios_jugos.php" class="page-featured-posts-grid-link-wrapper waves-effect">
 						<div class="page-featured-posts-grid-title-wrapper center-align">
-							<h2 class="page-featured-posts-grid-title"><strong>MEJORA TU </strong> ESTILO DE VIDA</h2>
+							<h2 class="page-featured-posts-grid-title"><strong>BENEFICIO </strong> DE LOS JUGOS</h2>
 						</div>
 					</a>
 					</header>

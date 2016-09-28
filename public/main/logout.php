@@ -9,7 +9,7 @@
         if($dat['sesion']==1)
         {    
         $sql="update usuario set sesion=0 where id_usuario=?";
-            $params=array($_SESSION['id_admin']);
+            $params=array($_SESSION['id_usuario']);
             Database::executeRow($sql,$params);
             @header("location: index.php");
         }   

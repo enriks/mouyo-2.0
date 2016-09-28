@@ -21,3 +21,4 @@
 <link rel='stylesheet' href='../css/icons.css'>
 <!--link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"-->
 <!--link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

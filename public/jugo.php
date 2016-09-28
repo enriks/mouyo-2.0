@@ -1,7 +1,7 @@
 <?php
 require("main/page2.php");
 require("../lib/database.php");
-    Page2::header();
+Page2::header();
 $tamanio="";
 $cotizacion="";
 $id=base64_decode($_GET['id']);
@@ -27,7 +27,7 @@ if(isset($_POST['enviar1']))
         else
         {
             
-            $selecto="select id_jugo from detalle_cotizacion where id_jugo=? and id_cotizacion =?";
+            $selecto="select id_jugo from detalle_cotizacion where id_jugo=? and id_cotizacion = ?";
             $parametros=array($id,$cotizacion);
             $elif=Database::getRows($selecto,$parametros);
             if($elif == null)
@@ -39,7 +39,7 @@ if(isset($_POST['enviar1']))
             }
             else
             {
-                throw new Exception("Ya esta cotizado men.");
+                throw new Exception("Ya esta cotizado");
             }
         }   
     }
@@ -95,16 +95,17 @@ else
             $disabled="disabled";
             $texto_tooltip="Debes iniciar sesion para cotizar";
             $comentario_tooltip="Debes iniciar sesion antes de comentar";
-            $cotisasion="<a $disabled class='waves-effect waves-light btn blue modal-trigger tooltipped' data-position='right' data-delay='150' data-tooltip='$texto_tooltip' href='#modal3'><i class='material-icons right'>add_shopping_cart</i>Agregar a la cotizacion</a>";
+            $cotisasion="<a $disabled class='waves-effect waves-light btn blue modal-trigger tooltipped white-text' data-position='right' data-delay='150' data-tooltip='$texto_tooltip' href='#modal3'><i class='material-icons right'>add_shopping_cart</i>Agregar a la cotizacion</a>";
         }
         else
         {
-            $cotisasion="<a $disabled class='waves-effect waves-light btn blue modal-trigger tooltipped' data-position='right' data-delay='150' data-tooltip='$texto_tooltip' href='#modal3'><i class='material-icons right'>add_shopping_cart</i>Agregar a la cotizacion</a>";
+            $cotisasion="<a $disabled class='waves-effect waves-light btn blue modal-trigger tooltipped white-text' data-position='right' data-delay='150' data-tooltip='$texto_tooltip' href='#modal3'><i class='material-icons right'>add_shopping_cart</i>Agregar a la cotizacion</a>";
         }
     foreach($data as $row)
 		{
+        
             $tabla="<br>
-    <div class='container'>
+    <div class='container' id='divJugo'>
         <div class='row card-panel'>
             <div class='col m8 center'>
                 <span><h5 class='teal-text'>$row[nombre_jugo]</h5></span>
@@ -120,20 +121,23 @@ else
      <form method='post' name='frmCotizacion' class='center-align'>
         <fieldset>
             <div class='row'>
-                <div class='input-field col s6 m6 l12'>
+                <div class='input-field col s6 m6'>
                     <i class='material-icons prefix'>format_list_numbered</i>
                     <input id='cantidad' type='text' name='cantidad' class='validate'/>
                     <label for='cantidad'>Cantidad</label>
                 </div>
-                <div class='input-field col s6 m6 l12'>";
+                <div class='input-field col s6 m6'>";
+       //print($_SESSION['id_usuario']);
+        if(isset($_SESSION['id_usuario'])){
         $skl="SELECT id_tamanio, tamanio FROM tamanio";
-        $skl2="SELECT id_cotizacion, nombre FROM cotizacion where id_usuario=".isset($_SESSION['id_usuario'])."";
+        $skl2="SELECT id_cotizacion, nombre FROM cotizacion where id_usuario=".($_SESSION['id_usuario'])."";
                     	$tabla.=page2::setCombo_texto("tamanio",$tamanio,$skl);
                     	$tabla.=page2::setCombo_texto("cotizacion",$cotizacion,$skl2);
+           }
         $tabla.="
                 </div>
             </div>
-            <button $disabled type='submit' name='enviar1' class='btn grey left tooltipped' data-position='bottom' data-delay='50' data-tooltip='I am tooltip'>Agregar a mi cotización<i class='material-icons right'>add</i></button> 
+            <button $disabled type='submit' name='enviar1' class='btn grey left tooltipped' data-position='bottom' data-delay='50' data-tooltip='I am tooltip'><i class='material-icons right'>add</i></button> 
             </fieldset>
             </form>
     </div>
@@ -167,14 +171,14 @@ else
         $tabla.="<div class='fixed-action-btn horizontal click-to-toggle' style='bottom: 45px; right: 24px;'>
 <a class='btn-floating btn-large red modal-trigger tooltipped' data-position='left' data-delay='50' data-tooltip='$comentario_tooltip' href='#modal2'><i class='material-icons right'>chat</i></a>
 </div>
-<div class='' id='divJugo'>
+<div class=''>
     <div class='row'>
         <div class=''>
             <div id='modal2' class='modal'>
 <div class='modal-content'>
 <ul class='collection'>"; 
 
-        $sqll="SELECT comentarios.id_usuario,usuario.nombre,usuario.foto_perfil,comentarios.comentario from usuario,comentarios where usuario.id_usuario = comentarios.id_usuario and comentarios.id_jugo = ? order by comentarios.id_comentario";
+        $sqll="SELECT  comentarios.id_comentario,comentarios.id_usuario,usuario.nombre,usuario.foto_perfil,comentarios.comentario from usuario,comentarios where comentarios.estado=0 and usuario.id_usuario = comentarios.id_usuario and comentarios.id_jugo = ?  order by comentarios.id_comentario";
         $paramss=array($id);
         $dati=Database::getRows($sqll,$paramss);
         foreach($dati as $date)
@@ -182,8 +186,13 @@ else
             <li class='collection-item avatar'>
             <img src='data:image/*;base64,$date[foto_perfil]' alt='' class='circle'>
             <span class='title'>$date[nombre]</span>
-                <p class=''>$date[comentario]</p>
-            </li>";
+                <p>$date[comentario]</p>";
+         if(isset($_SESSION['id_usuario'])){
+                $tabla.= "<a href='eliminar_comentario.php?id=                                                      ".base64_encode($date['id_comentario'])."'>Eliminar comentario</a>";
+         }
+                  
+                
+        $tabla.="</li>";    
         }
         
         $tabla.="
@@ -215,6 +224,7 @@ else
 }
 ?>
 
+
 <script src='../bin/materialize.js'></script>
 <script src='../js/init.js'></script>
 
@@ -223,5 +233,3 @@ else
 <?php require 'inc/footer.php'; ?>
 
 <?php Page2::footer();?>
-
-

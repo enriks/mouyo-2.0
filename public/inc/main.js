@@ -3,8 +3,8 @@ function init(){
     
     function home(){
         
-        $('#divIngrediente').hide();
-        $('#divJugos').hide();
+        //$('#divIngrediente').hide();
+        //$('#divJugos').hide();
         $('#divFaq').hide();
         $('#divAcerca').hide();
 
@@ -22,8 +22,8 @@ function init(){
     
  function jugos(){
         
-        $('#divSlider').hide();
-        $('#divIngrediente').hide();
+        //$('#divSlider').hide();
+        //$('#divIngrediente').hide();
         $('#divFaq').hide();
         $('#divAcerca').hide();
 
@@ -37,7 +37,55 @@ function init(){
 		});
  }
     
+   
+ function tips(){
+        
+        //$('#divSlider').hide();
+        //$('#divIngrediente').hide();
+        $('#divFaq').hide();
+        $('#divAcerca').hide();
 
+		$.ajax({
+		   url: 'inc/tips_jugos.php',
+		   success: function(data)
+		   {
+		   		$('#divTips').show('slow').html(data); 
+		   		
+		   }
+		});
+ }
+    
+function beneficios(){
+        
+        //$('#divSlider').hide();
+        //$('#divIngrediente').hide();
+        $('#divFaq').hide();
+        $('#divAcerca').hide();
+
+		$.ajax({
+		   url: 'inc/beneficios.php',
+		   success: function(data)
+		   {
+		   		$('#divBeneficio').show('slow').html(data); 
+		   		
+		   }
+		});
+ }
+    
+/*function cotizaciones(){
+    
+    $('#divFaq').hide();
+    $('#divAcerca').hide();
+    $.ajax({
+		   url: 'inc/cotizacion.php',
+		   success: function(data)
+		   {
+		   		$('#divCotizacion').show('slow').html(data); 
+		   		
+		   }
+		});
+    
+} */
     
 	
 /*	$('#lnkHome').on('click', function()
@@ -58,6 +106,10 @@ function init(){
     
     home();
     
+    tips();
+    
+    beneficios();
+    
     
 	$('#lnkAcerca').on('click', function()
 		{
@@ -70,6 +122,8 @@ function init(){
             $('#divUsuario').hide();
             $('#divCotizacion').hide();
             $('#divJugo').hide();
+            $('#divBeneficio').hide();
+            $('#divTips').hide();
 			$('#divAcerca').show('slow', function(){});
 		});
 	
@@ -84,6 +138,8 @@ function init(){
             $('#divUsuario').hide();
             $('#divCotizacion').hide();
             $('#divJugo').hide();
+            $('#divBeneficio').hide();
+            $('#divTips').hide();
 			$('#divFaq').show('slow', function(){});
 		});
     
@@ -98,6 +154,8 @@ function init(){
             $('#divUsuario').hide();
             $('#divCotizacion').hide();
             $('#divJugo').hide();
+            $('#divBeneficio').hide();
+            $('#divTips').hide();
 			$('#divAcerca').show('slow', function(){});
 		});
 	
@@ -112,6 +170,8 @@ function init(){
             $('#divUsuario').hide();
             $('#divCotizacion').hide();
             $('#divJugo').hide();
+            $('#divBeneficio').hide();
+            $('#divTips').hide();
 			$('#divFaq').show('slow', function(){});
 		});
     

@@ -7,6 +7,7 @@
 <div id="divJugos">
 </div>
 
+
  <?php  
 Page2::footer();?>
 

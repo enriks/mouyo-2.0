@@ -46,12 +46,11 @@ if(isset($_POST['enviar'])||!empty($_POST))
                             $_SESSION['id_usuario'] = $data['id_usuario'];
                             $_SESSION['nombre_apellido_usuario'] = $data['nombre']." ".$data['apellido'];
                             $sql="update usuario set sesion=1 where id_usuario=?";
-                            $params=array($data['id_admin']);
+                            ///////////////////////////////
+                            $params=array($data['id_usuario']);
                             Database::executeRow($sql,$params);
                             @header("location: index.php");
-                               $cabeceras = 'From: mouyosv.ricaldone@gmail.com' . "\r\n" .
-                            'Reply-To: mouyosv.ricaldone@gmail.com' . "\r\n" .
-                            'X-Mailer: PHP/' . phpversion(); mail("nelo.coto@gmail.com","puto","haz ingresado",$cabeceras);
+                               
                             }
                         }
                 }
