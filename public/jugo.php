@@ -127,7 +127,6 @@ else
                     <label for='cantidad'>Cantidad</label>
                 </div>
                 <div class='input-field col s6 m6'>";
-<<<<<<< HEAD
        //print($_SESSION['id_usuario']);
         if(isset($_SESSION['id_usuario'])){
         $skl="SELECT id_tamanio, tamanio FROM tamanio";
@@ -135,15 +134,6 @@ else
                     	$tabla.=page2::setCombo_texto("tamanio",$tamanio,$skl);
                     	$tabla.=page2::setCombo_texto("cotizacion",$cotizacion,$skl2);
            }
-=======
-        if(isset($_SESSION['id_usuario']))
-        { 
-        $skl="SELECT id_tamanio, tamanio FROM tamanio";
-        $skl2="SELECT id_cotizacion, nombre FROM cotizacion where id_usuario=".isset($_SESSION['id_usuario'])."";
-                    	$tabla.=page2::setcombo("tamanio",$tamanio,$skl);
-                    	$tabla.=page2::setcombo("cotizacion",$cotizacion,$skl2);
-        }
->>>>>>> aaad191bb8612044eebd1ec0898a5af9768b6d69
         $tabla.="
                 </div>
             </div>
@@ -234,14 +224,6 @@ else
 }
 ?>
 
-<<<<<<< HEAD
-=======
-<script>
-     $(document).ready(function(){
-    $('.materialboxed').materialbox();
-  });
-</script>
->>>>>>> aaad191bb8612044eebd1ec0898a5af9768b6d69
 
 <script src='../bin/materialize.js'></script>
 <script src='../js/init.js'></script>
