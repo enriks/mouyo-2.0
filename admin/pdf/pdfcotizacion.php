@@ -4,22 +4,12 @@ require('../../lib/database.php');
 require('../lib/page.php');
 ini_set("date.timezone","America/El_Salvador");
 $usuario=$_SESSION['usuario_admin'];
-<<<<<<< HEAD
 $id=base64_decode($_GET['id']);
-$select="select * from cotizacion where id_cotizacion=?";
-    $sql = "SELECT cotizacion.id_cotizacion,cotizacion.nombre nombre_cotizacion,jugos.nombre nombre_jugo, jugos.imagen imagen_jugo,jugos.precio,detalle_cotizacion.id_jugo,detalle_cotizacion.cantidad from jugos,cotizacion,detalle_cotizacion where detalle_cotizacion.id_cotizacion = ? and detalle_cotizacion.id_jugo = jugos.id_jugo and detalle_cotizacion.id_cotizacion=cotizacion.id_cotizacion";
-	$params =array($id);
+    $sql = "SELECT cotizacion.total,cotizacion.id_cotizacion,cotizacion.nombre nombre_cotizacion,jugos.nombre nombre_jugo, jugos.imagen imagen_jugo,jugos.precio,tamanio.tamanio nombre_tamanio,detalle_cotizacion.id_jugo,detalle_cotizacion.cantidad from jugos,tamanio,cotizacion,detalle_cotizacion, usuario where cotizacion.id_cotizacion = ? and detalle_cotizacion.id_jugo = jugos.id_jugo and detalle_cotizacion.id_tamanio = tamanio.id_tamanio and detalle_cotizacion.id_cotizacion=cotizacion.id_cotizacion and cotizacion.id_usuario=usuario.id_usuario";
+$sql2="select total from cotizacion where id_cotizacion=?";
+	$params = array($id);
     $data = Database::getRows($sql, $params);
-$datra=Database::getRow($select,$params);
-$ss="update cotizacion set pedido=2 where id_cotizacion=?";
-Database::executeRow($ss,array($id));
-=======
-
-    $sql = "SELECT cotizacion.nombre nombre_cotizacion,jugos.nombre nombre_jugo, jugos.imagen imagen_jugo,jugos.precio,tamanio.tamanio nombre_tamanio,detalle_cotizacion.id_jugo,detalle_cotizacion.cantidad from jugos,tamanio,cotizacion,detalle_cotizacion, usuario where detalle_cotizacion.id_cotizacion = ? and detalle_cotizacion.id_jugo = jugos.id_jugo and detalle_cotizacion.id_tamanio = tamanio.id_tamanio and detalle_cotizacion.id_cotizacion=cotizacion.id_cotizacion and cotizacion.id_usuario=usuario.id_usuario";
-	$params = base64_decode($_GET['id']);
-    $data = Database::getRows($sql, $params);
-
->>>>>>> aaad191bb8612044eebd1ec0898a5af9768b6d69
+    $data2=Database::getRow($sql2,$params);
 
 $pdf = new FPDF('P','mm','A4');
 $pdf->AddPage();
@@ -35,41 +25,21 @@ $pdf->Ln(25);
 $pdf->SetFont('Arial', 'B', 11);
 #$pdf->Cell(70, 8, '', 0);
 $pdf->SetFillColor(255,255,153);
-<<<<<<< HEAD
-$pdf->Cell(190, 8, $datra['nombre'],1,0,'C',1);
-=======
-$pdf->Cell(190, 8, $data['nombre_cotizacion'],1,0,'C',1);
->>>>>>> aaad191bb8612044eebd1ec0898a5af9768b6d69
 $pdf->Ln(8);
 $pdf->SetFillColor(255,255,204);
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(15, 8,' ID',1,0,'L',1);
 $pdf->Cell(75, 8, ' Jugos',1,0,'L',1);
 $pdf->Cell(35, 8, ' Precio',1,0,'L',1);
-<<<<<<< HEAD
-$pdf->Cell(30, 8, utf8_decode(' Cantidad'),1,0,'L',1);
-$pdf->Ln(8);
-foreach($data as $row)
-{
-=======
 $pdf->Cell(35, 8, utf8_decode(' Tamaño'),1,0,'L',1);
 $pdf->Cell(30, 8, utf8_decode(' Cantidad'),1,0,'L',1);
 $pdf->Ln(8);
 foreach($data as $row)
     {
->>>>>>> aaad191bb8612044eebd1ec0898a5af9768b6d69
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(15,8,$row['id_cotizacion'],0);
     $pdf->Cell(75,8,$row['nombre_jugo'],0);
     $pdf->Cell(35,8,$row['precio'],0);
-<<<<<<< HEAD
-    $pdf->Cell(30,8,$row['cantidad'],0);
-    $pdf->Ln();
-}
-    
-    
-        
-=======
     $pdf->Cell(35,8,$row['nombre_tamanio'],0);
     $pdf->Cell(30,8,$row['cantidad'],0);
     
@@ -77,10 +47,13 @@ foreach($data as $row)
     $pdf->Ln();
         
     }
->>>>>>> aaad191bb8612044eebd1ec0898a5af9768b6d69
+$pdf->Cell(190,8,"Total".$data2['total'],1,0,'L',0);
+$pdf->Ln();
 $pdf->SetY(-31);
 $pdf->SetFont('Arial', 'I', 8);
 $pdf->Cell(0,10,utf8_decode('Página ').$pdf->PageNo(),0,0,'C');
 /*$pdf->Output('reporte.pdf','D');*/
 $pdf-> Output();
+$sqll="update cotizacion set pedido=2 where id_cotizacion=?";
+Database::executeRow($sqll,$params);
 ?>
