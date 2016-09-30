@@ -10,8 +10,6 @@ Page2::header();
         <?php require 'inc/faq.php'; ?>
 		<?php require 'inc/acercade.php'; ?>	 
 		<?php require 'inc/imagenes.php'; ?>
-
-
 		<?php require 'inc/footer.php'; ?>
 		
 		<!--fin del contenido  -->

@@ -74,18 +74,9 @@ function beneficios(){
     
 /*function cotizaciones(){
     
-    $('#divFaq').hide();
-    $('#divAcerca').hide();
-    $.ajax({
-		   url: 'inc/cotizacion.php',
-		   success: function(data)
-		   {
-		   		$('#divCotizacion').show('slow').html(data); 
-		   		
-		   }
-		});
+    $('#divCotizacion').show();
     
-} */
+} 
     
 	
 /*	$('#lnkHome').on('click', function()
@@ -109,6 +100,8 @@ function beneficios(){
     tips();
     
     beneficios();
+    
+    //cotizaciones();
     
     
 	$('#lnkAcerca').on('click', function()

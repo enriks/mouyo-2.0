@@ -29,7 +29,7 @@ $cotizacion='';
 ?>
     <!--formulario de carrito -->
 <br>
-<div>
+<div id="divCotizacion">
     <div class="row">
         <div class="col s12 col l4 offset-l4 center">
         <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Nueva cotizacion</a>
@@ -54,7 +54,7 @@ $cotizacion='';
           <?php
             $tabs="<div class='col s12 l12'>
       <ul class='tabs'>";
-            $select="select * from cotizacion where id_usuario =?";
+            $select="select * from cotizacion where id_usuario =? and pedido=0";
 $params=array($_SESSION['id_usuario']);
             $data=Database::getRows($select,$params);
             foreach($data as $datos)
@@ -65,7 +65,7 @@ $params=array($_SESSION['id_usuario']);
       </ul>
     </div>";
 
-$elselect="SELECT cotizacion.nombre nombre_cotizacion,jugos.nombre nombre_jugo, jugos.imagen imagen_jugo,jugos.precio,tamanio.tamanio nombre_tamanio,detalle_cotizacion.id_jugo,detalle_cotizacion.cantidad from jugos,tamanio,cotizacion,detalle_cotizacion where detalle_cotizacion.id_cotizacion = ? and detalle_cotizacion.id_jugo = jugos.id_jugo and detalle_cotizacion.id_tamanio = tamanio.id_tamanio and cotizacion.id_usuario=? and detalle_cotizacion.id_cotizacion=cotizacion.id_cotizacion ";
+$elselect="SELECT cotizacion.nombre nombre_cotizacion,jugos.nombre nombre_jugo, jugos.imagen imagen_jugo,jugos.precio,tamanio.tamanio nombre_tamanio,detalle_cotizacion.id_jugo,detalle_cotizacion.cantidad from jugos,tamanio,cotizacion,detalle_cotizacion where detalle_cotizacion.id_cotizacion = ? and detalle_cotizacion.id_jugo = jugos.id_jugo and detalle_cotizacion.id_tamanio = tamanio.id_tamanio and cotizacion.id_usuario=? and detalle_cotizacion.id_cotizacion=cotizacion.id_cotizacion and cotizacion.pedido=0";
 
    $contenido=""; 
 foreach($data as $datas)
@@ -100,7 +100,7 @@ foreach($data as $datas)
             <td class='center black-text'>$das[cantidad]</td>
             <td class='center black-text'>$total</td>
             <td class='center black-text'><a class='waves-effect waves-light btn red modal-trigger' href='#modal$das[id_jugo]'>Eliminar</a>
-            <a class='waves-effect waves-light btn blue modal-trigger tooltipped' data-position='right' data-delay='150' data-tooltip='Edita tu corización' href='modificar_cotizacion.php?id=".base64_encode($datas['id_cotizacion'])."'><i class='material-icons right'>add_shopping_cart</i>Modificar jugo</a></td>
+            <a class='waves-effect waves-light btn blue modal-trigger tooltipped' data-position='right' data-delay='150' data-tooltip='Edita tu corización' href='modificar_cotizacion.php?id=".base64_encode($datas['id_cotizacion'])."&id_jugo=".base64_encode($das['id_jugo'])."'><i class='material-icons right'>add_shopping_cart</i>Modificar jugo</a></td>
           </tr>";
         $totaal=$total+$totaal;
         
@@ -161,7 +161,7 @@ foreach($data as $datas)
     </div>
     
     <div>
-    <a href='enviar_cotizacion.php?id=".base64_encode($datas['id_cotizacion'])."' class='waves-effect waves-light btn teal'>Enviar Administrador</a>
+    <a href='enviar_admin.php?id=".base64_encode($datas['id_cotizacion'])."&total=".base64_encode($totaal)."' class='waves-effect waves-light btn teal'>Enviar Administrador</a>
     </div>
     </div>
     

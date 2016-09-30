@@ -46,7 +46,7 @@
              <div class='parallax'>
                  <!--img src='img/parallax/zumo_de_fruta.jpeg'-->
            </div>";
-            $sql='select * from jugos order by nombre';
+            $sql='select * from jugos where estado = 0 order by nombre';
             $data2=Database::getRows($sql,null);
             foreach($data2 as $row)
             {

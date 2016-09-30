@@ -12,7 +12,7 @@ require("../lib/database.php");
              <div class='parallax'>
                  <!--img src='img/parallax/zumo_de_fruta.jpeg'-->
            </div>";
-            $sql='select * from ingrediente order by nombre';
+            $sql='select * from ingrediente where estado = 0 order by nombre';
             $data2=Database::getRows($sql,null);
             foreach($data2 as $row)
             {
@@ -37,6 +37,9 @@ require("../lib/database.php");
         ?>
     </div>
     <?php page2::footer();?>
+
+<script src='../bin/materialize.js'></script>
+<script src='../js/init.js'></script>
     
 <?php require 'inc/faq.php'; ?> 
 <?php require 'inc/acercade.php'; ?>	 

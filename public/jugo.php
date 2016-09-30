@@ -130,7 +130,7 @@ else
        //print($_SESSION['id_usuario']);
         if(isset($_SESSION['id_usuario'])){
         $skl="SELECT id_tamanio, tamanio FROM tamanio";
-        $skl2="SELECT id_cotizacion, nombre FROM cotizacion where id_usuario=".($_SESSION['id_usuario'])."";
+        $skl2="SELECT id_cotizacion, nombre FROM cotizacion where pedido=0 and id_usuario=$_SESSION[id_usuario]";
                     	$tabla.=page2::setCombo_texto("tamanio",$tamanio,$skl);
                     	$tabla.=page2::setCombo_texto("cotizacion",$cotizacion,$skl2);
            }
